@@ -12,6 +12,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An incident template: what an incident opens with, and the words offered for each later step. `{{name}}` variables are filled when it is used.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := forumulate.NewStatusIncidentTemplate(ctx, "db_failover", &forumulate.StatusIncidentTemplateArgs{
+//				SpaceId:        pulumi.Any(statusSpaceId),
+//				Name:           pulumi.String("Database failover"),
+//				Title:          pulumi.String("Database failover in progress"),
+//				Severity:       pulumi.String("major"),
+//				Markdown:       pulumi.String("We are failing over **{{region}}** to its replica."),
+//				MonitoringText: pulumi.String("The replica is serving traffic; we are watching it."),
+//				ResolvedText:   pulumi.String("The failover is complete."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import forumulate:index/statusIncidentTemplate:StatusIncidentTemplate db_failover STATUS_SPACE_ID/TEMPLATE_ID
+// ```
 type StatusIncidentTemplate struct {
 	pulumi.CustomResourceState
 

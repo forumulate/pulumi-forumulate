@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * An incident template: what an incident opens with, and the words offered for each later step. `{{name}}` variables are filled when it is used.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const dbFailover = new forumulate.StatusIncidentTemplate("db_failover", {
+ *     spaceId: statusSpaceId,
+ *     name: "Database failover",
+ *     title: "Database failover in progress",
+ *     severity: "major",
+ *     markdown: "We are failing over **{{region}}** to its replica.",
+ *     monitoringText: "The replica is serving traffic; we are watching it.",
+ *     resolvedText: "The failover is complete.",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import forumulate:index/statusIncidentTemplate:StatusIncidentTemplate db_failover STATUS_SPACE_ID/TEMPLATE_ID
+ * ```
+ */
 export class StatusIncidentTemplate extends pulumi.CustomResource {
     /**
      * Get an existing StatusIncidentTemplate resource's state with the given name, ID, and optional extra

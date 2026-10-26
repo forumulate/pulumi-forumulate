@@ -12,12 +12,345 @@ namespace Forumulate.Forumulate
 {
     public static class GetStatusPage
     {
+        /// <summary>
+        /// The current state of a public status page.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as forumulate from "@forumulate/pulumi";
+        /// 
+        /// const page = forumulate.getStatusPage({
+        ///     spaceId: statusSpaceId,
+        /// });
+        /// export const pageIsUp = page.then(page =&gt; page.overall == "up");
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_forumulate as forumulate
+        /// 
+        /// page = forumulate.get_status_page(space_id=status_space_id)
+        /// pulumi.export("pageIsUp", page.overall == "up")
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Forumulate = Forumulate.Forumulate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var page = Forumulate.GetStatusPage.Invoke(new()
+        ///     {
+        ///         SpaceId = statusSpaceId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pageIsUp"] = page.Apply(getStatusPageResult =&gt; getStatusPageResult.Overall) == "up",
+        ///     };
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		page, err := forumulate.GetStatusPage(ctx, &amp;forumulate.GetStatusPageArgs{
+        /// 			SpaceId: statusSpaceId,
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("pageIsUp", pulumi.Bool(page.Overall == "up"))
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// terraform {
+        ///   required_providers {
+        ///     forumulate = {
+        ///       source = "pulumi/forumulate"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "forumulate_status_page" "page" {
+        ///   space_id = statusSpaceId
+        /// }
+        /// 
+        /// # Refuse to roll out while the page reports an outage.
+        /// output "pageIsUp" {
+        ///   value = data.forumulate_status_page.page.overall == "up"
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.forumulate.ForumulateFunctions;
+        /// import com.pulumi.forumulate.inputs.GetStatusPageArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var page = ForumulateFunctions.getStatusPage(GetStatusPageArgs.builder()
+        ///             .spaceId(statusSpaceId)
+        ///             .build());
+        /// 
+        ///         ctx.export("pageIsUp", page.overall() == "up");
+        ///     }
+        /// }
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// </summary>
         public static Task<GetStatusPageResult> InvokeAsync(GetStatusPageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStatusPageResult>("forumulate:index/getStatusPage:getStatusPage", args ?? new GetStatusPageArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The current state of a public status page.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as forumulate from "@forumulate/pulumi";
+        /// 
+        /// const page = forumulate.getStatusPage({
+        ///     spaceId: statusSpaceId,
+        /// });
+        /// export const pageIsUp = page.then(page =&gt; page.overall == "up");
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_forumulate as forumulate
+        /// 
+        /// page = forumulate.get_status_page(space_id=status_space_id)
+        /// pulumi.export("pageIsUp", page.overall == "up")
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Forumulate = Forumulate.Forumulate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var page = Forumulate.GetStatusPage.Invoke(new()
+        ///     {
+        ///         SpaceId = statusSpaceId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pageIsUp"] = page.Apply(getStatusPageResult =&gt; getStatusPageResult.Overall) == "up",
+        ///     };
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		page, err := forumulate.GetStatusPage(ctx, &amp;forumulate.GetStatusPageArgs{
+        /// 			SpaceId: statusSpaceId,
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("pageIsUp", pulumi.Bool(page.Overall == "up"))
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// terraform {
+        ///   required_providers {
+        ///     forumulate = {
+        ///       source = "pulumi/forumulate"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "forumulate_status_page" "page" {
+        ///   space_id = statusSpaceId
+        /// }
+        /// 
+        /// # Refuse to roll out while the page reports an outage.
+        /// output "pageIsUp" {
+        ///   value = data.forumulate_status_page.page.overall == "up"
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.forumulate.ForumulateFunctions;
+        /// import com.pulumi.forumulate.inputs.GetStatusPageArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var page = ForumulateFunctions.getStatusPage(GetStatusPageArgs.builder()
+        ///             .spaceId(statusSpaceId)
+        ///             .build());
+        /// 
+        ///         ctx.export("pageIsUp", page.overall() == "up");
+        ///     }
+        /// }
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// </summary>
         public static Output<GetStatusPageResult> Invoke(GetStatusPageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStatusPageResult>("forumulate:index/getStatusPage:getStatusPage", args ?? new GetStatusPageInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The current state of a public status page.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```typescript
+        /// import * as pulumi from "@pulumi/pulumi";
+        /// import * as forumulate from "@forumulate/pulumi";
+        /// 
+        /// const page = forumulate.getStatusPage({
+        ///     spaceId: statusSpaceId,
+        /// });
+        /// export const pageIsUp = page.then(page =&gt; page.overall == "up");
+        /// ```
+        /// ```python
+        /// import pulumi
+        /// import pulumi_forumulate as forumulate
+        /// 
+        /// page = forumulate.get_status_page(space_id=status_space_id)
+        /// pulumi.export("pageIsUp", page.overall == "up")
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Forumulate = Forumulate.Forumulate;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var page = Forumulate.GetStatusPage.Invoke(new()
+        ///     {
+        ///         SpaceId = statusSpaceId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pageIsUp"] = page.Apply(getStatusPageResult =&gt; getStatusPageResult.Overall) == "up",
+        ///     };
+        /// });
+        /// ```
+        /// ```go
+        /// package main
+        /// 
+        /// import (
+        /// 	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+        /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+        /// )
+        /// 
+        /// func main() {
+        /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+        /// 		page, err := forumulate.GetStatusPage(ctx, &amp;forumulate.GetStatusPageArgs{
+        /// 			SpaceId: statusSpaceId,
+        /// 		}, nil)
+        /// 		if err != nil {
+        /// 			return err
+        /// 		}
+        /// 		ctx.Export("pageIsUp", pulumi.Bool(page.Overall == "up"))
+        /// 		return nil
+        /// 	})
+        /// }
+        /// ```
+        /// ```hcl
+        /// terraform {
+        ///   required_providers {
+        ///     forumulate = {
+        ///       source = "pulumi/forumulate"
+        ///     }
+        ///   }
+        /// }
+        /// 
+        /// data "forumulate_status_page" "page" {
+        ///   space_id = statusSpaceId
+        /// }
+        /// 
+        /// # Refuse to roll out while the page reports an outage.
+        /// output "pageIsUp" {
+        ///   value = data.forumulate_status_page.page.overall == "up"
+        /// }
+        /// ```
+        /// ```java
+        /// package generated_program;
+        /// 
+        /// import com.pulumi.Context;
+        /// import com.pulumi.Pulumi;
+        /// import com.pulumi.core.Output;
+        /// import com.pulumi.forumulate.ForumulateFunctions;
+        /// import com.pulumi.forumulate.inputs.GetStatusPageArgs;
+        /// import java.util.ArrayList;
+        /// import java.util.Arrays;
+        /// import java.util.Map;
+        /// import java.io.File;
+        /// import java.nio.file.Files;
+        /// import java.nio.file.Paths;
+        /// 
+        /// public class App {
+        ///     public static void main(String[] args) {
+        ///         Pulumi.run(App::stack);
+        ///     }
+        /// 
+        ///     public static void stack(Context ctx) {
+        ///         final var page = ForumulateFunctions.getStatusPage(GetStatusPageArgs.builder()
+        ///             .spaceId(statusSpaceId)
+        ///             .build());
+        /// 
+        ///         ctx.export("pageIsUp", page.overall() == "up");
+        ///     }
+        /// }
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// </summary>
         public static Output<GetStatusPageResult> Invoke(GetStatusPageInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetStatusPageResult>("forumulate:index/getStatusPage:getStatusPage", args ?? new GetStatusPageInvokeArgs(), options.WithDefaults());
     }
@@ -49,10 +382,22 @@ namespace Forumulate.Forumulate
     [OutputType]
     public sealed class GetStatusPageResult
     {
+        /// <summary>
+        /// Open incidents and maintenance under way.
+        /// </summary>
         public readonly int ActiveCount;
+        /// <summary>
+        /// The page's headline, in the owner's words.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Statuspage's word: &lt;span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`"&gt;`none`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`minor`" pulumi-lang-dotnet="`Minor`" pulumi-lang-go="`minor`" pulumi-lang-python="`minor`" pulumi-lang-yaml="`minor`" pulumi-lang-java="`minor`" pulumi-lang-hcl="`minor`"&gt;`minor`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`major`" pulumi-lang-dotnet="`Major`" pulumi-lang-go="`major`" pulumi-lang-python="`major`" pulumi-lang-yaml="`major`" pulumi-lang-java="`major`" pulumi-lang-hcl="`major`"&gt;`major`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`"&gt;`critical`&lt;/span&gt; or &lt;span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`"&gt;`maintenance`&lt;/span&gt;.
+        /// </summary>
         public readonly string Indicator;
         public readonly string Name;
+        /// <summary>
+        /// &lt;span pulumi-lang-nodejs="`up`" pulumi-lang-dotnet="`Up`" pulumi-lang-go="`up`" pulumi-lang-python="`up`" pulumi-lang-yaml="`up`" pulumi-lang-java="`up`" pulumi-lang-hcl="`up`"&gt;`up`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`" pulumi-lang-hcl="`degraded`"&gt;`degraded`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`"&gt;`maintenance`&lt;/span&gt;, &lt;span pulumi-lang-nodejs="`down`" pulumi-lang-dotnet="`Down`" pulumi-lang-go="`down`" pulumi-lang-python="`down`" pulumi-lang-yaml="`down`" pulumi-lang-java="`down`" pulumi-lang-hcl="`down`"&gt;`down`&lt;/span&gt; or &lt;span pulumi-lang-nodejs="`unknown`" pulumi-lang-dotnet="`Unknown`" pulumi-lang-go="`unknown`" pulumi-lang-python="`unknown`" pulumi-lang-yaml="`unknown`" pulumi-lang-java="`unknown`" pulumi-lang-hcl="`unknown`"&gt;`unknown`&lt;/span&gt;.
+        /// </summary>
         public readonly string Overall;
         public readonly string SpaceId;
         public readonly string Url;

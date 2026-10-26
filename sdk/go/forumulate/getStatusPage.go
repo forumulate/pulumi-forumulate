@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The current state of a public status page.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			page, err := forumulate.GetStatusPage(ctx, &forumulate.GetStatusPageArgs{
+//				SpaceId: statusSpaceId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("pageIsUp", pulumi.Bool(page.Overall == "up"))
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetStatusPage(ctx *pulumi.Context, args *GetStatusPageArgs, opts ...pulumi.InvokeOption) (*GetStatusPageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStatusPageResult
@@ -28,13 +58,17 @@ type GetStatusPageArgs struct {
 
 // A collection of values returned by getStatusPage.
 type GetStatusPageResult struct {
-	ActiveCount int    `pulumi:"activeCount"`
+	// Open incidents and maintenance under way.
+	ActiveCount int `pulumi:"activeCount"`
+	// The page's headline, in the owner's words.
 	Description string `pulumi:"description"`
-	Indicator   string `pulumi:"indicator"`
-	Name        string `pulumi:"name"`
-	Overall     string `pulumi:"overall"`
-	SpaceId     string `pulumi:"spaceId"`
-	Url         string `pulumi:"url"`
+	// Statuspage's word: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`minor`" pulumi-lang-dotnet="`Minor`" pulumi-lang-go="`minor`" pulumi-lang-python="`minor`" pulumi-lang-yaml="`minor`" pulumi-lang-java="`minor`" pulumi-lang-hcl="`minor`">`minor`</span>, <span pulumi-lang-nodejs="`major`" pulumi-lang-dotnet="`Major`" pulumi-lang-go="`major`" pulumi-lang-python="`major`" pulumi-lang-yaml="`major`" pulumi-lang-java="`major`" pulumi-lang-hcl="`major`">`major`</span>, <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span> or <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>.
+	Indicator string `pulumi:"indicator"`
+	Name      string `pulumi:"name"`
+	// <span pulumi-lang-nodejs="`up`" pulumi-lang-dotnet="`Up`" pulumi-lang-go="`up`" pulumi-lang-python="`up`" pulumi-lang-yaml="`up`" pulumi-lang-java="`up`" pulumi-lang-hcl="`up`">`up`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`" pulumi-lang-hcl="`degraded`">`degraded`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`down`" pulumi-lang-dotnet="`Down`" pulumi-lang-go="`down`" pulumi-lang-python="`down`" pulumi-lang-yaml="`down`" pulumi-lang-java="`down`" pulumi-lang-hcl="`down`">`down`</span> or <span pulumi-lang-nodejs="`unknown`" pulumi-lang-dotnet="`Unknown`" pulumi-lang-go="`unknown`" pulumi-lang-python="`unknown`" pulumi-lang-yaml="`unknown`" pulumi-lang-java="`unknown`" pulumi-lang-hcl="`unknown`">`unknown`</span>.
+	Overall string `pulumi:"overall"`
+	SpaceId string `pulumi:"spaceId"`
+	Url     string `pulumi:"url"`
 }
 
 func GetStatusPageOutput(ctx *pulumi.Context, args GetStatusPageOutputArgs, opts ...pulumi.InvokeOption) GetStatusPageResultOutput {
@@ -66,14 +100,17 @@ func (o GetStatusPageResultOutput) ToGetStatusPageResultOutputWithContext(ctx co
 	return o
 }
 
+// Open incidents and maintenance under way.
 func (o GetStatusPageResultOutput) ActiveCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetStatusPageResult) int { return v.ActiveCount }).(pulumi.IntOutput)
 }
 
+// The page's headline, in the owner's words.
 func (o GetStatusPageResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStatusPageResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Statuspage's word: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`minor`" pulumi-lang-dotnet="`Minor`" pulumi-lang-go="`minor`" pulumi-lang-python="`minor`" pulumi-lang-yaml="`minor`" pulumi-lang-java="`minor`" pulumi-lang-hcl="`minor`">`minor`</span>, <span pulumi-lang-nodejs="`major`" pulumi-lang-dotnet="`Major`" pulumi-lang-go="`major`" pulumi-lang-python="`major`" pulumi-lang-yaml="`major`" pulumi-lang-java="`major`" pulumi-lang-hcl="`major`">`major`</span>, <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span> or <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>.
 func (o GetStatusPageResultOutput) Indicator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStatusPageResult) string { return v.Indicator }).(pulumi.StringOutput)
 }
@@ -82,6 +119,7 @@ func (o GetStatusPageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStatusPageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// <span pulumi-lang-nodejs="`up`" pulumi-lang-dotnet="`Up`" pulumi-lang-go="`up`" pulumi-lang-python="`up`" pulumi-lang-yaml="`up`" pulumi-lang-java="`up`" pulumi-lang-hcl="`up`">`up`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`" pulumi-lang-hcl="`degraded`">`degraded`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`down`" pulumi-lang-dotnet="`Down`" pulumi-lang-go="`down`" pulumi-lang-python="`down`" pulumi-lang-yaml="`down`" pulumi-lang-java="`down`" pulumi-lang-hcl="`down`">`down`</span> or <span pulumi-lang-nodejs="`unknown`" pulumi-lang-dotnet="`Unknown`" pulumi-lang-go="`unknown`" pulumi-lang-python="`unknown`" pulumi-lang-yaml="`unknown`" pulumi-lang-java="`unknown`" pulumi-lang-hcl="`unknown`">`unknown`</span>.
 func (o GetStatusPageResultOutput) Overall() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStatusPageResult) string { return v.Overall }).(pulumi.StringOutput)
 }

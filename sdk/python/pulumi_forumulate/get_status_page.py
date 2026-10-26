@@ -52,16 +52,25 @@ class GetStatusPageResult:
     @_builtins.property
     @pulumi.getter(name="activeCount")
     def active_count(self) -> _builtins.int:
+        """
+        Open incidents and maintenance under way.
+        """
         return pulumi.get(self, "active_count")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The page's headline, in the owner's words.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def indicator(self) -> _builtins.str:
+        """
+        Statuspage's word: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`minor`" pulumi-lang-dotnet="`Minor`" pulumi-lang-go="`minor`" pulumi-lang-python="`minor`" pulumi-lang-yaml="`minor`" pulumi-lang-java="`minor`" pulumi-lang-hcl="`minor`">`minor`</span>, <span pulumi-lang-nodejs="`major`" pulumi-lang-dotnet="`Major`" pulumi-lang-go="`major`" pulumi-lang-python="`major`" pulumi-lang-yaml="`major`" pulumi-lang-java="`major`" pulumi-lang-hcl="`major`">`major`</span>, <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span> or <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>.
+        """
         return pulumi.get(self, "indicator")
 
     @_builtins.property
@@ -72,6 +81,9 @@ class GetStatusPageResult:
     @_builtins.property
     @pulumi.getter
     def overall(self) -> _builtins.str:
+        """
+        <span pulumi-lang-nodejs="`up`" pulumi-lang-dotnet="`Up`" pulumi-lang-go="`up`" pulumi-lang-python="`up`" pulumi-lang-yaml="`up`" pulumi-lang-java="`up`" pulumi-lang-hcl="`up`">`up`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`" pulumi-lang-hcl="`degraded`">`degraded`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`down`" pulumi-lang-dotnet="`Down`" pulumi-lang-go="`down`" pulumi-lang-python="`down`" pulumi-lang-yaml="`down`" pulumi-lang-java="`down`" pulumi-lang-hcl="`down`">`down`</span> or <span pulumi-lang-nodejs="`unknown`" pulumi-lang-dotnet="`Unknown`" pulumi-lang-go="`unknown`" pulumi-lang-python="`unknown`" pulumi-lang-yaml="`unknown`" pulumi-lang-java="`unknown`" pulumi-lang-hcl="`unknown`">`unknown`</span>.
+        """
         return pulumi.get(self, "overall")
 
     @_builtins.property
@@ -103,7 +115,19 @@ class AwaitableGetStatusPageResult(GetStatusPageResult):
 def get_status_page(space_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStatusPageResult:
     """
-    Use this data source to access information about an existing resource.
+    The current state of a public status page.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_forumulate as forumulate
+
+    page = forumulate.get_status_page(space_id=status_space_id)
+    pulumi.export("pageIsUp", page.overall == "up")
+    ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['spaceId'] = space_id
@@ -121,7 +145,19 @@ def get_status_page(space_id: Optional[_builtins.str] = None,
 def get_status_page_output(space_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStatusPageResult]:
     """
-    Use this data source to access information about an existing resource.
+    The current state of a public status page.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_forumulate as forumulate
+
+    page = forumulate.get_status_page(space_id=status_space_id)
+    pulumi.export("pageIsUp", page.overall == "up")
+    ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['spaceId'] = space_id

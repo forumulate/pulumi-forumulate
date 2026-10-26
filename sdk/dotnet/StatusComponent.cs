@@ -10,6 +10,73 @@ using Pulumi;
 
 namespace Forumulate.Forumulate
 {
+    /// <summary>
+    /// A component of a status page: an HTTP, heartbeat, protocol (TCP, UDP, ping, DNS, TLS, SMTP, IMAP, POP3, domain), browser, manual, rolled-up or vendor-mirrored check.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Forumulate = Forumulate.Forumulate;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var api = new Forumulate.StatusComponent("api", new()
+    ///     {
+    ///         SpaceId = statusSpaceId,
+    ///         Name = "API",
+    ///         Url = "https://api.example.com/health",
+    ///         Group = "Core",
+    ///         Regions = new[]
+    ///         {
+    ///             "eu-west",
+    ///             "us-east",
+    ///         },
+    ///         ConfirmRegions = 2,
+    ///         BarDays = 90,
+    ///         IntervalSeconds = 60,
+    ///     });
+    /// 
+    ///     var database = new Forumulate.StatusComponent("database", new()
+    ///     {
+    ///         SpaceId = statusSpaceId,
+    ///         Name = "Database",
+    ///         Kind = "tcp",
+    ///         Group = "Core",
+    ///         ProbeJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["host"] = "db.example.com",
+    ///             ["port"] = 5432,
+    ///         }),
+    ///     });
+    /// 
+    ///     var nightlyBackup = new Forumulate.StatusComponent("nightly_backup", new()
+    ///     {
+    ///         SpaceId = statusSpaceId,
+    ///         Name = "Nightly backup",
+    ///         Kind = "heartbeat",
+    ///         IntervalSeconds = 90000,
+    ///         Display = "status",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["backupPingUrl"] = nightlyBackup.PingUrl,
+    ///     };
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import forumulate:index/statusComponent:StatusComponent api STATUS_SPACE_ID/COMPONENT_ID
+    /// ```
+    /// </summary>
     [ForumulateResourceType("forumulate:index/statusComponent:StatusComponent")]
     public partial class StatusComponent : global::Pulumi.CustomResource
     {

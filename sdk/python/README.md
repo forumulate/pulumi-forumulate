@@ -143,8 +143,9 @@ make provider             # bin/pulumi-resource-forumulate for this machine
 make test                 # go vet + go test for provider/
 ```
 
-`provider/go.mod` has a `replace` pointing at `../../terraform-provider-forumulate` while both live in
-the Forumulate monorepo; the public mirror drops it and pins a released Terraform provider version.
+`provider/go.mod` pins a released Terraform provider (`v0.2.0`). To build against a newer one, bump
+that require (`go get github.com/forumulate/terraform-provider-forumulate@vX.Y.Z`) and run
+`make tfgen build_sdks`.
 
 ## Releasing
 
@@ -158,3 +159,16 @@ workflow pushes.
 ## License
 
 MIT.
+
+---
+
+## About this repository
+
+This repository is a public mirror, refreshed on each Forumulate release
+(one commit per release). Pull requests are welcome; accepted changes are
+applied upstream and arrive here with the next release.
+
+- API reference: https://forumulate.com/reference
+- Guides: https://forumulate.com/guides
+- Community and support: https://forumulate.com/community
+- Source: https://github.com/forumulate/pulumi-forumulate

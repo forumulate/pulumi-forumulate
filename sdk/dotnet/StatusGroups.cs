@@ -10,6 +10,49 @@ using Pulumi;
 
 namespace Forumulate.Forumulate
 {
+    /// <summary>
+    /// The component groups of a status page, in page order: what each says about itself, which sits inside which, which starts folded, its row layout and whether its rows print uptime.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Forumulate = Forumulate.Forumulate;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var page = new Forumulate.StatusGroups("page", new()
+    ///     {
+    ///         Groups = new[]
+    ///         {
+    ///             new Forumulate.Inputs.StatusGroupsGroupArgs
+    ///             {
+    ///                 Name = "Core",
+    ///                 Description = "What every customer touches.",
+    ///             },
+    ///             new Forumulate.Inputs.StatusGroupsGroupArgs
+    ///             {
+    ///                 Name = "Integrations",
+    ///                 Layout = "grid-2",
+    ///                 HideUptime = true,
+    ///             },
+    ///         },
+    ///         SpaceId = statusSpaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import forumulate:index/statusGroups:StatusGroups page STATUS_SPACE_ID
+    /// ```
+    /// </summary>
     [ForumulateResourceType("forumulate:index/statusGroups:StatusGroups")]
     public partial class StatusGroups : global::Pulumi.CustomResource
     {

@@ -5,6 +5,289 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CollectionNav {
+    /**
+     * Limit the collection to readers with one of these principals (up to 20).
+     */
+    audiencePrincipals?: string[];
+    /**
+     * Limit the collection to readers with one of these roles (up to 20).
+     */
+    audienceRoles?: string[];
+    /**
+     * <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+     */
+    backStyle?: string;
+    /**
+     * Start the group collapsed.
+     */
+    collapsed?: boolean;
+    /**
+     * Draw the landing page as cards.
+     */
+    hubCards?: boolean;
+    /**
+     * A named icon, or a custom icon (path, URL or emoji).
+     */
+    icon?: string;
+    /**
+     * Make the group's heading link to its landing page.
+     */
+    linkHub?: boolean;
+    /**
+     * <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+     */
+    navScope?: string;
+}
+
+export interface CollectionSeo {
+    /**
+     * The meta description, up to 320 characters.
+     */
+    description?: string;
+    /**
+     * <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+     */
+    index?: string;
+    /**
+     * The `<title>`, up to 120 characters.
+     */
+    title?: string;
+}
+
+export interface CollectionTranslations {
+    /**
+     * The description in this language (up to 2000 characters).
+     */
+    description?: string;
+    /**
+     * The name in this language (up to 200 characters).
+     */
+    name?: string;
+}
+
+export interface ConnectorAppearance {
+    /**
+     * <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+     */
+    colorScheme?: string;
+    /**
+     * The widget's greeting, up to 200 characters.
+     */
+    greeting?: string;
+    /**
+     * <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+     */
+    position?: string;
+    /**
+     * The widget colour, six-digit hex with the leading `#`.
+     */
+    primaryColor?: string;
+}
+
+export interface DomainDnsTarget {
+    /**
+     * The record's host name.
+     */
+    name: string;
+    /**
+     * The DNS record type (`A`, `CNAME`).
+     */
+    type: string;
+    /**
+     * The record's value.
+     */
+    value: string;
+}
+
+export interface DomainVerificationRecord {
+    /**
+     * The record's host name.
+     */
+    name: string;
+    /**
+     * The record's value.
+     */
+    value: string;
+}
+
+export interface ForumCategoryRequiredTagGroup {
+    /**
+     * How many tags from the group, 1 to 12.
+     */
+    minCount: number;
+    /**
+     * The tag group's id.
+     */
+    tagGroupId: string;
+}
+
+export interface ForumCategoryTranslations {
+    /**
+     * The description in this language (up to 2000 characters).
+     */
+    description?: string;
+    /**
+     * The name in this language (up to 200 characters).
+     */
+    name?: string;
+}
+
+export interface GetSpaceTypesType {
+    /**
+     * What a piece is stored as: <span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>, <span pulumi-lang-nodejs="`event`" pulumi-lang-dotnet="`Event`" pulumi-lang-go="`event`" pulumi-lang-python="`event`" pulumi-lang-yaml="`event`" pulumi-lang-java="`event`" pulumi-lang-hcl="`event`">`event`</span> or <span pulumi-lang-nodejs="`incident`" pulumi-lang-dotnet="`Incident`" pulumi-lang-go="`incident`" pulumi-lang-python="`incident`" pulumi-lang-yaml="`incident`" pulumi-lang-java="`incident`" pulumi-lang-hcl="`incident`">`incident`</span>.
+     */
+    backing: string;
+    /**
+     * What a container is called (<span pulumi-lang-nodejs="`collection`" pulumi-lang-dotnet="`Collection`" pulumi-lang-go="`collection`" pulumi-lang-python="`collection`" pulumi-lang-yaml="`collection`" pulumi-lang-java="`collection`" pulumi-lang-hcl="`collection`">`collection`</span>, <span pulumi-lang-nodejs="`category`" pulumi-lang-dotnet="`Category`" pulumi-lang-go="`category`" pulumi-lang-python="`category`" pulumi-lang-yaml="`category`" pulumi-lang-java="`category`" pulumi-lang-hcl="`category`">`category`</span>).
+     */
+    containerNames: string[];
+    /**
+     * The slug a space of this type gets by default.
+     */
+    defaultSlug: string;
+    /**
+     * What it is.
+     */
+    description: string;
+    /**
+     * `PRIVATE` for a type that is always private.
+     */
+    forcedVisibility: string;
+    /**
+     * Its display name.
+     */
+    name: string;
+    /**
+     * What a piece is called (<span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`article`" pulumi-lang-dotnet="`Article`" pulumi-lang-go="`article`" pulumi-lang-python="`article`" pulumi-lang-yaml="`article`" pulumi-lang-java="`article`" pulumi-lang-hcl="`article`">`article`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>).
+     */
+    pieceNames: string[];
+    /**
+     * The layouts <span pulumi-lang-nodejs="`piecePreset`" pulumi-lang-dotnet="`PiecePreset`" pulumi-lang-go="`piecePreset`" pulumi-lang-python="`piece_preset`" pulumi-lang-yaml="`piecePreset`" pulumi-lang-java="`piecePreset`" pulumi-lang-hcl="`piece_preset`">`piecePreset`</span> accepts.
+     */
+    piecePresets: string[];
+    /**
+     * The layouts <span pulumi-lang-nodejs="`preset`" pulumi-lang-dotnet="`Preset`" pulumi-lang-go="`preset`" pulumi-lang-python="`preset`" pulumi-lang-yaml="`preset`" pulumi-lang-java="`preset`" pulumi-lang-hcl="`preset`">`preset`</span> accepts for this type.
+     */
+    presets: string[];
+    /**
+     * What it is for.
+     */
+    purpose: string;
+    /**
+     * The layout used when none is chosen.
+     */
+    recommendedPreset: string;
+    /**
+     * The console tabs the type has.
+     */
+    tabs: string[];
+    /**
+     * The type code.
+     */
+    type: string;
+}
+
+export interface PageMetadata {
+    /**
+     * The canonical URL when it is not the page's own address.
+     */
+    canonicalUrl?: string;
+    /**
+     * A cover image: an uploaded path or an http(s) URL.
+     */
+    coverUrl?: string;
+    /**
+     * Leave the page out of the sidebar.
+     */
+    hideFromNav?: boolean;
+    /**
+     * A named icon or a custom icon (path, URL, emoji).
+     */
+    icon?: string;
+    /**
+     * A shorter title for the sidebar (up to 80 characters).
+     */
+    navTitle?: string;
+    /**
+     * Ask search engines not to index the page.
+     */
+    noindex?: boolean;
+    /**
+     * Leave the page out of search.
+     */
+    searchExclude?: boolean;
+    /**
+     * The meta description (up to 400 characters).
+     */
+    seoDescription?: string;
+    /**
+     * The `<title>` (up to 200 characters).
+     */
+    seoTitle?: string;
+    /**
+     * Up to 12 tags, 60 characters each.
+     */
+    tags?: string[];
+}
+
+export interface SitePageMount {
+    /**
+     * The page's slug in that space.
+     */
+    page: string;
+    /**
+     * Where the page answers: `/` for the root, or one segment such as `/pricing`.
+     */
+    path: string;
+    /**
+     * The member space the page belongs to (its id).
+     */
+    spaceId: string;
+}
+
+export interface SpaceSettingsRedirect {
+    /**
+     * The old path, starting with a single `/`; a trailing `*` matches any suffix.
+     */
+    from: string;
+    /**
+     * Carry the incoming query string to the target.
+     */
+    passQuery?: boolean;
+    /**
+     * The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+     */
+    status?: number;
+    /**
+     * The new path, or an https URL (a redirect only; a rewrite names a path).
+     */
+    to: string;
+    /**
+     * <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+     */
+    type?: string;
+}
+
+export interface SpaceShape {
+    /**
+     * <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+     */
+    index?: string;
+    /**
+     * <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+     */
+    nav?: string;
+    /**
+     * <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+     */
+    order?: string;
+    /**
+     * <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+     */
+    whoCreates?: string;
+}
+
 export interface StatusGroupsGroup {
     /**
      * Starts folded.

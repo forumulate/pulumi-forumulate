@@ -5,13 +5,88 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CollectionArgs, CollectionState } from "./collection";
+export type Collection = import("./collection").Collection;
+export const Collection: typeof import("./collection").Collection = null as any;
+utilities.lazyLoad(exports, ["Collection"], () => require("./collection"));
+
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { ForumCategoryArgs, ForumCategoryState } from "./forumCategory";
+export type ForumCategory = import("./forumCategory").ForumCategory;
+export const ForumCategory: typeof import("./forumCategory").ForumCategory = null as any;
+utilities.lazyLoad(exports, ["ForumCategory"], () => require("./forumCategory"));
+
+export { GetOrgResult } from "./getOrg";
+export const getOrg: typeof import("./getOrg").getOrg = null as any;
+export const getOrgOutput: typeof import("./getOrg").getOrgOutput = null as any;
+utilities.lazyLoad(exports, ["getOrg","getOrgOutput"], () => require("./getOrg"));
+
+export { GetSpaceArgs, GetSpaceResult, GetSpaceOutputArgs } from "./getSpace";
+export const getSpace: typeof import("./getSpace").getSpace = null as any;
+export const getSpaceOutput: typeof import("./getSpace").getSpaceOutput = null as any;
+utilities.lazyLoad(exports, ["getSpace","getSpaceOutput"], () => require("./getSpace"));
+
+export { GetSpaceTypesResult } from "./getSpaceTypes";
+export const getSpaceTypes: typeof import("./getSpaceTypes").getSpaceTypes = null as any;
+export const getSpaceTypesOutput: typeof import("./getSpaceTypes").getSpaceTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getSpaceTypes","getSpaceTypesOutput"], () => require("./getSpaceTypes"));
+
 export { GetStatusPageArgs, GetStatusPageResult, GetStatusPageOutputArgs } from "./getStatusPage";
 export const getStatusPage: typeof import("./getStatusPage").getStatusPage = null as any;
 export const getStatusPageOutput: typeof import("./getStatusPage").getStatusPageOutput = null as any;
 utilities.lazyLoad(exports, ["getStatusPage","getStatusPageOutput"], () => require("./getStatusPage"));
 
+export { OrgSettingArgs, OrgSettingState } from "./orgSetting";
+export type OrgSetting = import("./orgSetting").OrgSetting;
+export const OrgSetting: typeof import("./orgSetting").OrgSetting = null as any;
+utilities.lazyLoad(exports, ["OrgSetting"], () => require("./orgSetting"));
+
+export { PageArgs, PageState } from "./page";
+export type Page = import("./page").Page;
+export const Page: typeof import("./page").Page = null as any;
+utilities.lazyLoad(exports, ["Page"], () => require("./page"));
+
 export * from "./provider";
 import { Provider } from "./provider";
+
+export { ServiceConnectorArgs, ServiceConnectorState } from "./serviceConnector";
+export type ServiceConnector = import("./serviceConnector").ServiceConnector;
+export const ServiceConnector: typeof import("./serviceConnector").ServiceConnector = null as any;
+utilities.lazyLoad(exports, ["ServiceConnector"], () => require("./serviceConnector"));
+
+export { SiteArgs, SiteState } from "./site";
+export type Site = import("./site").Site;
+export const Site: typeof import("./site").Site = null as any;
+utilities.lazyLoad(exports, ["Site"], () => require("./site"));
+
+export { SiteManifestArgs, SiteManifestState } from "./siteManifest";
+export type SiteManifest = import("./siteManifest").SiteManifest;
+export const SiteManifest: typeof import("./siteManifest").SiteManifest = null as any;
+utilities.lazyLoad(exports, ["SiteManifest"], () => require("./siteManifest"));
+
+export { SpaceArgs, SpaceState } from "./space";
+export type Space = import("./space").Space;
+export const Space: typeof import("./space").Space = null as any;
+utilities.lazyLoad(exports, ["Space"], () => require("./space"));
+
+export { SpaceLocaleArgs, SpaceLocaleState } from "./spaceLocale";
+export type SpaceLocale = import("./spaceLocale").SpaceLocale;
+export const SpaceLocale: typeof import("./spaceLocale").SpaceLocale = null as any;
+utilities.lazyLoad(exports, ["SpaceLocale"], () => require("./spaceLocale"));
+
+export { SpaceSettingsArgs, SpaceSettingsState } from "./spaceSettings";
+export type SpaceSettings = import("./spaceSettings").SpaceSettings;
+export const SpaceSettings: typeof import("./spaceSettings").SpaceSettings = null as any;
+utilities.lazyLoad(exports, ["SpaceSettings"], () => require("./spaceSettings"));
 
 export { StatusComponentArgs, StatusComponentState } from "./statusComponent";
 export type StatusComponent = import("./statusComponent").StatusComponent;
@@ -33,6 +108,16 @@ export type StatusMetric = import("./statusMetric").StatusMetric;
 export const StatusMetric: typeof import("./statusMetric").StatusMetric = null as any;
 utilities.lazyLoad(exports, ["StatusMetric"], () => require("./statusMetric"));
 
+export { TranslationOverrideArgs, TranslationOverrideState } from "./translationOverride";
+export type TranslationOverride = import("./translationOverride").TranslationOverride;
+export const TranslationOverride: typeof import("./translationOverride").TranslationOverride = null as any;
+utilities.lazyLoad(exports, ["TranslationOverride"], () => require("./translationOverride"));
+
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -47,6 +132,30 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "forumulate:index/collection:Collection":
+                return new Collection(name, <any>undefined, { urn })
+            case "forumulate:index/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
+            case "forumulate:index/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
+            case "forumulate:index/forumCategory:ForumCategory":
+                return new ForumCategory(name, <any>undefined, { urn })
+            case "forumulate:index/orgSetting:OrgSetting":
+                return new OrgSetting(name, <any>undefined, { urn })
+            case "forumulate:index/page:Page":
+                return new Page(name, <any>undefined, { urn })
+            case "forumulate:index/serviceConnector:ServiceConnector":
+                return new ServiceConnector(name, <any>undefined, { urn })
+            case "forumulate:index/site:Site":
+                return new Site(name, <any>undefined, { urn })
+            case "forumulate:index/siteManifest:SiteManifest":
+                return new SiteManifest(name, <any>undefined, { urn })
+            case "forumulate:index/space:Space":
+                return new Space(name, <any>undefined, { urn })
+            case "forumulate:index/spaceLocale:SpaceLocale":
+                return new SpaceLocale(name, <any>undefined, { urn })
+            case "forumulate:index/spaceSettings:SpaceSettings":
+                return new SpaceSettings(name, <any>undefined, { urn })
             case "forumulate:index/statusComponent:StatusComponent":
                 return new StatusComponent(name, <any>undefined, { urn })
             case "forumulate:index/statusGroups:StatusGroups":
@@ -55,15 +164,33 @@ const _module = {
                 return new StatusIncidentTemplate(name, <any>undefined, { urn })
             case "forumulate:index/statusMetric:StatusMetric":
                 return new StatusMetric(name, <any>undefined, { urn })
+            case "forumulate:index/translationOverride:TranslationOverride":
+                return new TranslationOverride(name, <any>undefined, { urn })
+            case "forumulate:index/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("forumulate", "index/collection", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/connector", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/domain", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/forumCategory", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/orgSetting", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/page", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/serviceConnector", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/site", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/siteManifest", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/space", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/spaceLocale", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/spaceSettings", _module)
 pulumi.runtime.registerResourceModule("forumulate", "index/statusComponent", _module)
 pulumi.runtime.registerResourceModule("forumulate", "index/statusGroups", _module)
 pulumi.runtime.registerResourceModule("forumulate", "index/statusIncidentTemplate", _module)
 pulumi.runtime.registerResourceModule("forumulate", "index/statusMetric", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/translationOverride", _module)
+pulumi.runtime.registerResourceModule("forumulate", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("forumulate", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

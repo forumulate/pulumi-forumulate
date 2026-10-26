@@ -6,6 +6,39 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The component groups of a status page, in page order: what each says about itself, which sits inside which, which starts folded, its row layout and whether its rows print uptime.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const page = new forumulate.StatusGroups("page", {
+ *     groups: [
+ *         {
+ *             name: "Core",
+ *             description: "What every customer touches.",
+ *         },
+ *         {
+ *             name: "Integrations",
+ *             layout: "grid-2",
+ *             hideUptime: true,
+ *         },
+ *     ],
+ *     spaceId: statusSpaceId,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import forumulate:index/statusGroups:StatusGroups page STATUS_SPACE_ID
+ * ```
+ */
 export class StatusGroups extends pulumi.CustomResource {
     /**
      * Get an existing StatusGroups resource's state with the given name, ID, and optional extra

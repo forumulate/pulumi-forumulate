@@ -329,7 +329,32 @@ class StatusIncidentTemplate(pulumi.CustomResource):
                  title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a StatusIncidentTemplate resource with the given unique name, props, and options.
+        An incident template: what an incident opens with, and the words offered for each later step. `{{name}}` variables are filled when it is used.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        db_failover = forumulate.StatusIncidentTemplate("db_failover",
+            space_id=status_space_id,
+            name="Database failover",
+            title="Database failover in progress",
+            severity="major",
+            markdown="We are failing over **{{region}}** to its replica.",
+            monitoring_text="The replica is serving traffic; we are watching it.",
+            resolved_text="The failover is complete.")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusIncidentTemplate:StatusIncidentTemplate db_failover STATUS_SPACE_ID/TEMPLATE_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -349,7 +374,32 @@ class StatusIncidentTemplate(pulumi.CustomResource):
                  args: StatusIncidentTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a StatusIncidentTemplate resource with the given unique name, props, and options.
+        An incident template: what an incident opens with, and the words offered for each later step. `{{name}}` variables are filled when it is used.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        db_failover = forumulate.StatusIncidentTemplate("db_failover",
+            space_id=status_space_id,
+            name="Database failover",
+            title="Database failover in progress",
+            severity="major",
+            markdown="We are failing over **{{region}}** to its replica.",
+            monitoring_text="The replica is serving traffic; we are watching it.",
+            resolved_text="The failover is complete.")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusIncidentTemplate:StatusIncidentTemplate db_failover STATUS_SPACE_ID/TEMPLATE_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param StatusIncidentTemplateArgs args: The arguments to use to populate this resource's properties.

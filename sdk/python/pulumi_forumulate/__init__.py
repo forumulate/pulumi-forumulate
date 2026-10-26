@@ -6,12 +6,29 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .collection import *
+from .connector import *
+from .domain import *
+from .forum_category import *
+from .get_org import *
+from .get_space import *
+from .get_space_types import *
 from .get_status_page import *
+from .org_setting import *
+from .page import *
 from .provider import *
+from .service_connector import *
+from .site import *
+from .site_manifest import *
+from .space import *
+from .space_locale import *
+from .space_settings import *
 from .status_component import *
 from .status_groups import *
 from .status_incident_template import *
 from .status_metric import *
+from .translation_override import *
+from .webhook import *
 from ._inputs import *
 from . import outputs
 
@@ -25,6 +42,102 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "forumulate",
+  "mod": "index/collection",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/collection:Collection": "Collection"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/connector",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/connector:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/domain",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/forumCategory",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/forumCategory:ForumCategory": "ForumCategory"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/orgSetting",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/orgSetting:OrgSetting": "OrgSetting"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/page",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/page:Page": "Page"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/serviceConnector",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/serviceConnector:ServiceConnector": "ServiceConnector"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/site",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/site:Site": "Site"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/siteManifest",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/siteManifest:SiteManifest": "SiteManifest"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/space",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/space:Space": "Space"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/spaceLocale",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/spaceLocale:SpaceLocale": "SpaceLocale"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/spaceSettings",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/spaceSettings:SpaceSettings": "SpaceSettings"
+  }
+ },
  {
   "pkg": "forumulate",
   "mod": "index/statusComponent",
@@ -55,6 +168,22 @@ _utilities.register(
   "fqn": "pulumi_forumulate",
   "classes": {
    "forumulate:index/statusMetric:StatusMetric": "StatusMetric"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/translationOverride",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/translationOverride:TranslationOverride": "TranslationOverride"
+  }
+ },
+ {
+  "pkg": "forumulate",
+  "mod": "index/webhook",
+  "fqn": "pulumi_forumulate",
+  "classes": {
+   "forumulate:index/webhook:Webhook": "Webhook"
   }
  }
 ]

@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The current state of a public status page.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const page = forumulate.getStatusPage({
+ *     spaceId: statusSpaceId,
+ * });
+ * export const pageIsUp = page.then(page => page.overall == "up");
+ * ```
+ * <!--End PulumiCodeChooser -->
+ */
 export function getStatusPage(args: GetStatusPageArgs, opts?: pulumi.InvokeOptions): Promise<GetStatusPageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("forumulate:index/getStatusPage:getStatusPage", {
@@ -22,14 +39,43 @@ export interface GetStatusPageArgs {
  * A collection of values returned by getStatusPage.
  */
 export interface GetStatusPageResult {
+    /**
+     * Open incidents and maintenance under way.
+     */
     readonly activeCount: number;
+    /**
+     * The page's headline, in the owner's words.
+     */
     readonly description: string;
+    /**
+     * Statuspage's word: <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>, <span pulumi-lang-nodejs="`minor`" pulumi-lang-dotnet="`Minor`" pulumi-lang-go="`minor`" pulumi-lang-python="`minor`" pulumi-lang-yaml="`minor`" pulumi-lang-java="`minor`" pulumi-lang-hcl="`minor`">`minor`</span>, <span pulumi-lang-nodejs="`major`" pulumi-lang-dotnet="`Major`" pulumi-lang-go="`major`" pulumi-lang-python="`major`" pulumi-lang-yaml="`major`" pulumi-lang-java="`major`" pulumi-lang-hcl="`major`">`major`</span>, <span pulumi-lang-nodejs="`critical`" pulumi-lang-dotnet="`Critical`" pulumi-lang-go="`critical`" pulumi-lang-python="`critical`" pulumi-lang-yaml="`critical`" pulumi-lang-java="`critical`" pulumi-lang-hcl="`critical`">`critical`</span> or <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>.
+     */
     readonly indicator: string;
     readonly name: string;
+    /**
+     * <span pulumi-lang-nodejs="`up`" pulumi-lang-dotnet="`Up`" pulumi-lang-go="`up`" pulumi-lang-python="`up`" pulumi-lang-yaml="`up`" pulumi-lang-java="`up`" pulumi-lang-hcl="`up`">`up`</span>, <span pulumi-lang-nodejs="`degraded`" pulumi-lang-dotnet="`Degraded`" pulumi-lang-go="`degraded`" pulumi-lang-python="`degraded`" pulumi-lang-yaml="`degraded`" pulumi-lang-java="`degraded`" pulumi-lang-hcl="`degraded`">`degraded`</span>, <span pulumi-lang-nodejs="`maintenance`" pulumi-lang-dotnet="`Maintenance`" pulumi-lang-go="`maintenance`" pulumi-lang-python="`maintenance`" pulumi-lang-yaml="`maintenance`" pulumi-lang-java="`maintenance`" pulumi-lang-hcl="`maintenance`">`maintenance`</span>, <span pulumi-lang-nodejs="`down`" pulumi-lang-dotnet="`Down`" pulumi-lang-go="`down`" pulumi-lang-python="`down`" pulumi-lang-yaml="`down`" pulumi-lang-java="`down`" pulumi-lang-hcl="`down`">`down`</span> or <span pulumi-lang-nodejs="`unknown`" pulumi-lang-dotnet="`Unknown`" pulumi-lang-go="`unknown`" pulumi-lang-python="`unknown`" pulumi-lang-yaml="`unknown`" pulumi-lang-java="`unknown`" pulumi-lang-hcl="`unknown`">`unknown`</span>.
+     */
     readonly overall: string;
     readonly spaceId: string;
     readonly url: string;
 }
+/**
+ * The current state of a public status page.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const page = forumulate.getStatusPage({
+ *     spaceId: statusSpaceId,
+ * });
+ * export const pageIsUp = page.then(page => page.overall == "up");
+ * ```
+ * <!--End PulumiCodeChooser -->
+ */
 export function getStatusPageOutput(args: GetStatusPageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStatusPageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("forumulate:index/getStatusPage:getStatusPage", {

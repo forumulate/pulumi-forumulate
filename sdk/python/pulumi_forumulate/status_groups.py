@@ -101,7 +101,37 @@ class StatusGroups(pulumi.CustomResource):
                  space_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a StatusGroups resource with the given unique name, props, and options.
+        The component groups of a status page, in page order: what each says about itself, which sits inside which, which starts folded, its row layout and whether its rows print uptime.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        page = forumulate.StatusGroups("page",
+            groups=[
+                {
+                    "name": "Core",
+                    "description": "What every customer touches.",
+                },
+                {
+                    "name": "Integrations",
+                    "layout": "grid-2",
+                    "hide_uptime": True,
+                },
+            ],
+            space_id=status_space_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusGroups:StatusGroups page STATUS_SPACE_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,7 +144,37 @@ class StatusGroups(pulumi.CustomResource):
                  args: StatusGroupsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a StatusGroups resource with the given unique name, props, and options.
+        The component groups of a status page, in page order: what each says about itself, which sits inside which, which starts folded, its row layout and whether its rows print uptime.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        page = forumulate.StatusGroups("page",
+            groups=[
+                {
+                    "name": "Core",
+                    "description": "What every customer touches.",
+                },
+                {
+                    "name": "Integrations",
+                    "layout": "grid-2",
+                    "hide_uptime": True,
+                },
+            ],
+            space_id=status_space_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusGroups:StatusGroups page STATUS_SPACE_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param StatusGroupsArgs args: The arguments to use to populate this resource's properties.

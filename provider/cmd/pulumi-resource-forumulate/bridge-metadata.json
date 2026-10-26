@@ -1,6 +1,111 @@
 {
     "auto-aliasing": {
         "resources": {
+            "forumulate_collection": {
+                "current": "forumulate:index/collection:Collection",
+                "fields": {
+                    "nav": {
+                        "fields": {
+                            "audience_principals": {
+                                "maxItemsOne": false
+                            },
+                            "audience_roles": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "forumulate_connector": {
+                "current": "forumulate:index/connector:Connector",
+                "fields": {
+                    "configured_fields": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "missing_fields": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_domain": {
+                "current": "forumulate:index/domain:Domain",
+                "fields": {
+                    "ip_allow_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_forum_category": {
+                "current": "forumulate:index/forumCategory:ForumCategory",
+                "fields": {
+                    "allowed_tags": {
+                        "maxItemsOne": false
+                    },
+                    "default_tags": {
+                        "maxItemsOne": false
+                    },
+                    "expert_user_ids": {
+                        "maxItemsOne": false
+                    },
+                    "required_tag_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_org_setting": {
+                "current": "forumulate:index/orgSetting:OrgSetting"
+            },
+            "forumulate_page": {
+                "current": "forumulate:index/page:Page",
+                "fields": {
+                    "metadata": {
+                        "fields": {
+                            "tags": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "forumulate_service_connector": {
+                "current": "forumulate:index/serviceConnector:ServiceConnector",
+                "fields": {
+                    "secrets_set": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_site": {
+                "current": "forumulate:index/site:Site",
+                "fields": {
+                    "page_mounts": {
+                        "maxItemsOne": false
+                    },
+                    "space_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_site_manifest": {
+                "current": "forumulate:index/siteManifest:SiteManifest"
+            },
+            "forumulate_space": {
+                "current": "forumulate:index/space:Space"
+            },
+            "forumulate_space_locale": {
+                "current": "forumulate:index/spaceLocale:SpaceLocale"
+            },
+            "forumulate_space_settings": {
+                "current": "forumulate:index/spaceSettings:SpaceSettings",
+                "fields": {
+                    "redirects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "forumulate_status_component": {
                 "current": "forumulate:index/statusComponent:StatusComponent",
                 "fields": {
@@ -22,9 +127,74 @@
             },
             "forumulate_status_metric": {
                 "current": "forumulate:index/statusMetric:StatusMetric"
+            },
+            "forumulate_translation_override": {
+                "current": "forumulate:index/translationOverride:TranslationOverride"
+            },
+            "forumulate_webhook": {
+                "current": "forumulate:index/webhook:Webhook",
+                "fields": {
+                    "alert_contacts": {
+                        "maxItemsOne": false
+                    },
+                    "category_ids": {
+                        "maxItemsOne": false
+                    },
+                    "content_types": {
+                        "maxItemsOne": false
+                    },
+                    "events": {
+                        "maxItemsOne": false
+                    },
+                    "group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "locales": {
+                        "maxItemsOne": false
+                    },
+                    "tag_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
+            "forumulate_org": {
+                "current": "forumulate:index/getOrg:getOrg"
+            },
+            "forumulate_space": {
+                "current": "forumulate:index/getSpace:getSpace"
+            },
+            "forumulate_space_types": {
+                "current": "forumulate:index/getSpaceTypes:getSpaceTypes",
+                "fields": {
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "container_names": {
+                                    "maxItemsOne": false
+                                },
+                                "piece_names": {
+                                    "maxItemsOne": false
+                                },
+                                "piece_presets": {
+                                    "maxItemsOne": false
+                                },
+                                "presets": {
+                                    "maxItemsOne": false
+                                },
+                                "tabs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "forumulate_status_page": {
                 "current": "forumulate:index/getStatusPage:getStatusPage"
             }
@@ -33,10 +203,24 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "forumulate_collection": {},
+            "forumulate_connector": {},
+            "forumulate_domain": {},
+            "forumulate_forum_category": {},
+            "forumulate_org_setting": {},
+            "forumulate_page": {},
+            "forumulate_service_connector": {},
+            "forumulate_site": {},
+            "forumulate_site_manifest": {},
+            "forumulate_space": {},
+            "forumulate_space_locale": {},
+            "forumulate_space_settings": {},
             "forumulate_status_component": {},
             "forumulate_status_groups": {},
             "forumulate_status_incident_template": {},
-            "forumulate_status_metric": {}
+            "forumulate_status_metric": {},
+            "forumulate_translation_override": {},
+            "forumulate_webhook": {}
         }
     }
 }

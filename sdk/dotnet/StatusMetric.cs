@@ -10,6 +10,40 @@ using Pulumi;
 
 namespace Forumulate.Forumulate
 {
+    /// <summary>
+    /// A custom metric on a status page — what it is called, its unit, how a chart bucket folds its points, whether the page draws it, its axis and threshold line.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Forumulate = Forumulate.Forumulate;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var errorRate = new Forumulate.StatusMetric("error_rate", new()
+    ///     {
+    ///         SpaceId = statusSpaceId,
+    ///         Key = "error-rate",
+    ///         Name = "Error rate",
+    ///         Unit = "%",
+    ///         Decimals = 2,
+    ///         Threshold = 1.0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import forumulate:index/statusMetric:StatusMetric error_rate STATUS_SPACE_ID/error-rate
+    /// ```
+    /// </summary>
     [ForumulateResourceType("forumulate:index/statusMetric:StatusMetric")]
     public partial class StatusMetric : global::Pulumi.CustomResource
     {

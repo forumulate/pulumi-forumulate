@@ -10,6 +10,41 @@ using Pulumi;
 
 namespace Forumulate.Forumulate
 {
+    /// <summary>
+    /// An incident template: what an incident opens with, and the words offered for each later step. `{{name}}` variables are filled when it is used.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Forumulate = Forumulate.Forumulate;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dbFailover = new Forumulate.StatusIncidentTemplate("db_failover", new()
+    ///     {
+    ///         SpaceId = statusSpaceId,
+    ///         Name = "Database failover",
+    ///         Title = "Database failover in progress",
+    ///         Severity = "major",
+    ///         Markdown = "We are failing over **{{region}}** to its replica.",
+    ///         MonitoringText = "The replica is serving traffic; we are watching it.",
+    ///         ResolvedText = "The failover is complete.",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import forumulate:index/statusIncidentTemplate:StatusIncidentTemplate db_failover STATUS_SPACE_ID/TEMPLATE_ID
+    /// ```
+    /// </summary>
     [ForumulateResourceType("forumulate:index/statusIncidentTemplate:StatusIncidentTemplate")]
     public partial class StatusIncidentTemplate : global::Pulumi.CustomResource
     {

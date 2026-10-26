@@ -13,6 +13,2044 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CollectionNav struct {
+	// Limit the collection to readers with one of these principals (up to 20).
+	AudiencePrincipals []string `pulumi:"audiencePrincipals"`
+	// Limit the collection to readers with one of these roles (up to 20).
+	AudienceRoles []string `pulumi:"audienceRoles"`
+	// <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+	BackStyle *string `pulumi:"backStyle"`
+	// Start the group collapsed.
+	Collapsed *bool `pulumi:"collapsed"`
+	// Draw the landing page as cards.
+	HubCards *bool `pulumi:"hubCards"`
+	// A named icon, or a custom icon (path, URL or emoji).
+	Icon *string `pulumi:"icon"`
+	// Make the group's heading link to its landing page.
+	LinkHub *bool `pulumi:"linkHub"`
+	// <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+	NavScope *string `pulumi:"navScope"`
+}
+
+// CollectionNavInput is an input type that accepts CollectionNavArgs and CollectionNavOutput values.
+// You can construct a concrete instance of `CollectionNavInput` via:
+//
+//	CollectionNavArgs{...}
+type CollectionNavInput interface {
+	pulumi.Input
+
+	ToCollectionNavOutput() CollectionNavOutput
+	ToCollectionNavOutputWithContext(context.Context) CollectionNavOutput
+}
+
+type CollectionNavArgs struct {
+	// Limit the collection to readers with one of these principals (up to 20).
+	AudiencePrincipals pulumi.StringArrayInput `pulumi:"audiencePrincipals"`
+	// Limit the collection to readers with one of these roles (up to 20).
+	AudienceRoles pulumi.StringArrayInput `pulumi:"audienceRoles"`
+	// <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+	BackStyle pulumi.StringPtrInput `pulumi:"backStyle"`
+	// Start the group collapsed.
+	Collapsed pulumi.BoolPtrInput `pulumi:"collapsed"`
+	// Draw the landing page as cards.
+	HubCards pulumi.BoolPtrInput `pulumi:"hubCards"`
+	// A named icon, or a custom icon (path, URL or emoji).
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Make the group's heading link to its landing page.
+	LinkHub pulumi.BoolPtrInput `pulumi:"linkHub"`
+	// <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+	NavScope pulumi.StringPtrInput `pulumi:"navScope"`
+}
+
+func (CollectionNavArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionNav)(nil)).Elem()
+}
+
+func (i CollectionNavArgs) ToCollectionNavOutput() CollectionNavOutput {
+	return i.ToCollectionNavOutputWithContext(context.Background())
+}
+
+func (i CollectionNavArgs) ToCollectionNavOutputWithContext(ctx context.Context) CollectionNavOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionNavOutput)
+}
+
+func (i CollectionNavArgs) ToCollectionNavPtrOutput() CollectionNavPtrOutput {
+	return i.ToCollectionNavPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionNavArgs) ToCollectionNavPtrOutputWithContext(ctx context.Context) CollectionNavPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionNavOutput).ToCollectionNavPtrOutputWithContext(ctx)
+}
+
+// CollectionNavPtrInput is an input type that accepts CollectionNavArgs, CollectionNavPtr and CollectionNavPtrOutput values.
+// You can construct a concrete instance of `CollectionNavPtrInput` via:
+//
+//	        CollectionNavArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionNavPtrInput interface {
+	pulumi.Input
+
+	ToCollectionNavPtrOutput() CollectionNavPtrOutput
+	ToCollectionNavPtrOutputWithContext(context.Context) CollectionNavPtrOutput
+}
+
+type collectionNavPtrType CollectionNavArgs
+
+func CollectionNavPtr(v *CollectionNavArgs) CollectionNavPtrInput {
+	return (*collectionNavPtrType)(v)
+}
+
+func (*collectionNavPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionNav)(nil)).Elem()
+}
+
+func (i *collectionNavPtrType) ToCollectionNavPtrOutput() CollectionNavPtrOutput {
+	return i.ToCollectionNavPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionNavPtrType) ToCollectionNavPtrOutputWithContext(ctx context.Context) CollectionNavPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionNavPtrOutput)
+}
+
+type CollectionNavOutput struct{ *pulumi.OutputState }
+
+func (CollectionNavOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionNav)(nil)).Elem()
+}
+
+func (o CollectionNavOutput) ToCollectionNavOutput() CollectionNavOutput {
+	return o
+}
+
+func (o CollectionNavOutput) ToCollectionNavOutputWithContext(ctx context.Context) CollectionNavOutput {
+	return o
+}
+
+func (o CollectionNavOutput) ToCollectionNavPtrOutput() CollectionNavPtrOutput {
+	return o.ToCollectionNavPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionNavOutput) ToCollectionNavPtrOutputWithContext(ctx context.Context) CollectionNavPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionNav) *CollectionNav {
+		return &v
+	}).(CollectionNavPtrOutput)
+}
+
+// Limit the collection to readers with one of these principals (up to 20).
+func (o CollectionNavOutput) AudiencePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CollectionNav) []string { return v.AudiencePrincipals }).(pulumi.StringArrayOutput)
+}
+
+// Limit the collection to readers with one of these roles (up to 20).
+func (o CollectionNavOutput) AudienceRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CollectionNav) []string { return v.AudienceRoles }).(pulumi.StringArrayOutput)
+}
+
+// <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+func (o CollectionNavOutput) BackStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *string { return v.BackStyle }).(pulumi.StringPtrOutput)
+}
+
+// Start the group collapsed.
+func (o CollectionNavOutput) Collapsed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *bool { return v.Collapsed }).(pulumi.BoolPtrOutput)
+}
+
+// Draw the landing page as cards.
+func (o CollectionNavOutput) HubCards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *bool { return v.HubCards }).(pulumi.BoolPtrOutput)
+}
+
+// A named icon, or a custom icon (path, URL or emoji).
+func (o CollectionNavOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Make the group's heading link to its landing page.
+func (o CollectionNavOutput) LinkHub() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *bool { return v.LinkHub }).(pulumi.BoolPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+func (o CollectionNavOutput) NavScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionNav) *string { return v.NavScope }).(pulumi.StringPtrOutput)
+}
+
+type CollectionNavPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionNavPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionNav)(nil)).Elem()
+}
+
+func (o CollectionNavPtrOutput) ToCollectionNavPtrOutput() CollectionNavPtrOutput {
+	return o
+}
+
+func (o CollectionNavPtrOutput) ToCollectionNavPtrOutputWithContext(ctx context.Context) CollectionNavPtrOutput {
+	return o
+}
+
+func (o CollectionNavPtrOutput) Elem() CollectionNavOutput {
+	return o.ApplyT(func(v *CollectionNav) CollectionNav {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionNav
+		return ret
+	}).(CollectionNavOutput)
+}
+
+// Limit the collection to readers with one of these principals (up to 20).
+func (o CollectionNavPtrOutput) AudiencePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CollectionNav) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AudiencePrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// Limit the collection to readers with one of these roles (up to 20).
+func (o CollectionNavPtrOutput) AudienceRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CollectionNav) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AudienceRoles
+	}).(pulumi.StringArrayOutput)
+}
+
+// <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+func (o CollectionNavPtrOutput) BackStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackStyle
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start the group collapsed.
+func (o CollectionNavPtrOutput) Collapsed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Collapsed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Draw the landing page as cards.
+func (o CollectionNavPtrOutput) HubCards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HubCards
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A named icon, or a custom icon (path, URL or emoji).
+func (o CollectionNavPtrOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Icon
+	}).(pulumi.StringPtrOutput)
+}
+
+// Make the group's heading link to its landing page.
+func (o CollectionNavPtrOutput) LinkHub() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LinkHub
+	}).(pulumi.BoolPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+func (o CollectionNavPtrOutput) NavScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionNav) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NavScope
+	}).(pulumi.StringPtrOutput)
+}
+
+type CollectionSeo struct {
+	// The meta description, up to 320 characters.
+	Description *string `pulumi:"description"`
+	// <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+	Index *string `pulumi:"index"`
+	// The `<title>`, up to 120 characters.
+	Title *string `pulumi:"title"`
+}
+
+// CollectionSeoInput is an input type that accepts CollectionSeoArgs and CollectionSeoOutput values.
+// You can construct a concrete instance of `CollectionSeoInput` via:
+//
+//	CollectionSeoArgs{...}
+type CollectionSeoInput interface {
+	pulumi.Input
+
+	ToCollectionSeoOutput() CollectionSeoOutput
+	ToCollectionSeoOutputWithContext(context.Context) CollectionSeoOutput
+}
+
+type CollectionSeoArgs struct {
+	// The meta description, up to 320 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+	Index pulumi.StringPtrInput `pulumi:"index"`
+	// The `<title>`, up to 120 characters.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (CollectionSeoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionSeo)(nil)).Elem()
+}
+
+func (i CollectionSeoArgs) ToCollectionSeoOutput() CollectionSeoOutput {
+	return i.ToCollectionSeoOutputWithContext(context.Background())
+}
+
+func (i CollectionSeoArgs) ToCollectionSeoOutputWithContext(ctx context.Context) CollectionSeoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionSeoOutput)
+}
+
+func (i CollectionSeoArgs) ToCollectionSeoPtrOutput() CollectionSeoPtrOutput {
+	return i.ToCollectionSeoPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionSeoArgs) ToCollectionSeoPtrOutputWithContext(ctx context.Context) CollectionSeoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionSeoOutput).ToCollectionSeoPtrOutputWithContext(ctx)
+}
+
+// CollectionSeoPtrInput is an input type that accepts CollectionSeoArgs, CollectionSeoPtr and CollectionSeoPtrOutput values.
+// You can construct a concrete instance of `CollectionSeoPtrInput` via:
+//
+//	        CollectionSeoArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionSeoPtrInput interface {
+	pulumi.Input
+
+	ToCollectionSeoPtrOutput() CollectionSeoPtrOutput
+	ToCollectionSeoPtrOutputWithContext(context.Context) CollectionSeoPtrOutput
+}
+
+type collectionSeoPtrType CollectionSeoArgs
+
+func CollectionSeoPtr(v *CollectionSeoArgs) CollectionSeoPtrInput {
+	return (*collectionSeoPtrType)(v)
+}
+
+func (*collectionSeoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionSeo)(nil)).Elem()
+}
+
+func (i *collectionSeoPtrType) ToCollectionSeoPtrOutput() CollectionSeoPtrOutput {
+	return i.ToCollectionSeoPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionSeoPtrType) ToCollectionSeoPtrOutputWithContext(ctx context.Context) CollectionSeoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionSeoPtrOutput)
+}
+
+type CollectionSeoOutput struct{ *pulumi.OutputState }
+
+func (CollectionSeoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionSeo)(nil)).Elem()
+}
+
+func (o CollectionSeoOutput) ToCollectionSeoOutput() CollectionSeoOutput {
+	return o
+}
+
+func (o CollectionSeoOutput) ToCollectionSeoOutputWithContext(ctx context.Context) CollectionSeoOutput {
+	return o
+}
+
+func (o CollectionSeoOutput) ToCollectionSeoPtrOutput() CollectionSeoPtrOutput {
+	return o.ToCollectionSeoPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionSeoOutput) ToCollectionSeoPtrOutputWithContext(ctx context.Context) CollectionSeoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionSeo) *CollectionSeo {
+		return &v
+	}).(CollectionSeoPtrOutput)
+}
+
+// The meta description, up to 320 characters.
+func (o CollectionSeoOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionSeo) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+func (o CollectionSeoOutput) Index() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionSeo) *string { return v.Index }).(pulumi.StringPtrOutput)
+}
+
+// The `<title>`, up to 120 characters.
+func (o CollectionSeoOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionSeo) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type CollectionSeoPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionSeoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionSeo)(nil)).Elem()
+}
+
+func (o CollectionSeoPtrOutput) ToCollectionSeoPtrOutput() CollectionSeoPtrOutput {
+	return o
+}
+
+func (o CollectionSeoPtrOutput) ToCollectionSeoPtrOutputWithContext(ctx context.Context) CollectionSeoPtrOutput {
+	return o
+}
+
+func (o CollectionSeoPtrOutput) Elem() CollectionSeoOutput {
+	return o.ApplyT(func(v *CollectionSeo) CollectionSeo {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionSeo
+		return ret
+	}).(CollectionSeoOutput)
+}
+
+// The meta description, up to 320 characters.
+func (o CollectionSeoPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionSeo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+func (o CollectionSeoPtrOutput) Index() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionSeo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Index
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `<title>`, up to 120 characters.
+func (o CollectionSeoPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionSeo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type CollectionTranslations struct {
+	// The description in this language (up to 2000 characters).
+	Description *string `pulumi:"description"`
+	// The name in this language (up to 200 characters).
+	Name *string `pulumi:"name"`
+}
+
+// CollectionTranslationsInput is an input type that accepts CollectionTranslationsArgs and CollectionTranslationsOutput values.
+// You can construct a concrete instance of `CollectionTranslationsInput` via:
+//
+//	CollectionTranslationsArgs{...}
+type CollectionTranslationsInput interface {
+	pulumi.Input
+
+	ToCollectionTranslationsOutput() CollectionTranslationsOutput
+	ToCollectionTranslationsOutputWithContext(context.Context) CollectionTranslationsOutput
+}
+
+type CollectionTranslationsArgs struct {
+	// The description in this language (up to 2000 characters).
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name in this language (up to 200 characters).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CollectionTranslationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionTranslations)(nil)).Elem()
+}
+
+func (i CollectionTranslationsArgs) ToCollectionTranslationsOutput() CollectionTranslationsOutput {
+	return i.ToCollectionTranslationsOutputWithContext(context.Background())
+}
+
+func (i CollectionTranslationsArgs) ToCollectionTranslationsOutputWithContext(ctx context.Context) CollectionTranslationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionTranslationsOutput)
+}
+
+// CollectionTranslationsMapInput is an input type that accepts CollectionTranslationsMap and CollectionTranslationsMapOutput values.
+// You can construct a concrete instance of `CollectionTranslationsMapInput` via:
+//
+//	CollectionTranslationsMap{ "key": CollectionTranslationsArgs{...} }
+type CollectionTranslationsMapInput interface {
+	pulumi.Input
+
+	ToCollectionTranslationsMapOutput() CollectionTranslationsMapOutput
+	ToCollectionTranslationsMapOutputWithContext(context.Context) CollectionTranslationsMapOutput
+}
+
+type CollectionTranslationsMap map[string]CollectionTranslationsInput
+
+func (CollectionTranslationsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CollectionTranslations)(nil)).Elem()
+}
+
+func (i CollectionTranslationsMap) ToCollectionTranslationsMapOutput() CollectionTranslationsMapOutput {
+	return i.ToCollectionTranslationsMapOutputWithContext(context.Background())
+}
+
+func (i CollectionTranslationsMap) ToCollectionTranslationsMapOutputWithContext(ctx context.Context) CollectionTranslationsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionTranslationsMapOutput)
+}
+
+type CollectionTranslationsOutput struct{ *pulumi.OutputState }
+
+func (CollectionTranslationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionTranslations)(nil)).Elem()
+}
+
+func (o CollectionTranslationsOutput) ToCollectionTranslationsOutput() CollectionTranslationsOutput {
+	return o
+}
+
+func (o CollectionTranslationsOutput) ToCollectionTranslationsOutputWithContext(ctx context.Context) CollectionTranslationsOutput {
+	return o
+}
+
+// The description in this language (up to 2000 characters).
+func (o CollectionTranslationsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionTranslations) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name in this language (up to 200 characters).
+func (o CollectionTranslationsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionTranslations) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CollectionTranslationsMapOutput struct{ *pulumi.OutputState }
+
+func (CollectionTranslationsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CollectionTranslations)(nil)).Elem()
+}
+
+func (o CollectionTranslationsMapOutput) ToCollectionTranslationsMapOutput() CollectionTranslationsMapOutput {
+	return o
+}
+
+func (o CollectionTranslationsMapOutput) ToCollectionTranslationsMapOutputWithContext(ctx context.Context) CollectionTranslationsMapOutput {
+	return o
+}
+
+func (o CollectionTranslationsMapOutput) MapIndex(k pulumi.StringInput) CollectionTranslationsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CollectionTranslations {
+		return vs[0].(map[string]CollectionTranslations)[vs[1].(string)]
+	}).(CollectionTranslationsOutput)
+}
+
+type ConnectorAppearance struct {
+	// <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+	ColorScheme *string `pulumi:"colorScheme"`
+	// The widget's greeting, up to 200 characters.
+	Greeting *string `pulumi:"greeting"`
+	// <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+	Position *string `pulumi:"position"`
+	// The widget colour, six-digit hex with the leading `#`.
+	PrimaryColor *string `pulumi:"primaryColor"`
+}
+
+// ConnectorAppearanceInput is an input type that accepts ConnectorAppearanceArgs and ConnectorAppearanceOutput values.
+// You can construct a concrete instance of `ConnectorAppearanceInput` via:
+//
+//	ConnectorAppearanceArgs{...}
+type ConnectorAppearanceInput interface {
+	pulumi.Input
+
+	ToConnectorAppearanceOutput() ConnectorAppearanceOutput
+	ToConnectorAppearanceOutputWithContext(context.Context) ConnectorAppearanceOutput
+}
+
+type ConnectorAppearanceArgs struct {
+	// <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+	ColorScheme pulumi.StringPtrInput `pulumi:"colorScheme"`
+	// The widget's greeting, up to 200 characters.
+	Greeting pulumi.StringPtrInput `pulumi:"greeting"`
+	// <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+	Position pulumi.StringPtrInput `pulumi:"position"`
+	// The widget colour, six-digit hex with the leading `#`.
+	PrimaryColor pulumi.StringPtrInput `pulumi:"primaryColor"`
+}
+
+func (ConnectorAppearanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAppearance)(nil)).Elem()
+}
+
+func (i ConnectorAppearanceArgs) ToConnectorAppearanceOutput() ConnectorAppearanceOutput {
+	return i.ToConnectorAppearanceOutputWithContext(context.Background())
+}
+
+func (i ConnectorAppearanceArgs) ToConnectorAppearanceOutputWithContext(ctx context.Context) ConnectorAppearanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAppearanceOutput)
+}
+
+func (i ConnectorAppearanceArgs) ToConnectorAppearancePtrOutput() ConnectorAppearancePtrOutput {
+	return i.ToConnectorAppearancePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAppearanceArgs) ToConnectorAppearancePtrOutputWithContext(ctx context.Context) ConnectorAppearancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAppearanceOutput).ToConnectorAppearancePtrOutputWithContext(ctx)
+}
+
+// ConnectorAppearancePtrInput is an input type that accepts ConnectorAppearanceArgs, ConnectorAppearancePtr and ConnectorAppearancePtrOutput values.
+// You can construct a concrete instance of `ConnectorAppearancePtrInput` via:
+//
+//	        ConnectorAppearanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAppearancePtrInput interface {
+	pulumi.Input
+
+	ToConnectorAppearancePtrOutput() ConnectorAppearancePtrOutput
+	ToConnectorAppearancePtrOutputWithContext(context.Context) ConnectorAppearancePtrOutput
+}
+
+type connectorAppearancePtrType ConnectorAppearanceArgs
+
+func ConnectorAppearancePtr(v *ConnectorAppearanceArgs) ConnectorAppearancePtrInput {
+	return (*connectorAppearancePtrType)(v)
+}
+
+func (*connectorAppearancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAppearance)(nil)).Elem()
+}
+
+func (i *connectorAppearancePtrType) ToConnectorAppearancePtrOutput() ConnectorAppearancePtrOutput {
+	return i.ToConnectorAppearancePtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAppearancePtrType) ToConnectorAppearancePtrOutputWithContext(ctx context.Context) ConnectorAppearancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAppearancePtrOutput)
+}
+
+type ConnectorAppearanceOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAppearanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAppearance)(nil)).Elem()
+}
+
+func (o ConnectorAppearanceOutput) ToConnectorAppearanceOutput() ConnectorAppearanceOutput {
+	return o
+}
+
+func (o ConnectorAppearanceOutput) ToConnectorAppearanceOutputWithContext(ctx context.Context) ConnectorAppearanceOutput {
+	return o
+}
+
+func (o ConnectorAppearanceOutput) ToConnectorAppearancePtrOutput() ConnectorAppearancePtrOutput {
+	return o.ToConnectorAppearancePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAppearanceOutput) ToConnectorAppearancePtrOutputWithContext(ctx context.Context) ConnectorAppearancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAppearance) *ConnectorAppearance {
+		return &v
+	}).(ConnectorAppearancePtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+func (o ConnectorAppearanceOutput) ColorScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAppearance) *string { return v.ColorScheme }).(pulumi.StringPtrOutput)
+}
+
+// The widget's greeting, up to 200 characters.
+func (o ConnectorAppearanceOutput) Greeting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAppearance) *string { return v.Greeting }).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+func (o ConnectorAppearanceOutput) Position() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAppearance) *string { return v.Position }).(pulumi.StringPtrOutput)
+}
+
+// The widget colour, six-digit hex with the leading `#`.
+func (o ConnectorAppearanceOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAppearance) *string { return v.PrimaryColor }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAppearancePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAppearancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAppearance)(nil)).Elem()
+}
+
+func (o ConnectorAppearancePtrOutput) ToConnectorAppearancePtrOutput() ConnectorAppearancePtrOutput {
+	return o
+}
+
+func (o ConnectorAppearancePtrOutput) ToConnectorAppearancePtrOutputWithContext(ctx context.Context) ConnectorAppearancePtrOutput {
+	return o
+}
+
+func (o ConnectorAppearancePtrOutput) Elem() ConnectorAppearanceOutput {
+	return o.ApplyT(func(v *ConnectorAppearance) ConnectorAppearance {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAppearance
+		return ret
+	}).(ConnectorAppearanceOutput)
+}
+
+// <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+func (o ConnectorAppearancePtrOutput) ColorScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAppearance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ColorScheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The widget's greeting, up to 200 characters.
+func (o ConnectorAppearancePtrOutput) Greeting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAppearance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Greeting
+	}).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+func (o ConnectorAppearancePtrOutput) Position() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAppearance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Position
+	}).(pulumi.StringPtrOutput)
+}
+
+// The widget colour, six-digit hex with the leading `#`.
+func (o ConnectorAppearancePtrOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAppearance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryColor
+	}).(pulumi.StringPtrOutput)
+}
+
+type DomainDnsTarget struct {
+	// The record's host name.
+	Name *string `pulumi:"name"`
+	// The DNS record type (`A`, `CNAME`).
+	Type *string `pulumi:"type"`
+	// The record's value.
+	Value *string `pulumi:"value"`
+}
+
+// DomainDnsTargetInput is an input type that accepts DomainDnsTargetArgs and DomainDnsTargetOutput values.
+// You can construct a concrete instance of `DomainDnsTargetInput` via:
+//
+//	DomainDnsTargetArgs{...}
+type DomainDnsTargetInput interface {
+	pulumi.Input
+
+	ToDomainDnsTargetOutput() DomainDnsTargetOutput
+	ToDomainDnsTargetOutputWithContext(context.Context) DomainDnsTargetOutput
+}
+
+type DomainDnsTargetArgs struct {
+	// The record's host name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The DNS record type (`A`, `CNAME`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The record's value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DomainDnsTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainDnsTarget)(nil)).Elem()
+}
+
+func (i DomainDnsTargetArgs) ToDomainDnsTargetOutput() DomainDnsTargetOutput {
+	return i.ToDomainDnsTargetOutputWithContext(context.Background())
+}
+
+func (i DomainDnsTargetArgs) ToDomainDnsTargetOutputWithContext(ctx context.Context) DomainDnsTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDnsTargetOutput)
+}
+
+func (i DomainDnsTargetArgs) ToDomainDnsTargetPtrOutput() DomainDnsTargetPtrOutput {
+	return i.ToDomainDnsTargetPtrOutputWithContext(context.Background())
+}
+
+func (i DomainDnsTargetArgs) ToDomainDnsTargetPtrOutputWithContext(ctx context.Context) DomainDnsTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDnsTargetOutput).ToDomainDnsTargetPtrOutputWithContext(ctx)
+}
+
+// DomainDnsTargetPtrInput is an input type that accepts DomainDnsTargetArgs, DomainDnsTargetPtr and DomainDnsTargetPtrOutput values.
+// You can construct a concrete instance of `DomainDnsTargetPtrInput` via:
+//
+//	        DomainDnsTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainDnsTargetPtrInput interface {
+	pulumi.Input
+
+	ToDomainDnsTargetPtrOutput() DomainDnsTargetPtrOutput
+	ToDomainDnsTargetPtrOutputWithContext(context.Context) DomainDnsTargetPtrOutput
+}
+
+type domainDnsTargetPtrType DomainDnsTargetArgs
+
+func DomainDnsTargetPtr(v *DomainDnsTargetArgs) DomainDnsTargetPtrInput {
+	return (*domainDnsTargetPtrType)(v)
+}
+
+func (*domainDnsTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainDnsTarget)(nil)).Elem()
+}
+
+func (i *domainDnsTargetPtrType) ToDomainDnsTargetPtrOutput() DomainDnsTargetPtrOutput {
+	return i.ToDomainDnsTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *domainDnsTargetPtrType) ToDomainDnsTargetPtrOutputWithContext(ctx context.Context) DomainDnsTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDnsTargetPtrOutput)
+}
+
+type DomainDnsTargetOutput struct{ *pulumi.OutputState }
+
+func (DomainDnsTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainDnsTarget)(nil)).Elem()
+}
+
+func (o DomainDnsTargetOutput) ToDomainDnsTargetOutput() DomainDnsTargetOutput {
+	return o
+}
+
+func (o DomainDnsTargetOutput) ToDomainDnsTargetOutputWithContext(ctx context.Context) DomainDnsTargetOutput {
+	return o
+}
+
+func (o DomainDnsTargetOutput) ToDomainDnsTargetPtrOutput() DomainDnsTargetPtrOutput {
+	return o.ToDomainDnsTargetPtrOutputWithContext(context.Background())
+}
+
+func (o DomainDnsTargetOutput) ToDomainDnsTargetPtrOutputWithContext(ctx context.Context) DomainDnsTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainDnsTarget) *DomainDnsTarget {
+		return &v
+	}).(DomainDnsTargetPtrOutput)
+}
+
+// The record's host name.
+func (o DomainDnsTargetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainDnsTarget) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The DNS record type (`A`, `CNAME`).
+func (o DomainDnsTargetOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainDnsTarget) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The record's value.
+func (o DomainDnsTargetOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainDnsTarget) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DomainDnsTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainDnsTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainDnsTarget)(nil)).Elem()
+}
+
+func (o DomainDnsTargetPtrOutput) ToDomainDnsTargetPtrOutput() DomainDnsTargetPtrOutput {
+	return o
+}
+
+func (o DomainDnsTargetPtrOutput) ToDomainDnsTargetPtrOutputWithContext(ctx context.Context) DomainDnsTargetPtrOutput {
+	return o
+}
+
+func (o DomainDnsTargetPtrOutput) Elem() DomainDnsTargetOutput {
+	return o.ApplyT(func(v *DomainDnsTarget) DomainDnsTarget {
+		if v != nil {
+			return *v
+		}
+		var ret DomainDnsTarget
+		return ret
+	}).(DomainDnsTargetOutput)
+}
+
+// The record's host name.
+func (o DomainDnsTargetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainDnsTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The DNS record type (`A`, `CNAME`).
+func (o DomainDnsTargetPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainDnsTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The record's value.
+func (o DomainDnsTargetPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainDnsTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type DomainVerificationRecord struct {
+	// The record's host name.
+	Name *string `pulumi:"name"`
+	// The record's value.
+	Value *string `pulumi:"value"`
+}
+
+// DomainVerificationRecordInput is an input type that accepts DomainVerificationRecordArgs and DomainVerificationRecordOutput values.
+// You can construct a concrete instance of `DomainVerificationRecordInput` via:
+//
+//	DomainVerificationRecordArgs{...}
+type DomainVerificationRecordInput interface {
+	pulumi.Input
+
+	ToDomainVerificationRecordOutput() DomainVerificationRecordOutput
+	ToDomainVerificationRecordOutputWithContext(context.Context) DomainVerificationRecordOutput
+}
+
+type DomainVerificationRecordArgs struct {
+	// The record's host name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The record's value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DomainVerificationRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainVerificationRecord)(nil)).Elem()
+}
+
+func (i DomainVerificationRecordArgs) ToDomainVerificationRecordOutput() DomainVerificationRecordOutput {
+	return i.ToDomainVerificationRecordOutputWithContext(context.Background())
+}
+
+func (i DomainVerificationRecordArgs) ToDomainVerificationRecordOutputWithContext(ctx context.Context) DomainVerificationRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainVerificationRecordOutput)
+}
+
+func (i DomainVerificationRecordArgs) ToDomainVerificationRecordPtrOutput() DomainVerificationRecordPtrOutput {
+	return i.ToDomainVerificationRecordPtrOutputWithContext(context.Background())
+}
+
+func (i DomainVerificationRecordArgs) ToDomainVerificationRecordPtrOutputWithContext(ctx context.Context) DomainVerificationRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainVerificationRecordOutput).ToDomainVerificationRecordPtrOutputWithContext(ctx)
+}
+
+// DomainVerificationRecordPtrInput is an input type that accepts DomainVerificationRecordArgs, DomainVerificationRecordPtr and DomainVerificationRecordPtrOutput values.
+// You can construct a concrete instance of `DomainVerificationRecordPtrInput` via:
+//
+//	        DomainVerificationRecordArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainVerificationRecordPtrInput interface {
+	pulumi.Input
+
+	ToDomainVerificationRecordPtrOutput() DomainVerificationRecordPtrOutput
+	ToDomainVerificationRecordPtrOutputWithContext(context.Context) DomainVerificationRecordPtrOutput
+}
+
+type domainVerificationRecordPtrType DomainVerificationRecordArgs
+
+func DomainVerificationRecordPtr(v *DomainVerificationRecordArgs) DomainVerificationRecordPtrInput {
+	return (*domainVerificationRecordPtrType)(v)
+}
+
+func (*domainVerificationRecordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainVerificationRecord)(nil)).Elem()
+}
+
+func (i *domainVerificationRecordPtrType) ToDomainVerificationRecordPtrOutput() DomainVerificationRecordPtrOutput {
+	return i.ToDomainVerificationRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *domainVerificationRecordPtrType) ToDomainVerificationRecordPtrOutputWithContext(ctx context.Context) DomainVerificationRecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainVerificationRecordPtrOutput)
+}
+
+type DomainVerificationRecordOutput struct{ *pulumi.OutputState }
+
+func (DomainVerificationRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainVerificationRecord)(nil)).Elem()
+}
+
+func (o DomainVerificationRecordOutput) ToDomainVerificationRecordOutput() DomainVerificationRecordOutput {
+	return o
+}
+
+func (o DomainVerificationRecordOutput) ToDomainVerificationRecordOutputWithContext(ctx context.Context) DomainVerificationRecordOutput {
+	return o
+}
+
+func (o DomainVerificationRecordOutput) ToDomainVerificationRecordPtrOutput() DomainVerificationRecordPtrOutput {
+	return o.ToDomainVerificationRecordPtrOutputWithContext(context.Background())
+}
+
+func (o DomainVerificationRecordOutput) ToDomainVerificationRecordPtrOutputWithContext(ctx context.Context) DomainVerificationRecordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainVerificationRecord) *DomainVerificationRecord {
+		return &v
+	}).(DomainVerificationRecordPtrOutput)
+}
+
+// The record's host name.
+func (o DomainVerificationRecordOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainVerificationRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The record's value.
+func (o DomainVerificationRecordOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainVerificationRecord) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DomainVerificationRecordPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainVerificationRecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainVerificationRecord)(nil)).Elem()
+}
+
+func (o DomainVerificationRecordPtrOutput) ToDomainVerificationRecordPtrOutput() DomainVerificationRecordPtrOutput {
+	return o
+}
+
+func (o DomainVerificationRecordPtrOutput) ToDomainVerificationRecordPtrOutputWithContext(ctx context.Context) DomainVerificationRecordPtrOutput {
+	return o
+}
+
+func (o DomainVerificationRecordPtrOutput) Elem() DomainVerificationRecordOutput {
+	return o.ApplyT(func(v *DomainVerificationRecord) DomainVerificationRecord {
+		if v != nil {
+			return *v
+		}
+		var ret DomainVerificationRecord
+		return ret
+	}).(DomainVerificationRecordOutput)
+}
+
+// The record's host name.
+func (o DomainVerificationRecordPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainVerificationRecord) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The record's value.
+func (o DomainVerificationRecordPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainVerificationRecord) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type ForumCategoryRequiredTagGroup struct {
+	// How many tags from the group, 1 to 12.
+	MinCount int `pulumi:"minCount"`
+	// The tag group's id.
+	TagGroupId string `pulumi:"tagGroupId"`
+}
+
+// ForumCategoryRequiredTagGroupInput is an input type that accepts ForumCategoryRequiredTagGroupArgs and ForumCategoryRequiredTagGroupOutput values.
+// You can construct a concrete instance of `ForumCategoryRequiredTagGroupInput` via:
+//
+//	ForumCategoryRequiredTagGroupArgs{...}
+type ForumCategoryRequiredTagGroupInput interface {
+	pulumi.Input
+
+	ToForumCategoryRequiredTagGroupOutput() ForumCategoryRequiredTagGroupOutput
+	ToForumCategoryRequiredTagGroupOutputWithContext(context.Context) ForumCategoryRequiredTagGroupOutput
+}
+
+type ForumCategoryRequiredTagGroupArgs struct {
+	// How many tags from the group, 1 to 12.
+	MinCount pulumi.IntInput `pulumi:"minCount"`
+	// The tag group's id.
+	TagGroupId pulumi.StringInput `pulumi:"tagGroupId"`
+}
+
+func (ForumCategoryRequiredTagGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForumCategoryRequiredTagGroup)(nil)).Elem()
+}
+
+func (i ForumCategoryRequiredTagGroupArgs) ToForumCategoryRequiredTagGroupOutput() ForumCategoryRequiredTagGroupOutput {
+	return i.ToForumCategoryRequiredTagGroupOutputWithContext(context.Background())
+}
+
+func (i ForumCategoryRequiredTagGroupArgs) ToForumCategoryRequiredTagGroupOutputWithContext(ctx context.Context) ForumCategoryRequiredTagGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForumCategoryRequiredTagGroupOutput)
+}
+
+// ForumCategoryRequiredTagGroupArrayInput is an input type that accepts ForumCategoryRequiredTagGroupArray and ForumCategoryRequiredTagGroupArrayOutput values.
+// You can construct a concrete instance of `ForumCategoryRequiredTagGroupArrayInput` via:
+//
+//	ForumCategoryRequiredTagGroupArray{ ForumCategoryRequiredTagGroupArgs{...} }
+type ForumCategoryRequiredTagGroupArrayInput interface {
+	pulumi.Input
+
+	ToForumCategoryRequiredTagGroupArrayOutput() ForumCategoryRequiredTagGroupArrayOutput
+	ToForumCategoryRequiredTagGroupArrayOutputWithContext(context.Context) ForumCategoryRequiredTagGroupArrayOutput
+}
+
+type ForumCategoryRequiredTagGroupArray []ForumCategoryRequiredTagGroupInput
+
+func (ForumCategoryRequiredTagGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForumCategoryRequiredTagGroup)(nil)).Elem()
+}
+
+func (i ForumCategoryRequiredTagGroupArray) ToForumCategoryRequiredTagGroupArrayOutput() ForumCategoryRequiredTagGroupArrayOutput {
+	return i.ToForumCategoryRequiredTagGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ForumCategoryRequiredTagGroupArray) ToForumCategoryRequiredTagGroupArrayOutputWithContext(ctx context.Context) ForumCategoryRequiredTagGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForumCategoryRequiredTagGroupArrayOutput)
+}
+
+type ForumCategoryRequiredTagGroupOutput struct{ *pulumi.OutputState }
+
+func (ForumCategoryRequiredTagGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForumCategoryRequiredTagGroup)(nil)).Elem()
+}
+
+func (o ForumCategoryRequiredTagGroupOutput) ToForumCategoryRequiredTagGroupOutput() ForumCategoryRequiredTagGroupOutput {
+	return o
+}
+
+func (o ForumCategoryRequiredTagGroupOutput) ToForumCategoryRequiredTagGroupOutputWithContext(ctx context.Context) ForumCategoryRequiredTagGroupOutput {
+	return o
+}
+
+// How many tags from the group, 1 to 12.
+func (o ForumCategoryRequiredTagGroupOutput) MinCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ForumCategoryRequiredTagGroup) int { return v.MinCount }).(pulumi.IntOutput)
+}
+
+// The tag group's id.
+func (o ForumCategoryRequiredTagGroupOutput) TagGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ForumCategoryRequiredTagGroup) string { return v.TagGroupId }).(pulumi.StringOutput)
+}
+
+type ForumCategoryRequiredTagGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ForumCategoryRequiredTagGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForumCategoryRequiredTagGroup)(nil)).Elem()
+}
+
+func (o ForumCategoryRequiredTagGroupArrayOutput) ToForumCategoryRequiredTagGroupArrayOutput() ForumCategoryRequiredTagGroupArrayOutput {
+	return o
+}
+
+func (o ForumCategoryRequiredTagGroupArrayOutput) ToForumCategoryRequiredTagGroupArrayOutputWithContext(ctx context.Context) ForumCategoryRequiredTagGroupArrayOutput {
+	return o
+}
+
+func (o ForumCategoryRequiredTagGroupArrayOutput) Index(i pulumi.IntInput) ForumCategoryRequiredTagGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForumCategoryRequiredTagGroup {
+		return vs[0].([]ForumCategoryRequiredTagGroup)[vs[1].(int)]
+	}).(ForumCategoryRequiredTagGroupOutput)
+}
+
+type ForumCategoryTranslations struct {
+	// The description in this language (up to 2000 characters).
+	Description *string `pulumi:"description"`
+	// The name in this language (up to 200 characters).
+	Name *string `pulumi:"name"`
+}
+
+// ForumCategoryTranslationsInput is an input type that accepts ForumCategoryTranslationsArgs and ForumCategoryTranslationsOutput values.
+// You can construct a concrete instance of `ForumCategoryTranslationsInput` via:
+//
+//	ForumCategoryTranslationsArgs{...}
+type ForumCategoryTranslationsInput interface {
+	pulumi.Input
+
+	ToForumCategoryTranslationsOutput() ForumCategoryTranslationsOutput
+	ToForumCategoryTranslationsOutputWithContext(context.Context) ForumCategoryTranslationsOutput
+}
+
+type ForumCategoryTranslationsArgs struct {
+	// The description in this language (up to 2000 characters).
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name in this language (up to 200 characters).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ForumCategoryTranslationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForumCategoryTranslations)(nil)).Elem()
+}
+
+func (i ForumCategoryTranslationsArgs) ToForumCategoryTranslationsOutput() ForumCategoryTranslationsOutput {
+	return i.ToForumCategoryTranslationsOutputWithContext(context.Background())
+}
+
+func (i ForumCategoryTranslationsArgs) ToForumCategoryTranslationsOutputWithContext(ctx context.Context) ForumCategoryTranslationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForumCategoryTranslationsOutput)
+}
+
+// ForumCategoryTranslationsMapInput is an input type that accepts ForumCategoryTranslationsMap and ForumCategoryTranslationsMapOutput values.
+// You can construct a concrete instance of `ForumCategoryTranslationsMapInput` via:
+//
+//	ForumCategoryTranslationsMap{ "key": ForumCategoryTranslationsArgs{...} }
+type ForumCategoryTranslationsMapInput interface {
+	pulumi.Input
+
+	ToForumCategoryTranslationsMapOutput() ForumCategoryTranslationsMapOutput
+	ToForumCategoryTranslationsMapOutputWithContext(context.Context) ForumCategoryTranslationsMapOutput
+}
+
+type ForumCategoryTranslationsMap map[string]ForumCategoryTranslationsInput
+
+func (ForumCategoryTranslationsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ForumCategoryTranslations)(nil)).Elem()
+}
+
+func (i ForumCategoryTranslationsMap) ToForumCategoryTranslationsMapOutput() ForumCategoryTranslationsMapOutput {
+	return i.ToForumCategoryTranslationsMapOutputWithContext(context.Background())
+}
+
+func (i ForumCategoryTranslationsMap) ToForumCategoryTranslationsMapOutputWithContext(ctx context.Context) ForumCategoryTranslationsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForumCategoryTranslationsMapOutput)
+}
+
+type ForumCategoryTranslationsOutput struct{ *pulumi.OutputState }
+
+func (ForumCategoryTranslationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForumCategoryTranslations)(nil)).Elem()
+}
+
+func (o ForumCategoryTranslationsOutput) ToForumCategoryTranslationsOutput() ForumCategoryTranslationsOutput {
+	return o
+}
+
+func (o ForumCategoryTranslationsOutput) ToForumCategoryTranslationsOutputWithContext(ctx context.Context) ForumCategoryTranslationsOutput {
+	return o
+}
+
+// The description in this language (up to 2000 characters).
+func (o ForumCategoryTranslationsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForumCategoryTranslations) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name in this language (up to 200 characters).
+func (o ForumCategoryTranslationsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForumCategoryTranslations) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ForumCategoryTranslationsMapOutput struct{ *pulumi.OutputState }
+
+func (ForumCategoryTranslationsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ForumCategoryTranslations)(nil)).Elem()
+}
+
+func (o ForumCategoryTranslationsMapOutput) ToForumCategoryTranslationsMapOutput() ForumCategoryTranslationsMapOutput {
+	return o
+}
+
+func (o ForumCategoryTranslationsMapOutput) ToForumCategoryTranslationsMapOutputWithContext(ctx context.Context) ForumCategoryTranslationsMapOutput {
+	return o
+}
+
+func (o ForumCategoryTranslationsMapOutput) MapIndex(k pulumi.StringInput) ForumCategoryTranslationsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ForumCategoryTranslations {
+		return vs[0].(map[string]ForumCategoryTranslations)[vs[1].(string)]
+	}).(ForumCategoryTranslationsOutput)
+}
+
+type PageMetadata struct {
+	// The canonical URL when it is not the page's own address.
+	CanonicalUrl *string `pulumi:"canonicalUrl"`
+	// A cover image: an uploaded path or an http(s) URL.
+	CoverUrl *string `pulumi:"coverUrl"`
+	// Leave the page out of the sidebar.
+	HideFromNav *bool `pulumi:"hideFromNav"`
+	// A named icon or a custom icon (path, URL, emoji).
+	Icon *string `pulumi:"icon"`
+	// A shorter title for the sidebar (up to 80 characters).
+	NavTitle *string `pulumi:"navTitle"`
+	// Ask search engines not to index the page.
+	Noindex *bool `pulumi:"noindex"`
+	// Leave the page out of search.
+	SearchExclude *bool `pulumi:"searchExclude"`
+	// The meta description (up to 400 characters).
+	SeoDescription *string `pulumi:"seoDescription"`
+	// The `<title>` (up to 200 characters).
+	SeoTitle *string `pulumi:"seoTitle"`
+	// Up to 12 tags, 60 characters each.
+	Tags []string `pulumi:"tags"`
+}
+
+// PageMetadataInput is an input type that accepts PageMetadataArgs and PageMetadataOutput values.
+// You can construct a concrete instance of `PageMetadataInput` via:
+//
+//	PageMetadataArgs{...}
+type PageMetadataInput interface {
+	pulumi.Input
+
+	ToPageMetadataOutput() PageMetadataOutput
+	ToPageMetadataOutputWithContext(context.Context) PageMetadataOutput
+}
+
+type PageMetadataArgs struct {
+	// The canonical URL when it is not the page's own address.
+	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
+	// A cover image: an uploaded path or an http(s) URL.
+	CoverUrl pulumi.StringPtrInput `pulumi:"coverUrl"`
+	// Leave the page out of the sidebar.
+	HideFromNav pulumi.BoolPtrInput `pulumi:"hideFromNav"`
+	// A named icon or a custom icon (path, URL, emoji).
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// A shorter title for the sidebar (up to 80 characters).
+	NavTitle pulumi.StringPtrInput `pulumi:"navTitle"`
+	// Ask search engines not to index the page.
+	Noindex pulumi.BoolPtrInput `pulumi:"noindex"`
+	// Leave the page out of search.
+	SearchExclude pulumi.BoolPtrInput `pulumi:"searchExclude"`
+	// The meta description (up to 400 characters).
+	SeoDescription pulumi.StringPtrInput `pulumi:"seoDescription"`
+	// The `<title>` (up to 200 characters).
+	SeoTitle pulumi.StringPtrInput `pulumi:"seoTitle"`
+	// Up to 12 tags, 60 characters each.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (PageMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageMetadata)(nil)).Elem()
+}
+
+func (i PageMetadataArgs) ToPageMetadataOutput() PageMetadataOutput {
+	return i.ToPageMetadataOutputWithContext(context.Background())
+}
+
+func (i PageMetadataArgs) ToPageMetadataOutputWithContext(ctx context.Context) PageMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageMetadataOutput)
+}
+
+func (i PageMetadataArgs) ToPageMetadataPtrOutput() PageMetadataPtrOutput {
+	return i.ToPageMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i PageMetadataArgs) ToPageMetadataPtrOutputWithContext(ctx context.Context) PageMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageMetadataOutput).ToPageMetadataPtrOutputWithContext(ctx)
+}
+
+// PageMetadataPtrInput is an input type that accepts PageMetadataArgs, PageMetadataPtr and PageMetadataPtrOutput values.
+// You can construct a concrete instance of `PageMetadataPtrInput` via:
+//
+//	        PageMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type PageMetadataPtrInput interface {
+	pulumi.Input
+
+	ToPageMetadataPtrOutput() PageMetadataPtrOutput
+	ToPageMetadataPtrOutputWithContext(context.Context) PageMetadataPtrOutput
+}
+
+type pageMetadataPtrType PageMetadataArgs
+
+func PageMetadataPtr(v *PageMetadataArgs) PageMetadataPtrInput {
+	return (*pageMetadataPtrType)(v)
+}
+
+func (*pageMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageMetadata)(nil)).Elem()
+}
+
+func (i *pageMetadataPtrType) ToPageMetadataPtrOutput() PageMetadataPtrOutput {
+	return i.ToPageMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *pageMetadataPtrType) ToPageMetadataPtrOutputWithContext(ctx context.Context) PageMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageMetadataPtrOutput)
+}
+
+type PageMetadataOutput struct{ *pulumi.OutputState }
+
+func (PageMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageMetadata)(nil)).Elem()
+}
+
+func (o PageMetadataOutput) ToPageMetadataOutput() PageMetadataOutput {
+	return o
+}
+
+func (o PageMetadataOutput) ToPageMetadataOutputWithContext(ctx context.Context) PageMetadataOutput {
+	return o
+}
+
+func (o PageMetadataOutput) ToPageMetadataPtrOutput() PageMetadataPtrOutput {
+	return o.ToPageMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o PageMetadataOutput) ToPageMetadataPtrOutputWithContext(ctx context.Context) PageMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageMetadata) *PageMetadata {
+		return &v
+	}).(PageMetadataPtrOutput)
+}
+
+// The canonical URL when it is not the page's own address.
+func (o PageMetadataOutput) CanonicalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
+}
+
+// A cover image: an uploaded path or an http(s) URL.
+func (o PageMetadataOutput) CoverUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.CoverUrl }).(pulumi.StringPtrOutput)
+}
+
+// Leave the page out of the sidebar.
+func (o PageMetadataOutput) HideFromNav() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *bool { return v.HideFromNav }).(pulumi.BoolPtrOutput)
+}
+
+// A named icon or a custom icon (path, URL, emoji).
+func (o PageMetadataOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// A shorter title for the sidebar (up to 80 characters).
+func (o PageMetadataOutput) NavTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.NavTitle }).(pulumi.StringPtrOutput)
+}
+
+// Ask search engines not to index the page.
+func (o PageMetadataOutput) Noindex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *bool { return v.Noindex }).(pulumi.BoolPtrOutput)
+}
+
+// Leave the page out of search.
+func (o PageMetadataOutput) SearchExclude() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *bool { return v.SearchExclude }).(pulumi.BoolPtrOutput)
+}
+
+// The meta description (up to 400 characters).
+func (o PageMetadataOutput) SeoDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.SeoDescription }).(pulumi.StringPtrOutput)
+}
+
+// The `<title>` (up to 200 characters).
+func (o PageMetadataOutput) SeoTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PageMetadata) *string { return v.SeoTitle }).(pulumi.StringPtrOutput)
+}
+
+// Up to 12 tags, 60 characters each.
+func (o PageMetadataOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageMetadata) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type PageMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (PageMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageMetadata)(nil)).Elem()
+}
+
+func (o PageMetadataPtrOutput) ToPageMetadataPtrOutput() PageMetadataPtrOutput {
+	return o
+}
+
+func (o PageMetadataPtrOutput) ToPageMetadataPtrOutputWithContext(ctx context.Context) PageMetadataPtrOutput {
+	return o
+}
+
+func (o PageMetadataPtrOutput) Elem() PageMetadataOutput {
+	return o.ApplyT(func(v *PageMetadata) PageMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret PageMetadata
+		return ret
+	}).(PageMetadataOutput)
+}
+
+// The canonical URL when it is not the page's own address.
+func (o PageMetadataPtrOutput) CanonicalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CanonicalUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// A cover image: an uploaded path or an http(s) URL.
+func (o PageMetadataPtrOutput) CoverUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoverUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Leave the page out of the sidebar.
+func (o PageMetadataPtrOutput) HideFromNav() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HideFromNav
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A named icon or a custom icon (path, URL, emoji).
+func (o PageMetadataPtrOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Icon
+	}).(pulumi.StringPtrOutput)
+}
+
+// A shorter title for the sidebar (up to 80 characters).
+func (o PageMetadataPtrOutput) NavTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NavTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ask search engines not to index the page.
+func (o PageMetadataPtrOutput) Noindex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Noindex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Leave the page out of search.
+func (o PageMetadataPtrOutput) SearchExclude() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SearchExclude
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The meta description (up to 400 characters).
+func (o PageMetadataPtrOutput) SeoDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeoDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `<title>` (up to 200 characters).
+func (o PageMetadataPtrOutput) SeoTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeoTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// Up to 12 tags, 60 characters each.
+func (o PageMetadataPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+type SitePageMount struct {
+	// The page's slug in that space.
+	Page string `pulumi:"page"`
+	// Where the page answers: `/` for the root, or one segment such as `/pricing`.
+	Path string `pulumi:"path"`
+	// The member space the page belongs to (its id).
+	SpaceId string `pulumi:"spaceId"`
+}
+
+// SitePageMountInput is an input type that accepts SitePageMountArgs and SitePageMountOutput values.
+// You can construct a concrete instance of `SitePageMountInput` via:
+//
+//	SitePageMountArgs{...}
+type SitePageMountInput interface {
+	pulumi.Input
+
+	ToSitePageMountOutput() SitePageMountOutput
+	ToSitePageMountOutputWithContext(context.Context) SitePageMountOutput
+}
+
+type SitePageMountArgs struct {
+	// The page's slug in that space.
+	Page pulumi.StringInput `pulumi:"page"`
+	// Where the page answers: `/` for the root, or one segment such as `/pricing`.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The member space the page belongs to (its id).
+	SpaceId pulumi.StringInput `pulumi:"spaceId"`
+}
+
+func (SitePageMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SitePageMount)(nil)).Elem()
+}
+
+func (i SitePageMountArgs) ToSitePageMountOutput() SitePageMountOutput {
+	return i.ToSitePageMountOutputWithContext(context.Background())
+}
+
+func (i SitePageMountArgs) ToSitePageMountOutputWithContext(ctx context.Context) SitePageMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SitePageMountOutput)
+}
+
+// SitePageMountArrayInput is an input type that accepts SitePageMountArray and SitePageMountArrayOutput values.
+// You can construct a concrete instance of `SitePageMountArrayInput` via:
+//
+//	SitePageMountArray{ SitePageMountArgs{...} }
+type SitePageMountArrayInput interface {
+	pulumi.Input
+
+	ToSitePageMountArrayOutput() SitePageMountArrayOutput
+	ToSitePageMountArrayOutputWithContext(context.Context) SitePageMountArrayOutput
+}
+
+type SitePageMountArray []SitePageMountInput
+
+func (SitePageMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SitePageMount)(nil)).Elem()
+}
+
+func (i SitePageMountArray) ToSitePageMountArrayOutput() SitePageMountArrayOutput {
+	return i.ToSitePageMountArrayOutputWithContext(context.Background())
+}
+
+func (i SitePageMountArray) ToSitePageMountArrayOutputWithContext(ctx context.Context) SitePageMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SitePageMountArrayOutput)
+}
+
+type SitePageMountOutput struct{ *pulumi.OutputState }
+
+func (SitePageMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SitePageMount)(nil)).Elem()
+}
+
+func (o SitePageMountOutput) ToSitePageMountOutput() SitePageMountOutput {
+	return o
+}
+
+func (o SitePageMountOutput) ToSitePageMountOutputWithContext(ctx context.Context) SitePageMountOutput {
+	return o
+}
+
+// The page's slug in that space.
+func (o SitePageMountOutput) Page() pulumi.StringOutput {
+	return o.ApplyT(func(v SitePageMount) string { return v.Page }).(pulumi.StringOutput)
+}
+
+// Where the page answers: `/` for the root, or one segment such as `/pricing`.
+func (o SitePageMountOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SitePageMount) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The member space the page belongs to (its id).
+func (o SitePageMountOutput) SpaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SitePageMount) string { return v.SpaceId }).(pulumi.StringOutput)
+}
+
+type SitePageMountArrayOutput struct{ *pulumi.OutputState }
+
+func (SitePageMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SitePageMount)(nil)).Elem()
+}
+
+func (o SitePageMountArrayOutput) ToSitePageMountArrayOutput() SitePageMountArrayOutput {
+	return o
+}
+
+func (o SitePageMountArrayOutput) ToSitePageMountArrayOutputWithContext(ctx context.Context) SitePageMountArrayOutput {
+	return o
+}
+
+func (o SitePageMountArrayOutput) Index(i pulumi.IntInput) SitePageMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SitePageMount {
+		return vs[0].([]SitePageMount)[vs[1].(int)]
+	}).(SitePageMountOutput)
+}
+
+type SpaceSettingsRedirect struct {
+	// The old path, starting with a single `/`; a trailing `*` matches any suffix.
+	From string `pulumi:"from"`
+	// Carry the incoming query string to the target.
+	PassQuery *bool `pulumi:"passQuery"`
+	// The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+	Status *int `pulumi:"status"`
+	// The new path, or an https URL (a redirect only; a rewrite names a path).
+	To string `pulumi:"to"`
+	// <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+	Type *string `pulumi:"type"`
+}
+
+// SpaceSettingsRedirectInput is an input type that accepts SpaceSettingsRedirectArgs and SpaceSettingsRedirectOutput values.
+// You can construct a concrete instance of `SpaceSettingsRedirectInput` via:
+//
+//	SpaceSettingsRedirectArgs{...}
+type SpaceSettingsRedirectInput interface {
+	pulumi.Input
+
+	ToSpaceSettingsRedirectOutput() SpaceSettingsRedirectOutput
+	ToSpaceSettingsRedirectOutputWithContext(context.Context) SpaceSettingsRedirectOutput
+}
+
+type SpaceSettingsRedirectArgs struct {
+	// The old path, starting with a single `/`; a trailing `*` matches any suffix.
+	From pulumi.StringInput `pulumi:"from"`
+	// Carry the incoming query string to the target.
+	PassQuery pulumi.BoolPtrInput `pulumi:"passQuery"`
+	// The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+	// The new path, or an https URL (a redirect only; a rewrite names a path).
+	To pulumi.StringInput `pulumi:"to"`
+	// <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SpaceSettingsRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpaceSettingsRedirect)(nil)).Elem()
+}
+
+func (i SpaceSettingsRedirectArgs) ToSpaceSettingsRedirectOutput() SpaceSettingsRedirectOutput {
+	return i.ToSpaceSettingsRedirectOutputWithContext(context.Background())
+}
+
+func (i SpaceSettingsRedirectArgs) ToSpaceSettingsRedirectOutputWithContext(ctx context.Context) SpaceSettingsRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpaceSettingsRedirectOutput)
+}
+
+// SpaceSettingsRedirectArrayInput is an input type that accepts SpaceSettingsRedirectArray and SpaceSettingsRedirectArrayOutput values.
+// You can construct a concrete instance of `SpaceSettingsRedirectArrayInput` via:
+//
+//	SpaceSettingsRedirectArray{ SpaceSettingsRedirectArgs{...} }
+type SpaceSettingsRedirectArrayInput interface {
+	pulumi.Input
+
+	ToSpaceSettingsRedirectArrayOutput() SpaceSettingsRedirectArrayOutput
+	ToSpaceSettingsRedirectArrayOutputWithContext(context.Context) SpaceSettingsRedirectArrayOutput
+}
+
+type SpaceSettingsRedirectArray []SpaceSettingsRedirectInput
+
+func (SpaceSettingsRedirectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpaceSettingsRedirect)(nil)).Elem()
+}
+
+func (i SpaceSettingsRedirectArray) ToSpaceSettingsRedirectArrayOutput() SpaceSettingsRedirectArrayOutput {
+	return i.ToSpaceSettingsRedirectArrayOutputWithContext(context.Background())
+}
+
+func (i SpaceSettingsRedirectArray) ToSpaceSettingsRedirectArrayOutputWithContext(ctx context.Context) SpaceSettingsRedirectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpaceSettingsRedirectArrayOutput)
+}
+
+type SpaceSettingsRedirectOutput struct{ *pulumi.OutputState }
+
+func (SpaceSettingsRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpaceSettingsRedirect)(nil)).Elem()
+}
+
+func (o SpaceSettingsRedirectOutput) ToSpaceSettingsRedirectOutput() SpaceSettingsRedirectOutput {
+	return o
+}
+
+func (o SpaceSettingsRedirectOutput) ToSpaceSettingsRedirectOutputWithContext(ctx context.Context) SpaceSettingsRedirectOutput {
+	return o
+}
+
+// The old path, starting with a single `/`; a trailing `*` matches any suffix.
+func (o SpaceSettingsRedirectOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v SpaceSettingsRedirect) string { return v.From }).(pulumi.StringOutput)
+}
+
+// Carry the incoming query string to the target.
+func (o SpaceSettingsRedirectOutput) PassQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SpaceSettingsRedirect) *bool { return v.PassQuery }).(pulumi.BoolPtrOutput)
+}
+
+// The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+func (o SpaceSettingsRedirectOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SpaceSettingsRedirect) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+// The new path, or an https URL (a redirect only; a rewrite names a path).
+func (o SpaceSettingsRedirectOutput) To() pulumi.StringOutput {
+	return o.ApplyT(func(v SpaceSettingsRedirect) string { return v.To }).(pulumi.StringOutput)
+}
+
+// <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+func (o SpaceSettingsRedirectOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpaceSettingsRedirect) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SpaceSettingsRedirectArrayOutput struct{ *pulumi.OutputState }
+
+func (SpaceSettingsRedirectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpaceSettingsRedirect)(nil)).Elem()
+}
+
+func (o SpaceSettingsRedirectArrayOutput) ToSpaceSettingsRedirectArrayOutput() SpaceSettingsRedirectArrayOutput {
+	return o
+}
+
+func (o SpaceSettingsRedirectArrayOutput) ToSpaceSettingsRedirectArrayOutputWithContext(ctx context.Context) SpaceSettingsRedirectArrayOutput {
+	return o
+}
+
+func (o SpaceSettingsRedirectArrayOutput) Index(i pulumi.IntInput) SpaceSettingsRedirectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpaceSettingsRedirect {
+		return vs[0].([]SpaceSettingsRedirect)[vs[1].(int)]
+	}).(SpaceSettingsRedirectOutput)
+}
+
+type SpaceShape struct {
+	// <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+	Index *string `pulumi:"index"`
+	// <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+	Nav *string `pulumi:"nav"`
+	// <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+	Order *string `pulumi:"order"`
+	// <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+	WhoCreates *string `pulumi:"whoCreates"`
+}
+
+// SpaceShapeInput is an input type that accepts SpaceShapeArgs and SpaceShapeOutput values.
+// You can construct a concrete instance of `SpaceShapeInput` via:
+//
+//	SpaceShapeArgs{...}
+type SpaceShapeInput interface {
+	pulumi.Input
+
+	ToSpaceShapeOutput() SpaceShapeOutput
+	ToSpaceShapeOutputWithContext(context.Context) SpaceShapeOutput
+}
+
+type SpaceShapeArgs struct {
+	// <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+	Index pulumi.StringPtrInput `pulumi:"index"`
+	// <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+	Nav pulumi.StringPtrInput `pulumi:"nav"`
+	// <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+	WhoCreates pulumi.StringPtrInput `pulumi:"whoCreates"`
+}
+
+func (SpaceShapeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpaceShape)(nil)).Elem()
+}
+
+func (i SpaceShapeArgs) ToSpaceShapeOutput() SpaceShapeOutput {
+	return i.ToSpaceShapeOutputWithContext(context.Background())
+}
+
+func (i SpaceShapeArgs) ToSpaceShapeOutputWithContext(ctx context.Context) SpaceShapeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpaceShapeOutput)
+}
+
+func (i SpaceShapeArgs) ToSpaceShapePtrOutput() SpaceShapePtrOutput {
+	return i.ToSpaceShapePtrOutputWithContext(context.Background())
+}
+
+func (i SpaceShapeArgs) ToSpaceShapePtrOutputWithContext(ctx context.Context) SpaceShapePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpaceShapeOutput).ToSpaceShapePtrOutputWithContext(ctx)
+}
+
+// SpaceShapePtrInput is an input type that accepts SpaceShapeArgs, SpaceShapePtr and SpaceShapePtrOutput values.
+// You can construct a concrete instance of `SpaceShapePtrInput` via:
+//
+//	        SpaceShapeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpaceShapePtrInput interface {
+	pulumi.Input
+
+	ToSpaceShapePtrOutput() SpaceShapePtrOutput
+	ToSpaceShapePtrOutputWithContext(context.Context) SpaceShapePtrOutput
+}
+
+type spaceShapePtrType SpaceShapeArgs
+
+func SpaceShapePtr(v *SpaceShapeArgs) SpaceShapePtrInput {
+	return (*spaceShapePtrType)(v)
+}
+
+func (*spaceShapePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpaceShape)(nil)).Elem()
+}
+
+func (i *spaceShapePtrType) ToSpaceShapePtrOutput() SpaceShapePtrOutput {
+	return i.ToSpaceShapePtrOutputWithContext(context.Background())
+}
+
+func (i *spaceShapePtrType) ToSpaceShapePtrOutputWithContext(ctx context.Context) SpaceShapePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpaceShapePtrOutput)
+}
+
+type SpaceShapeOutput struct{ *pulumi.OutputState }
+
+func (SpaceShapeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpaceShape)(nil)).Elem()
+}
+
+func (o SpaceShapeOutput) ToSpaceShapeOutput() SpaceShapeOutput {
+	return o
+}
+
+func (o SpaceShapeOutput) ToSpaceShapeOutputWithContext(ctx context.Context) SpaceShapeOutput {
+	return o
+}
+
+func (o SpaceShapeOutput) ToSpaceShapePtrOutput() SpaceShapePtrOutput {
+	return o.ToSpaceShapePtrOutputWithContext(context.Background())
+}
+
+func (o SpaceShapeOutput) ToSpaceShapePtrOutputWithContext(ctx context.Context) SpaceShapePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpaceShape) *SpaceShape {
+		return &v
+	}).(SpaceShapePtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+func (o SpaceShapeOutput) Index() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpaceShape) *string { return v.Index }).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+func (o SpaceShapeOutput) Nav() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpaceShape) *string { return v.Nav }).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+func (o SpaceShapeOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpaceShape) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+func (o SpaceShapeOutput) WhoCreates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpaceShape) *string { return v.WhoCreates }).(pulumi.StringPtrOutput)
+}
+
+type SpaceShapePtrOutput struct{ *pulumi.OutputState }
+
+func (SpaceShapePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpaceShape)(nil)).Elem()
+}
+
+func (o SpaceShapePtrOutput) ToSpaceShapePtrOutput() SpaceShapePtrOutput {
+	return o
+}
+
+func (o SpaceShapePtrOutput) ToSpaceShapePtrOutputWithContext(ctx context.Context) SpaceShapePtrOutput {
+	return o
+}
+
+func (o SpaceShapePtrOutput) Elem() SpaceShapeOutput {
+	return o.ApplyT(func(v *SpaceShape) SpaceShape {
+		if v != nil {
+			return *v
+		}
+		var ret SpaceShape
+		return ret
+	}).(SpaceShapeOutput)
+}
+
+// <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+func (o SpaceShapePtrOutput) Index() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpaceShape) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Index
+	}).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+func (o SpaceShapePtrOutput) Nav() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpaceShape) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Nav
+	}).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+func (o SpaceShapePtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpaceShape) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+// <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+func (o SpaceShapePtrOutput) WhoCreates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpaceShape) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WhoCreates
+	}).(pulumi.StringPtrOutput)
+}
+
 type StatusGroupsGroup struct {
 	// Starts folded.
 	Collapsed   *bool   `pulumi:"collapsed"`
@@ -149,9 +2187,266 @@ func (o StatusGroupsGroupArrayOutput) Index(i pulumi.IntInput) StatusGroupsGroup
 	}).(StatusGroupsGroupOutput)
 }
 
+type GetSpaceTypesType struct {
+	// What a piece is stored as: <span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>, <span pulumi-lang-nodejs="`event`" pulumi-lang-dotnet="`Event`" pulumi-lang-go="`event`" pulumi-lang-python="`event`" pulumi-lang-yaml="`event`" pulumi-lang-java="`event`" pulumi-lang-hcl="`event`">`event`</span> or <span pulumi-lang-nodejs="`incident`" pulumi-lang-dotnet="`Incident`" pulumi-lang-go="`incident`" pulumi-lang-python="`incident`" pulumi-lang-yaml="`incident`" pulumi-lang-java="`incident`" pulumi-lang-hcl="`incident`">`incident`</span>.
+	Backing string `pulumi:"backing"`
+	// What a container is called (<span pulumi-lang-nodejs="`collection`" pulumi-lang-dotnet="`Collection`" pulumi-lang-go="`collection`" pulumi-lang-python="`collection`" pulumi-lang-yaml="`collection`" pulumi-lang-java="`collection`" pulumi-lang-hcl="`collection`">`collection`</span>, <span pulumi-lang-nodejs="`category`" pulumi-lang-dotnet="`Category`" pulumi-lang-go="`category`" pulumi-lang-python="`category`" pulumi-lang-yaml="`category`" pulumi-lang-java="`category`" pulumi-lang-hcl="`category`">`category`</span>).
+	ContainerNames []string `pulumi:"containerNames"`
+	// The slug a space of this type gets by default.
+	DefaultSlug string `pulumi:"defaultSlug"`
+	// What it is.
+	Description string `pulumi:"description"`
+	// `PRIVATE` for a type that is always private.
+	ForcedVisibility string `pulumi:"forcedVisibility"`
+	// Its display name.
+	Name string `pulumi:"name"`
+	// What a piece is called (<span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`article`" pulumi-lang-dotnet="`Article`" pulumi-lang-go="`article`" pulumi-lang-python="`article`" pulumi-lang-yaml="`article`" pulumi-lang-java="`article`" pulumi-lang-hcl="`article`">`article`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>).
+	PieceNames []string `pulumi:"pieceNames"`
+	// The layouts <span pulumi-lang-nodejs="`piecePreset`" pulumi-lang-dotnet="`PiecePreset`" pulumi-lang-go="`piecePreset`" pulumi-lang-python="`piece_preset`" pulumi-lang-yaml="`piecePreset`" pulumi-lang-java="`piecePreset`" pulumi-lang-hcl="`piece_preset`">`piecePreset`</span> accepts.
+	PiecePresets []string `pulumi:"piecePresets"`
+	// The layouts <span pulumi-lang-nodejs="`preset`" pulumi-lang-dotnet="`Preset`" pulumi-lang-go="`preset`" pulumi-lang-python="`preset`" pulumi-lang-yaml="`preset`" pulumi-lang-java="`preset`" pulumi-lang-hcl="`preset`">`preset`</span> accepts for this type.
+	Presets []string `pulumi:"presets"`
+	// What it is for.
+	Purpose string `pulumi:"purpose"`
+	// The layout used when none is chosen.
+	RecommendedPreset string `pulumi:"recommendedPreset"`
+	// The console tabs the type has.
+	Tabs []string `pulumi:"tabs"`
+	// The type code.
+	Type string `pulumi:"type"`
+}
+
+// GetSpaceTypesTypeInput is an input type that accepts GetSpaceTypesTypeArgs and GetSpaceTypesTypeOutput values.
+// You can construct a concrete instance of `GetSpaceTypesTypeInput` via:
+//
+//	GetSpaceTypesTypeArgs{...}
+type GetSpaceTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetSpaceTypesTypeOutput() GetSpaceTypesTypeOutput
+	ToGetSpaceTypesTypeOutputWithContext(context.Context) GetSpaceTypesTypeOutput
+}
+
+type GetSpaceTypesTypeArgs struct {
+	// What a piece is stored as: <span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>, <span pulumi-lang-nodejs="`event`" pulumi-lang-dotnet="`Event`" pulumi-lang-go="`event`" pulumi-lang-python="`event`" pulumi-lang-yaml="`event`" pulumi-lang-java="`event`" pulumi-lang-hcl="`event`">`event`</span> or <span pulumi-lang-nodejs="`incident`" pulumi-lang-dotnet="`Incident`" pulumi-lang-go="`incident`" pulumi-lang-python="`incident`" pulumi-lang-yaml="`incident`" pulumi-lang-java="`incident`" pulumi-lang-hcl="`incident`">`incident`</span>.
+	Backing pulumi.StringInput `pulumi:"backing"`
+	// What a container is called (<span pulumi-lang-nodejs="`collection`" pulumi-lang-dotnet="`Collection`" pulumi-lang-go="`collection`" pulumi-lang-python="`collection`" pulumi-lang-yaml="`collection`" pulumi-lang-java="`collection`" pulumi-lang-hcl="`collection`">`collection`</span>, <span pulumi-lang-nodejs="`category`" pulumi-lang-dotnet="`Category`" pulumi-lang-go="`category`" pulumi-lang-python="`category`" pulumi-lang-yaml="`category`" pulumi-lang-java="`category`" pulumi-lang-hcl="`category`">`category`</span>).
+	ContainerNames pulumi.StringArrayInput `pulumi:"containerNames"`
+	// The slug a space of this type gets by default.
+	DefaultSlug pulumi.StringInput `pulumi:"defaultSlug"`
+	// What it is.
+	Description pulumi.StringInput `pulumi:"description"`
+	// `PRIVATE` for a type that is always private.
+	ForcedVisibility pulumi.StringInput `pulumi:"forcedVisibility"`
+	// Its display name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// What a piece is called (<span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`article`" pulumi-lang-dotnet="`Article`" pulumi-lang-go="`article`" pulumi-lang-python="`article`" pulumi-lang-yaml="`article`" pulumi-lang-java="`article`" pulumi-lang-hcl="`article`">`article`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>).
+	PieceNames pulumi.StringArrayInput `pulumi:"pieceNames"`
+	// The layouts <span pulumi-lang-nodejs="`piecePreset`" pulumi-lang-dotnet="`PiecePreset`" pulumi-lang-go="`piecePreset`" pulumi-lang-python="`piece_preset`" pulumi-lang-yaml="`piecePreset`" pulumi-lang-java="`piecePreset`" pulumi-lang-hcl="`piece_preset`">`piecePreset`</span> accepts.
+	PiecePresets pulumi.StringArrayInput `pulumi:"piecePresets"`
+	// The layouts <span pulumi-lang-nodejs="`preset`" pulumi-lang-dotnet="`Preset`" pulumi-lang-go="`preset`" pulumi-lang-python="`preset`" pulumi-lang-yaml="`preset`" pulumi-lang-java="`preset`" pulumi-lang-hcl="`preset`">`preset`</span> accepts for this type.
+	Presets pulumi.StringArrayInput `pulumi:"presets"`
+	// What it is for.
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// The layout used when none is chosen.
+	RecommendedPreset pulumi.StringInput `pulumi:"recommendedPreset"`
+	// The console tabs the type has.
+	Tabs pulumi.StringArrayInput `pulumi:"tabs"`
+	// The type code.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetSpaceTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpaceTypesType)(nil)).Elem()
+}
+
+func (i GetSpaceTypesTypeArgs) ToGetSpaceTypesTypeOutput() GetSpaceTypesTypeOutput {
+	return i.ToGetSpaceTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetSpaceTypesTypeArgs) ToGetSpaceTypesTypeOutputWithContext(ctx context.Context) GetSpaceTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpaceTypesTypeOutput)
+}
+
+// GetSpaceTypesTypeArrayInput is an input type that accepts GetSpaceTypesTypeArray and GetSpaceTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetSpaceTypesTypeArrayInput` via:
+//
+//	GetSpaceTypesTypeArray{ GetSpaceTypesTypeArgs{...} }
+type GetSpaceTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetSpaceTypesTypeArrayOutput() GetSpaceTypesTypeArrayOutput
+	ToGetSpaceTypesTypeArrayOutputWithContext(context.Context) GetSpaceTypesTypeArrayOutput
+}
+
+type GetSpaceTypesTypeArray []GetSpaceTypesTypeInput
+
+func (GetSpaceTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpaceTypesType)(nil)).Elem()
+}
+
+func (i GetSpaceTypesTypeArray) ToGetSpaceTypesTypeArrayOutput() GetSpaceTypesTypeArrayOutput {
+	return i.ToGetSpaceTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpaceTypesTypeArray) ToGetSpaceTypesTypeArrayOutputWithContext(ctx context.Context) GetSpaceTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpaceTypesTypeArrayOutput)
+}
+
+type GetSpaceTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetSpaceTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpaceTypesType)(nil)).Elem()
+}
+
+func (o GetSpaceTypesTypeOutput) ToGetSpaceTypesTypeOutput() GetSpaceTypesTypeOutput {
+	return o
+}
+
+func (o GetSpaceTypesTypeOutput) ToGetSpaceTypesTypeOutputWithContext(ctx context.Context) GetSpaceTypesTypeOutput {
+	return o
+}
+
+// What a piece is stored as: <span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>, <span pulumi-lang-nodejs="`event`" pulumi-lang-dotnet="`Event`" pulumi-lang-go="`event`" pulumi-lang-python="`event`" pulumi-lang-yaml="`event`" pulumi-lang-java="`event`" pulumi-lang-hcl="`event`">`event`</span> or <span pulumi-lang-nodejs="`incident`" pulumi-lang-dotnet="`Incident`" pulumi-lang-go="`incident`" pulumi-lang-python="`incident`" pulumi-lang-yaml="`incident`" pulumi-lang-java="`incident`" pulumi-lang-hcl="`incident`">`incident`</span>.
+func (o GetSpaceTypesTypeOutput) Backing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.Backing }).(pulumi.StringOutput)
+}
+
+// What a container is called (<span pulumi-lang-nodejs="`collection`" pulumi-lang-dotnet="`Collection`" pulumi-lang-go="`collection`" pulumi-lang-python="`collection`" pulumi-lang-yaml="`collection`" pulumi-lang-java="`collection`" pulumi-lang-hcl="`collection`">`collection`</span>, <span pulumi-lang-nodejs="`category`" pulumi-lang-dotnet="`Category`" pulumi-lang-go="`category`" pulumi-lang-python="`category`" pulumi-lang-yaml="`category`" pulumi-lang-java="`category`" pulumi-lang-hcl="`category`">`category`</span>).
+func (o GetSpaceTypesTypeOutput) ContainerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) []string { return v.ContainerNames }).(pulumi.StringArrayOutput)
+}
+
+// The slug a space of this type gets by default.
+func (o GetSpaceTypesTypeOutput) DefaultSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.DefaultSlug }).(pulumi.StringOutput)
+}
+
+// What it is.
+func (o GetSpaceTypesTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// `PRIVATE` for a type that is always private.
+func (o GetSpaceTypesTypeOutput) ForcedVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.ForcedVisibility }).(pulumi.StringOutput)
+}
+
+// Its display name.
+func (o GetSpaceTypesTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// What a piece is called (<span pulumi-lang-nodejs="`page`" pulumi-lang-dotnet="`Page`" pulumi-lang-go="`page`" pulumi-lang-python="`page`" pulumi-lang-yaml="`page`" pulumi-lang-java="`page`" pulumi-lang-hcl="`page`">`page`</span>, <span pulumi-lang-nodejs="`article`" pulumi-lang-dotnet="`Article`" pulumi-lang-go="`article`" pulumi-lang-python="`article`" pulumi-lang-yaml="`article`" pulumi-lang-java="`article`" pulumi-lang-hcl="`article`">`article`</span>, <span pulumi-lang-nodejs="`topic`" pulumi-lang-dotnet="`Topic`" pulumi-lang-go="`topic`" pulumi-lang-python="`topic`" pulumi-lang-yaml="`topic`" pulumi-lang-java="`topic`" pulumi-lang-hcl="`topic`">`topic`</span>).
+func (o GetSpaceTypesTypeOutput) PieceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) []string { return v.PieceNames }).(pulumi.StringArrayOutput)
+}
+
+// The layouts <span pulumi-lang-nodejs="`piecePreset`" pulumi-lang-dotnet="`PiecePreset`" pulumi-lang-go="`piecePreset`" pulumi-lang-python="`piece_preset`" pulumi-lang-yaml="`piecePreset`" pulumi-lang-java="`piecePreset`" pulumi-lang-hcl="`piece_preset`">`piecePreset`</span> accepts.
+func (o GetSpaceTypesTypeOutput) PiecePresets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) []string { return v.PiecePresets }).(pulumi.StringArrayOutput)
+}
+
+// The layouts <span pulumi-lang-nodejs="`preset`" pulumi-lang-dotnet="`Preset`" pulumi-lang-go="`preset`" pulumi-lang-python="`preset`" pulumi-lang-yaml="`preset`" pulumi-lang-java="`preset`" pulumi-lang-hcl="`preset`">`preset`</span> accepts for this type.
+func (o GetSpaceTypesTypeOutput) Presets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) []string { return v.Presets }).(pulumi.StringArrayOutput)
+}
+
+// What it is for.
+func (o GetSpaceTypesTypeOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// The layout used when none is chosen.
+func (o GetSpaceTypesTypeOutput) RecommendedPreset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.RecommendedPreset }).(pulumi.StringOutput)
+}
+
+// The console tabs the type has.
+func (o GetSpaceTypesTypeOutput) Tabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) []string { return v.Tabs }).(pulumi.StringArrayOutput)
+}
+
+// The type code.
+func (o GetSpaceTypesTypeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpaceTypesType) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetSpaceTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpaceTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpaceTypesType)(nil)).Elem()
+}
+
+func (o GetSpaceTypesTypeArrayOutput) ToGetSpaceTypesTypeArrayOutput() GetSpaceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetSpaceTypesTypeArrayOutput) ToGetSpaceTypesTypeArrayOutputWithContext(ctx context.Context) GetSpaceTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetSpaceTypesTypeArrayOutput) Index(i pulumi.IntInput) GetSpaceTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpaceTypesType {
+		return vs[0].([]GetSpaceTypesType)[vs[1].(int)]
+	}).(GetSpaceTypesTypeOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionNavInput)(nil)).Elem(), CollectionNavArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionNavPtrInput)(nil)).Elem(), CollectionNavArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionSeoInput)(nil)).Elem(), CollectionSeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionSeoPtrInput)(nil)).Elem(), CollectionSeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionTranslationsInput)(nil)).Elem(), CollectionTranslationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionTranslationsMapInput)(nil)).Elem(), CollectionTranslationsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAppearanceInput)(nil)).Elem(), ConnectorAppearanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAppearancePtrInput)(nil)).Elem(), ConnectorAppearanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainDnsTargetInput)(nil)).Elem(), DomainDnsTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainDnsTargetPtrInput)(nil)).Elem(), DomainDnsTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainVerificationRecordInput)(nil)).Elem(), DomainVerificationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainVerificationRecordPtrInput)(nil)).Elem(), DomainVerificationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForumCategoryRequiredTagGroupInput)(nil)).Elem(), ForumCategoryRequiredTagGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForumCategoryRequiredTagGroupArrayInput)(nil)).Elem(), ForumCategoryRequiredTagGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForumCategoryTranslationsInput)(nil)).Elem(), ForumCategoryTranslationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForumCategoryTranslationsMapInput)(nil)).Elem(), ForumCategoryTranslationsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageMetadataInput)(nil)).Elem(), PageMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageMetadataPtrInput)(nil)).Elem(), PageMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SitePageMountInput)(nil)).Elem(), SitePageMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SitePageMountArrayInput)(nil)).Elem(), SitePageMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpaceSettingsRedirectInput)(nil)).Elem(), SpaceSettingsRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpaceSettingsRedirectArrayInput)(nil)).Elem(), SpaceSettingsRedirectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpaceShapeInput)(nil)).Elem(), SpaceShapeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpaceShapePtrInput)(nil)).Elem(), SpaceShapeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusGroupsGroupInput)(nil)).Elem(), StatusGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusGroupsGroupArrayInput)(nil)).Elem(), StatusGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpaceTypesTypeInput)(nil)).Elem(), GetSpaceTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpaceTypesTypeArrayInput)(nil)).Elem(), GetSpaceTypesTypeArray{})
+	pulumi.RegisterOutputType(CollectionNavOutput{})
+	pulumi.RegisterOutputType(CollectionNavPtrOutput{})
+	pulumi.RegisterOutputType(CollectionSeoOutput{})
+	pulumi.RegisterOutputType(CollectionSeoPtrOutput{})
+	pulumi.RegisterOutputType(CollectionTranslationsOutput{})
+	pulumi.RegisterOutputType(CollectionTranslationsMapOutput{})
+	pulumi.RegisterOutputType(ConnectorAppearanceOutput{})
+	pulumi.RegisterOutputType(ConnectorAppearancePtrOutput{})
+	pulumi.RegisterOutputType(DomainDnsTargetOutput{})
+	pulumi.RegisterOutputType(DomainDnsTargetPtrOutput{})
+	pulumi.RegisterOutputType(DomainVerificationRecordOutput{})
+	pulumi.RegisterOutputType(DomainVerificationRecordPtrOutput{})
+	pulumi.RegisterOutputType(ForumCategoryRequiredTagGroupOutput{})
+	pulumi.RegisterOutputType(ForumCategoryRequiredTagGroupArrayOutput{})
+	pulumi.RegisterOutputType(ForumCategoryTranslationsOutput{})
+	pulumi.RegisterOutputType(ForumCategoryTranslationsMapOutput{})
+	pulumi.RegisterOutputType(PageMetadataOutput{})
+	pulumi.RegisterOutputType(PageMetadataPtrOutput{})
+	pulumi.RegisterOutputType(SitePageMountOutput{})
+	pulumi.RegisterOutputType(SitePageMountArrayOutput{})
+	pulumi.RegisterOutputType(SpaceSettingsRedirectOutput{})
+	pulumi.RegisterOutputType(SpaceSettingsRedirectArrayOutput{})
+	pulumi.RegisterOutputType(SpaceShapeOutput{})
+	pulumi.RegisterOutputType(SpaceShapePtrOutput{})
 	pulumi.RegisterOutputType(StatusGroupsGroupOutput{})
 	pulumi.RegisterOutputType(StatusGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetSpaceTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetSpaceTypesTypeArrayOutput{})
 }

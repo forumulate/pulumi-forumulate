@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A custom metric on a status page — what it is called, its unit, how a chart bucket folds its points, whether the page draws it, its axis and threshold line.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const errorRate = new forumulate.StatusMetric("error_rate", {
+ *     spaceId: statusSpaceId,
+ *     key: "error-rate",
+ *     name: "Error rate",
+ *     unit: "%",
+ *     decimals: 2,
+ *     threshold: 1,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import forumulate:index/statusMetric:StatusMetric error_rate STATUS_SPACE_ID/error-rate
+ * ```
+ */
 export class StatusMetric extends pulumi.CustomResource {
     /**
      * Get an existing StatusMetric resource's state with the given name, ID, and optional extra

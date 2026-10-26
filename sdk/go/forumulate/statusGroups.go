@@ -12,6 +12,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The component groups of a status page, in page order: what each says about itself, which sits inside which, which starts folded, its row layout and whether its rows print uptime.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := forumulate.NewStatusGroups(ctx, "page", &forumulate.StatusGroupsArgs{
+//				Groups: forumulate.StatusGroupsGroupArray{
+//					&forumulate.StatusGroupsGroupArgs{
+//						Name:        pulumi.String("Core"),
+//						Description: pulumi.String("What every customer touches."),
+//					},
+//					&forumulate.StatusGroupsGroupArgs{
+//						Name:       pulumi.String("Integrations"),
+//						Layout:     pulumi.String("grid-2"),
+//						HideUptime: pulumi.Bool(true),
+//					},
+//				},
+//				SpaceId: pulumi.Any(statusSpaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import forumulate:index/statusGroups:StatusGroups page STATUS_SPACE_ID
+// ```
 type StatusGroups struct {
 	pulumi.CustomResourceState
 

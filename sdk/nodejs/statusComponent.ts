@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A component of a status page: an HTTP, heartbeat, protocol (TCP, UDP, ping, DNS, TLS, SMTP, IMAP, POP3, domain), browser, manual, rolled-up or vendor-mirrored check.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as forumulate from "@forumulate/pulumi";
+ *
+ * const api = new forumulate.StatusComponent("api", {
+ *     spaceId: statusSpaceId,
+ *     name: "API",
+ *     url: "https://api.example.com/health",
+ *     group: "Core",
+ *     regions: [
+ *         "eu-west",
+ *         "us-east",
+ *     ],
+ *     confirmRegions: 2,
+ *     barDays: 90,
+ *     intervalSeconds: 60,
+ * });
+ * const database = new forumulate.StatusComponent("database", {
+ *     spaceId: statusSpaceId,
+ *     name: "Database",
+ *     kind: "tcp",
+ *     group: "Core",
+ *     probeJson: JSON.stringify({
+ *         host: "db.example.com",
+ *         port: 5432,
+ *     }),
+ * });
+ * const nightlyBackup = new forumulate.StatusComponent("nightly_backup", {
+ *     spaceId: statusSpaceId,
+ *     name: "Nightly backup",
+ *     kind: "heartbeat",
+ *     intervalSeconds: 90000,
+ *     display: "status",
+ * });
+ * export const backupPingUrl = nightlyBackup.pingUrl;
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import forumulate:index/statusComponent:StatusComponent api STATUS_SPACE_ID/COMPONENT_ID
+ * ```
+ */
 export class StatusComponent extends pulumi.CustomResource {
     /**
      * Get an existing StatusComponent resource's state with the given name, ID, and optional extra

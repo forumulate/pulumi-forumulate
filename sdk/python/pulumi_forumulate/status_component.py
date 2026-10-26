@@ -874,7 +874,53 @@ class StatusComponent(pulumi.CustomResource):
                  visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Create a StatusComponent resource with the given unique name, props, and options.
+        A component of a status page: an HTTP, heartbeat, protocol (TCP, UDP, ping, DNS, TLS, SMTP, IMAP, POP3, domain), browser, manual, rolled-up or vendor-mirrored check.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import json
+        import pulumi_forumulate as forumulate
+
+        api = forumulate.StatusComponent("api",
+            space_id=status_space_id,
+            name="API",
+            url="https://api.example.com/health",
+            group="Core",
+            regions=[
+                "eu-west",
+                "us-east",
+            ],
+            confirm_regions=2,
+            bar_days=90,
+            interval_seconds=60)
+        database = forumulate.StatusComponent("database",
+            space_id=status_space_id,
+            name="Database",
+            kind="tcp",
+            group="Core",
+            probe_json=json.dumps({
+                "host": "db.example.com",
+                "port": 5432,
+            }))
+        nightly_backup = forumulate.StatusComponent("nightly_backup",
+            space_id=status_space_id,
+            name="Nightly backup",
+            kind="heartbeat",
+            interval_seconds=90000,
+            display="status")
+        pulumi.export("backupPingUrl", nightly_backup.ping_url)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusComponent:StatusComponent api STATUS_SPACE_ID/COMPONENT_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -910,7 +956,53 @@ class StatusComponent(pulumi.CustomResource):
                  args: StatusComponentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a StatusComponent resource with the given unique name, props, and options.
+        A component of a status page: an HTTP, heartbeat, protocol (TCP, UDP, ping, DNS, TLS, SMTP, IMAP, POP3, domain), browser, manual, rolled-up or vendor-mirrored check.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import json
+        import pulumi_forumulate as forumulate
+
+        api = forumulate.StatusComponent("api",
+            space_id=status_space_id,
+            name="API",
+            url="https://api.example.com/health",
+            group="Core",
+            regions=[
+                "eu-west",
+                "us-east",
+            ],
+            confirm_regions=2,
+            bar_days=90,
+            interval_seconds=60)
+        database = forumulate.StatusComponent("database",
+            space_id=status_space_id,
+            name="Database",
+            kind="tcp",
+            group="Core",
+            probe_json=json.dumps({
+                "host": "db.example.com",
+                "port": 5432,
+            }))
+        nightly_backup = forumulate.StatusComponent("nightly_backup",
+            space_id=status_space_id,
+            name="Nightly backup",
+            kind="heartbeat",
+            interval_seconds=90000,
+            display="status")
+        pulumi.export("backupPingUrl", nightly_backup.ping_url)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusComponent:StatusComponent api STATUS_SPACE_ID/COMPONENT_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param StatusComponentArgs args: The arguments to use to populate this resource's properties.

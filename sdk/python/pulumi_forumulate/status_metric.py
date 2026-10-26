@@ -372,7 +372,31 @@ class StatusMetric(pulumi.CustomResource):
                  visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Create a StatusMetric resource with the given unique name, props, and options.
+        A custom metric on a status page — what it is called, its unit, how a chart bucket folds its points, whether the page draws it, its axis and threshold line.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        error_rate = forumulate.StatusMetric("error_rate",
+            space_id=status_space_id,
+            key="error-rate",
+            name="Error rate",
+            unit="%",
+            decimals=2,
+            threshold=float(1))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusMetric:StatusMetric error_rate STATUS_SPACE_ID/error-rate
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -388,7 +412,31 @@ class StatusMetric(pulumi.CustomResource):
                  args: StatusMetricArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a StatusMetric resource with the given unique name, props, and options.
+        A custom metric on a status page — what it is called, its unit, how a chart bucket folds its points, whether the page draws it, its axis and threshold line.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_forumulate as forumulate
+
+        error_rate = forumulate.StatusMetric("error_rate",
+            space_id=status_space_id,
+            key="error-rate",
+            name="Error rate",
+            unit="%",
+            decimals=2,
+            threshold=float(1))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import forumulate:index/statusMetric:StatusMetric error_rate STATUS_SPACE_ID/error-rate
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param StatusMetricArgs args: The arguments to use to populate this resource's properties.

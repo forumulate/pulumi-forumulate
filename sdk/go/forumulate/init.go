@@ -21,6 +21,30 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "forumulate:index/collection:Collection":
+		r = &Collection{}
+	case "forumulate:index/connector:Connector":
+		r = &Connector{}
+	case "forumulate:index/domain:Domain":
+		r = &Domain{}
+	case "forumulate:index/forumCategory:ForumCategory":
+		r = &ForumCategory{}
+	case "forumulate:index/orgSetting:OrgSetting":
+		r = &OrgSetting{}
+	case "forumulate:index/page:Page":
+		r = &Page{}
+	case "forumulate:index/serviceConnector:ServiceConnector":
+		r = &ServiceConnector{}
+	case "forumulate:index/site:Site":
+		r = &Site{}
+	case "forumulate:index/siteManifest:SiteManifest":
+		r = &SiteManifest{}
+	case "forumulate:index/space:Space":
+		r = &Space{}
+	case "forumulate:index/spaceLocale:SpaceLocale":
+		r = &SpaceLocale{}
+	case "forumulate:index/spaceSettings:SpaceSettings":
+		r = &SpaceSettings{}
 	case "forumulate:index/statusComponent:StatusComponent":
 		r = &StatusComponent{}
 	case "forumulate:index/statusGroups:StatusGroups":
@@ -29,6 +53,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StatusIncidentTemplate{}
 	case "forumulate:index/statusMetric:StatusMetric":
 		r = &StatusMetric{}
+	case "forumulate:index/translationOverride:TranslationOverride":
+		r = &TranslationOverride{}
+	case "forumulate:index/webhook:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -62,6 +90,66 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"forumulate",
+		"index/collection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/connector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/forumCategory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/orgSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/page",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/serviceConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/site",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/siteManifest",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/space",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/spaceLocale",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/spaceSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
 		"index/statusComponent",
 		&module{version},
 	)
@@ -78,6 +166,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"forumulate",
 		"index/statusMetric",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/translationOverride",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"forumulate",
+		"index/webhook",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

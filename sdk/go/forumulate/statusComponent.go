@@ -12,6 +12,82 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A component of a status page: an HTTP, heartbeat, protocol (TCP, UDP, ping, DNS, TLS, SMTP, IMAP, POP3, domain), browser, manual, rolled-up or vendor-mirrored check.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := forumulate.NewStatusComponent(ctx, "api", &forumulate.StatusComponentArgs{
+//				SpaceId: pulumi.Any(statusSpaceId),
+//				Name:    pulumi.String("API"),
+//				Url:     pulumi.String("https://api.example.com/health"),
+//				Group:   pulumi.String("Core"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("eu-west"),
+//					pulumi.String("us-east"),
+//				},
+//				ConfirmRegions:  pulumi.Int(2),
+//				BarDays:         pulumi.Int(90),
+//				IntervalSeconds: pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"host": "db.example.com",
+//				"port": 5432,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = forumulate.NewStatusComponent(ctx, "database", &forumulate.StatusComponentArgs{
+//				SpaceId:   pulumi.Any(statusSpaceId),
+//				Name:      pulumi.String("Database"),
+//				Kind:      pulumi.String("tcp"),
+//				Group:     pulumi.String("Core"),
+//				ProbeJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nightlyBackup, err := forumulate.NewStatusComponent(ctx, "nightly_backup", &forumulate.StatusComponentArgs{
+//				SpaceId:         pulumi.Any(statusSpaceId),
+//				Name:            pulumi.String("Nightly backup"),
+//				Kind:            pulumi.String("heartbeat"),
+//				IntervalSeconds: pulumi.Int(90000),
+//				Display:         pulumi.String("status"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("backupPingUrl", nightlyBackup.PingUrl)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import forumulate:index/statusComponent:StatusComponent api STATUS_SPACE_ID/COMPONENT_ID
+// ```
 type StatusComponent struct {
 	pulumi.CustomResourceState
 

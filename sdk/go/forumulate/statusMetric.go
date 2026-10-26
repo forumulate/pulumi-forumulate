@@ -12,6 +12,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A custom metric on a status page — what it is called, its unit, how a chart bucket folds its points, whether the page draws it, its axis and threshold line.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/forumulate/pulumi-forumulate/sdk/go/forumulate"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := forumulate.NewStatusMetric(ctx, "error_rate", &forumulate.StatusMetricArgs{
+//				SpaceId:   pulumi.Any(statusSpaceId),
+//				Key:       pulumi.String("error-rate"),
+//				Name:      pulumi.String("Error rate"),
+//				Unit:      pulumi.String("%"),
+//				Decimals:  pulumi.Int(2),
+//				Threshold: pulumi.Float64(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import forumulate:index/statusMetric:StatusMetric error_rate STATUS_SPACE_ID/error-rate
+// ```
 type StatusMetric struct {
 	pulumi.CustomResourceState
 

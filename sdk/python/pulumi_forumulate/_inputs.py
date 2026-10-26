@@ -15,9 +15,1094 @@ else:
 from . import _utilities
 
 __all__ = [
+    'CollectionNavArgs',
+    'CollectionNavArgsDict',
+    'CollectionSeoArgs',
+    'CollectionSeoArgsDict',
+    'CollectionTranslationsArgs',
+    'CollectionTranslationsArgsDict',
+    'ConnectorAppearanceArgs',
+    'ConnectorAppearanceArgsDict',
+    'DomainDnsTargetArgs',
+    'DomainDnsTargetArgsDict',
+    'DomainVerificationRecordArgs',
+    'DomainVerificationRecordArgsDict',
+    'ForumCategoryRequiredTagGroupArgs',
+    'ForumCategoryRequiredTagGroupArgsDict',
+    'ForumCategoryTranslationsArgs',
+    'ForumCategoryTranslationsArgsDict',
+    'PageMetadataArgs',
+    'PageMetadataArgsDict',
+    'SitePageMountArgs',
+    'SitePageMountArgsDict',
+    'SpaceSettingsRedirectArgs',
+    'SpaceSettingsRedirectArgsDict',
+    'SpaceShapeArgs',
+    'SpaceShapeArgsDict',
     'StatusGroupsGroupArgs',
     'StatusGroupsGroupArgsDict',
 ]
+
+class CollectionNavArgsDict(TypedDict):
+    audience_principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Limit the collection to readers with one of these principals (up to 20).
+    """
+    audience_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Limit the collection to readers with one of these roles (up to 20).
+    """
+    back_style: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+    """
+    collapsed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Start the group collapsed.
+    """
+    hub_cards: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Draw the landing page as cards.
+    """
+    icon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A named icon, or a custom icon (path, URL or emoji).
+    """
+    link_hub: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Make the group's heading link to its landing page.
+    """
+    nav_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+    """
+
+@pulumi.input_type
+class CollectionNavArgs:
+    def __init__(__self__, *,
+                 audience_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audience_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 back_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 collapsed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hub_cards: pulumi.Input[Optional[_builtins.bool]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_hub: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nav_scope: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audience_principals: Limit the collection to readers with one of these principals (up to 20).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audience_roles: Limit the collection to readers with one of these roles (up to 20).
+        :param pulumi.Input[_builtins.str] back_style: <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+        :param pulumi.Input[_builtins.bool] collapsed: Start the group collapsed.
+        :param pulumi.Input[_builtins.bool] hub_cards: Draw the landing page as cards.
+        :param pulumi.Input[_builtins.str] icon: A named icon, or a custom icon (path, URL or emoji).
+        :param pulumi.Input[_builtins.bool] link_hub: Make the group's heading link to its landing page.
+        :param pulumi.Input[_builtins.str] nav_scope: <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+        """
+        if audience_principals is not None:
+            pulumi.set(__self__, "audience_principals", audience_principals)
+        if audience_roles is not None:
+            pulumi.set(__self__, "audience_roles", audience_roles)
+        if back_style is not None:
+            pulumi.set(__self__, "back_style", back_style)
+        if collapsed is not None:
+            pulumi.set(__self__, "collapsed", collapsed)
+        if hub_cards is not None:
+            pulumi.set(__self__, "hub_cards", hub_cards)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if link_hub is not None:
+            pulumi.set(__self__, "link_hub", link_hub)
+        if nav_scope is not None:
+            pulumi.set(__self__, "nav_scope", nav_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="audiencePrincipals")
+    def audience_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Limit the collection to readers with one of these principals (up to 20).
+        """
+        return pulumi.get(self, "audience_principals")
+
+    @audience_principals.setter
+    def audience_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "audience_principals", value)
+
+    @_builtins.property
+    @pulumi.getter(name="audienceRoles")
+    def audience_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Limit the collection to readers with one of these roles (up to 20).
+        """
+        return pulumi.get(self, "audience_roles")
+
+    @audience_roles.setter
+    def audience_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "audience_roles", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backStyle")
+    def back_style(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`link`" pulumi-lang-dotnet="`Link`" pulumi-lang-go="`link`" pulumi-lang-python="`link`" pulumi-lang-yaml="`link`" pulumi-lang-java="`link`" pulumi-lang-hcl="`link`">`link`</span> or <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`" pulumi-lang-hcl="`title`">`title`</span>: the way back out of an isolated collection.
+        """
+        return pulumi.get(self, "back_style")
+
+    @back_style.setter
+    def back_style(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "back_style", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def collapsed(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Start the group collapsed.
+        """
+        return pulumi.get(self, "collapsed")
+
+    @collapsed.setter
+    def collapsed(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "collapsed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hubCards")
+    def hub_cards(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Draw the landing page as cards.
+        """
+        return pulumi.get(self, "hub_cards")
+
+    @hub_cards.setter
+    def hub_cards(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "hub_cards", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A named icon, or a custom icon (path, URL or emoji).
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+    @_builtins.property
+    @pulumi.getter(name="linkHub")
+    def link_hub(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Make the group's heading link to its landing page.
+        """
+        return pulumi.get(self, "link_hub")
+
+    @link_hub.setter
+    def link_hub(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "link_hub", value)
+
+    @_builtins.property
+    @pulumi.getter(name="navScope")
+    def nav_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`shared`" pulumi-lang-dotnet="`Shared`" pulumi-lang-go="`shared`" pulumi-lang-python="`shared`" pulumi-lang-yaml="`shared`" pulumi-lang-java="`shared`" pulumi-lang-hcl="`shared`">`shared`</span>, or <span pulumi-lang-nodejs="`isolated`" pulumi-lang-dotnet="`Isolated`" pulumi-lang-go="`isolated`" pulumi-lang-python="`isolated`" pulumi-lang-yaml="`isolated`" pulumi-lang-java="`isolated`" pulumi-lang-hcl="`isolated`">`isolated`</span> to show only this collection's pages in the sidebar.
+        """
+        return pulumi.get(self, "nav_scope")
+
+    @nav_scope.setter
+    def nav_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nav_scope", value)
+
+
+class CollectionSeoArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The meta description, up to 320 characters.
+    """
+    index: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+    """
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The `<title>`, up to 120 characters.
+    """
+
+@pulumi.input_type
+class CollectionSeoArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: The meta description, up to 320 characters.
+        :param pulumi.Input[_builtins.str] index: <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+        :param pulumi.Input[_builtins.str] title: The `<title>`, up to 120 characters.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The meta description, up to 320 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def index(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`auto`" pulumi-lang-dotnet="`Auto`" pulumi-lang-go="`auto`" pulumi-lang-python="`auto`" pulumi-lang-yaml="`auto`" pulumi-lang-java="`auto`" pulumi-lang-hcl="`auto`">`auto`</span> (indexed unless thin), <span pulumi-lang-nodejs="`index`" pulumi-lang-dotnet="`Index`" pulumi-lang-go="`index`" pulumi-lang-python="`index`" pulumi-lang-yaml="`index`" pulumi-lang-java="`index`" pulumi-lang-hcl="`index`">`index`</span> or <span pulumi-lang-nodejs="`noindex`" pulumi-lang-dotnet="`Noindex`" pulumi-lang-go="`noindex`" pulumi-lang-python="`noindex`" pulumi-lang-yaml="`noindex`" pulumi-lang-java="`noindex`" pulumi-lang-hcl="`noindex`">`noindex`</span>.
+        """
+        return pulumi.get(self, "index")
+
+    @index.setter
+    def index(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "index", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The `<title>`, up to 120 characters.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "title", value)
+
+
+class CollectionTranslationsArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description in this language (up to 2000 characters).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name in this language (up to 200 characters).
+    """
+
+@pulumi.input_type
+class CollectionTranslationsArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: The description in this language (up to 2000 characters).
+        :param pulumi.Input[_builtins.str] name: The name in this language (up to 200 characters).
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description in this language (up to 2000 characters).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name in this language (up to 200 characters).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class ConnectorAppearanceArgsDict(TypedDict):
+    color_scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+    """
+    greeting: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The widget's greeting, up to 200 characters.
+    """
+    position: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+    """
+    primary_color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The widget colour, six-digit hex with the leading `#`.
+    """
+
+@pulumi.input_type
+class ConnectorAppearanceArgs:
+    def __init__(__self__, *,
+                 color_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 greeting: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_color: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] color_scheme: <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+        :param pulumi.Input[_builtins.str] greeting: The widget's greeting, up to 200 characters.
+        :param pulumi.Input[_builtins.str] position: <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+        :param pulumi.Input[_builtins.str] primary_color: The widget colour, six-digit hex with the leading `#`.
+        """
+        if color_scheme is not None:
+            pulumi.set(__self__, "color_scheme", color_scheme)
+        if greeting is not None:
+            pulumi.set(__self__, "greeting", greeting)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if primary_color is not None:
+            pulumi.set(__self__, "primary_color", primary_color)
+
+    @_builtins.property
+    @pulumi.getter(name="colorScheme")
+    def color_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`system`" pulumi-lang-dotnet="`System`" pulumi-lang-go="`system`" pulumi-lang-python="`system`" pulumi-lang-yaml="`system`" pulumi-lang-java="`system`" pulumi-lang-hcl="`system`">`system`</span>, <span pulumi-lang-nodejs="`light`" pulumi-lang-dotnet="`Light`" pulumi-lang-go="`light`" pulumi-lang-python="`light`" pulumi-lang-yaml="`light`" pulumi-lang-java="`light`" pulumi-lang-hcl="`light`">`light`</span> or <span pulumi-lang-nodejs="`dark`" pulumi-lang-dotnet="`Dark`" pulumi-lang-go="`dark`" pulumi-lang-python="`dark`" pulumi-lang-yaml="`dark`" pulumi-lang-java="`dark`" pulumi-lang-hcl="`dark`">`dark`</span>.
+        """
+        return pulumi.get(self, "color_scheme")
+
+    @color_scheme.setter
+    def color_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "color_scheme", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def greeting(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The widget's greeting, up to 200 characters.
+        """
+        return pulumi.get(self, "greeting")
+
+    @greeting.setter
+    def greeting(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "greeting", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`left`" pulumi-lang-dotnet="`Left`" pulumi-lang-go="`left`" pulumi-lang-python="`left`" pulumi-lang-yaml="`left`" pulumi-lang-java="`left`" pulumi-lang-hcl="`left`">`left`</span> or <span pulumi-lang-nodejs="`right`" pulumi-lang-dotnet="`Right`" pulumi-lang-go="`right`" pulumi-lang-python="`right`" pulumi-lang-yaml="`right`" pulumi-lang-java="`right`" pulumi-lang-hcl="`right`">`right`</span>.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "position", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryColor")
+    def primary_color(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The widget colour, six-digit hex with the leading `#`.
+        """
+        return pulumi.get(self, "primary_color")
+
+    @primary_color.setter
+    def primary_color(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "primary_color", value)
+
+
+class DomainDnsTargetArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The record's host name.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The DNS record type (`A`, `CNAME`).
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The record's value.
+    """
+
+@pulumi.input_type
+class DomainDnsTargetArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The record's host name.
+        :param pulumi.Input[_builtins.str] type: The DNS record type (`A`, `CNAME`).
+        :param pulumi.Input[_builtins.str] value: The record's value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The record's host name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The DNS record type (`A`, `CNAME`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The record's value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class DomainVerificationRecordArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The record's host name.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The record's value.
+    """
+
+@pulumi.input_type
+class DomainVerificationRecordArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The record's host name.
+        :param pulumi.Input[_builtins.str] value: The record's value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The record's host name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The record's value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class ForumCategoryRequiredTagGroupArgsDict(TypedDict):
+    min_count: pulumi.Input[_builtins.int]
+    """
+    How many tags from the group, 1 to 12.
+    """
+    tag_group_id: pulumi.Input[_builtins.str]
+    """
+    The tag group's id.
+    """
+
+@pulumi.input_type
+class ForumCategoryRequiredTagGroupArgs:
+    def __init__(__self__, *,
+                 min_count: pulumi.Input[_builtins.int],
+                 tag_group_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] min_count: How many tags from the group, 1 to 12.
+        :param pulumi.Input[_builtins.str] tag_group_id: The tag group's id.
+        """
+        pulumi.set(__self__, "min_count", min_count)
+        pulumi.set(__self__, "tag_group_id", tag_group_id)
+
+    @_builtins.property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> pulumi.Input[_builtins.int]:
+        """
+        How many tags from the group, 1 to 12.
+        """
+        return pulumi.get(self, "min_count")
+
+    @min_count.setter
+    def min_count(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "min_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagGroupId")
+    def tag_group_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The tag group's id.
+        """
+        return pulumi.get(self, "tag_group_id")
+
+    @tag_group_id.setter
+    def tag_group_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tag_group_id", value)
+
+
+class ForumCategoryTranslationsArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description in this language (up to 2000 characters).
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name in this language (up to 200 characters).
+    """
+
+@pulumi.input_type
+class ForumCategoryTranslationsArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: The description in this language (up to 2000 characters).
+        :param pulumi.Input[_builtins.str] name: The name in this language (up to 200 characters).
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description in this language (up to 2000 characters).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name in this language (up to 200 characters).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class PageMetadataArgsDict(TypedDict):
+    canonical_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The canonical URL when it is not the page's own address.
+    """
+    cover_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A cover image: an uploaded path or an http(s) URL.
+    """
+    hide_from_nav: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Leave the page out of the sidebar.
+    """
+    icon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A named icon or a custom icon (path, URL, emoji).
+    """
+    nav_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A shorter title for the sidebar (up to 80 characters).
+    """
+    noindex: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Ask search engines not to index the page.
+    """
+    search_exclude: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Leave the page out of search.
+    """
+    seo_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The meta description (up to 400 characters).
+    """
+    seo_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The `<title>` (up to 200 characters).
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Up to 12 tags, 60 characters each.
+    """
+
+@pulumi.input_type
+class PageMetadataArgs:
+    def __init__(__self__, *,
+                 canonical_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 hide_from_nav: pulumi.Input[Optional[_builtins.bool]] = None,
+                 icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 nav_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 noindex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 search_exclude: pulumi.Input[Optional[_builtins.bool]] = None,
+                 seo_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 seo_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] canonical_url: The canonical URL when it is not the page's own address.
+        :param pulumi.Input[_builtins.str] cover_url: A cover image: an uploaded path or an http(s) URL.
+        :param pulumi.Input[_builtins.bool] hide_from_nav: Leave the page out of the sidebar.
+        :param pulumi.Input[_builtins.str] icon: A named icon or a custom icon (path, URL, emoji).
+        :param pulumi.Input[_builtins.str] nav_title: A shorter title for the sidebar (up to 80 characters).
+        :param pulumi.Input[_builtins.bool] noindex: Ask search engines not to index the page.
+        :param pulumi.Input[_builtins.bool] search_exclude: Leave the page out of search.
+        :param pulumi.Input[_builtins.str] seo_description: The meta description (up to 400 characters).
+        :param pulumi.Input[_builtins.str] seo_title: The `<title>` (up to 200 characters).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Up to 12 tags, 60 characters each.
+        """
+        if canonical_url is not None:
+            pulumi.set(__self__, "canonical_url", canonical_url)
+        if cover_url is not None:
+            pulumi.set(__self__, "cover_url", cover_url)
+        if hide_from_nav is not None:
+            pulumi.set(__self__, "hide_from_nav", hide_from_nav)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if nav_title is not None:
+            pulumi.set(__self__, "nav_title", nav_title)
+        if noindex is not None:
+            pulumi.set(__self__, "noindex", noindex)
+        if search_exclude is not None:
+            pulumi.set(__self__, "search_exclude", search_exclude)
+        if seo_description is not None:
+            pulumi.set(__self__, "seo_description", seo_description)
+        if seo_title is not None:
+            pulumi.set(__self__, "seo_title", seo_title)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="canonicalUrl")
+    def canonical_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The canonical URL when it is not the page's own address.
+        """
+        return pulumi.get(self, "canonical_url")
+
+    @canonical_url.setter
+    def canonical_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "canonical_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coverUrl")
+    def cover_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A cover image: an uploaded path or an http(s) URL.
+        """
+        return pulumi.get(self, "cover_url")
+
+    @cover_url.setter
+    def cover_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cover_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hideFromNav")
+    def hide_from_nav(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Leave the page out of the sidebar.
+        """
+        return pulumi.get(self, "hide_from_nav")
+
+    @hide_from_nav.setter
+    def hide_from_nav(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "hide_from_nav", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A named icon or a custom icon (path, URL, emoji).
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+    @_builtins.property
+    @pulumi.getter(name="navTitle")
+    def nav_title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A shorter title for the sidebar (up to 80 characters).
+        """
+        return pulumi.get(self, "nav_title")
+
+    @nav_title.setter
+    def nav_title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nav_title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def noindex(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Ask search engines not to index the page.
+        """
+        return pulumi.get(self, "noindex")
+
+    @noindex.setter
+    def noindex(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "noindex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="searchExclude")
+    def search_exclude(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Leave the page out of search.
+        """
+        return pulumi.get(self, "search_exclude")
+
+    @search_exclude.setter
+    def search_exclude(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "search_exclude", value)
+
+    @_builtins.property
+    @pulumi.getter(name="seoDescription")
+    def seo_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The meta description (up to 400 characters).
+        """
+        return pulumi.get(self, "seo_description")
+
+    @seo_description.setter
+    def seo_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "seo_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="seoTitle")
+    def seo_title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The `<title>` (up to 200 characters).
+        """
+        return pulumi.get(self, "seo_title")
+
+    @seo_title.setter
+    def seo_title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "seo_title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Up to 12 tags, 60 characters each.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class SitePageMountArgsDict(TypedDict):
+    page: pulumi.Input[_builtins.str]
+    """
+    The page's slug in that space.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    Where the page answers: `/` for the root, or one segment such as `/pricing`.
+    """
+    space_id: pulumi.Input[_builtins.str]
+    """
+    The member space the page belongs to (its id).
+    """
+
+@pulumi.input_type
+class SitePageMountArgs:
+    def __init__(__self__, *,
+                 page: pulumi.Input[_builtins.str],
+                 path: pulumi.Input[_builtins.str],
+                 space_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] page: The page's slug in that space.
+        :param pulumi.Input[_builtins.str] path: Where the page answers: `/` for the root, or one segment such as `/pricing`.
+        :param pulumi.Input[_builtins.str] space_id: The member space the page belongs to (its id).
+        """
+        pulumi.set(__self__, "page", page)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "space_id", space_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> pulumi.Input[_builtins.str]:
+        """
+        The page's slug in that space.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "page", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Where the page answers: `/` for the root, or one segment such as `/pricing`.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spaceId")
+    def space_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The member space the page belongs to (its id).
+        """
+        return pulumi.get(self, "space_id")
+
+    @space_id.setter
+    def space_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "space_id", value)
+
+
+class SpaceSettingsRedirectArgsDict(TypedDict):
+    from_: pulumi.Input[_builtins.str]
+    """
+    The old path, starting with a single `/`; a trailing `*` matches any suffix.
+    """
+    to: pulumi.Input[_builtins.str]
+    """
+    The new path, or an https URL (a redirect only; a rewrite names a path).
+    """
+    pass_query: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Carry the incoming query string to the target.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+    """
+
+@pulumi.input_type
+class SpaceSettingsRedirectArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input[_builtins.str],
+                 to: pulumi.Input[_builtins.str],
+                 pass_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: The old path, starting with a single `/`; a trailing `*` matches any suffix.
+        :param pulumi.Input[_builtins.str] to: The new path, or an https URL (a redirect only; a rewrite names a path).
+        :param pulumi.Input[_builtins.bool] pass_query: Carry the incoming query string to the target.
+        :param pulumi.Input[_builtins.int] status: The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+        :param pulumi.Input[_builtins.str] type: <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+        """
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "to", to)
+        if pass_query is not None:
+            pulumi.set(__self__, "pass_query", pass_query)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input[_builtins.str]:
+        """
+        The old path, starting with a single `/`; a trailing `*` matches any suffix.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> pulumi.Input[_builtins.str]:
+        """
+        The new path, or an https URL (a redirect only; a rewrite names a path).
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "to", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passQuery")
+    def pass_query(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Carry the incoming query string to the target.
+        """
+        return pulumi.get(self, "pass_query")
+
+    @pass_query.setter
+    def pass_query(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "pass_query", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The redirect's HTTP status: 301, 302, 307 or 308 (the default). Ignored by a rewrite.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`" pulumi-lang-hcl="`redirect`">`redirect`</span> (the default) sends the reader on; <span pulumi-lang-nodejs="`rewrite`" pulumi-lang-dotnet="`Rewrite`" pulumi-lang-go="`rewrite`" pulumi-lang-python="`rewrite`" pulumi-lang-yaml="`rewrite`" pulumi-lang-java="`rewrite`" pulumi-lang-hcl="`rewrite`">`rewrite`</span> serves <span pulumi-lang-nodejs="`to`" pulumi-lang-dotnet="`To`" pulumi-lang-go="`to`" pulumi-lang-python="`to`" pulumi-lang-yaml="`to`" pulumi-lang-java="`to`" pulumi-lang-hcl="`to`">`to`</span> at the requested address.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class SpaceShapeArgsDict(TypedDict):
+    index: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+    """
+    nav: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+    """
+    order: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+    """
+    who_creates: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+    """
+
+@pulumi.input_type
+class SpaceShapeArgs:
+    def __init__(__self__, *,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 nav: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 who_creates: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] index: <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+        :param pulumi.Input[_builtins.str] nav: <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+        :param pulumi.Input[_builtins.str] order: <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+        :param pulumi.Input[_builtins.str] who_creates: <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+        """
+        if index is not None:
+            pulumi.set(__self__, "index", index)
+        if nav is not None:
+            pulumi.set(__self__, "nav", nav)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if who_creates is not None:
+            pulumi.set(__self__, "who_creates", who_creates)
+
+    @_builtins.property
+    @pulumi.getter
+    def index(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`landing`" pulumi-lang-dotnet="`Landing`" pulumi-lang-go="`landing`" pulumi-lang-python="`landing`" pulumi-lang-yaml="`landing`" pulumi-lang-java="`landing`" pulumi-lang-hcl="`landing`">`landing`</span>, <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`" pulumi-lang-hcl="`list`">`list`</span>, <span pulumi-lang-nodejs="`board`" pulumi-lang-dotnet="`Board`" pulumi-lang-go="`board`" pulumi-lang-python="`board`" pulumi-lang-yaml="`board`" pulumi-lang-java="`board`" pulumi-lang-hcl="`board`">`board`</span> or <span pulumi-lang-nodejs="`single`" pulumi-lang-dotnet="`Single`" pulumi-lang-go="`single`" pulumi-lang-python="`single`" pulumi-lang-yaml="`single`" pulumi-lang-java="`single`" pulumi-lang-hcl="`single`">`single`</span>.
+        """
+        return pulumi.get(self, "index")
+
+    @index.setter
+    def index(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "index", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nav(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`tree`" pulumi-lang-dotnet="`Tree`" pulumi-lang-go="`tree`" pulumi-lang-python="`tree`" pulumi-lang-yaml="`tree`" pulumi-lang-java="`tree`" pulumi-lang-hcl="`tree`">`tree`</span>, <span pulumi-lang-nodejs="`categories`" pulumi-lang-dotnet="`Categories`" pulumi-lang-go="`categories`" pulumi-lang-python="`categories`" pulumi-lang-yaml="`categories`" pulumi-lang-java="`categories`" pulumi-lang-hcl="`categories`">`categories`</span>, <span pulumi-lang-nodejs="`tags`" pulumi-lang-dotnet="`Tags`" pulumi-lang-go="`tags`" pulumi-lang-python="`tags`" pulumi-lang-yaml="`tags`" pulumi-lang-java="`tags`" pulumi-lang-hcl="`tags`">`tags`</span>, <span pulumi-lang-nodejs="`sections`" pulumi-lang-dotnet="`Sections`" pulumi-lang-go="`sections`" pulumi-lang-python="`sections`" pulumi-lang-yaml="`sections`" pulumi-lang-java="`sections`" pulumi-lang-hcl="`sections`">`sections`</span> or <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`" pulumi-lang-hcl="`none`">`none`</span>.
+        """
+        return pulumi.get(self, "nav")
+
+    @nav.setter
+    def nav(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "nav", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`manual`" pulumi-lang-dotnet="`Manual`" pulumi-lang-go="`manual`" pulumi-lang-python="`manual`" pulumi-lang-yaml="`manual`" pulumi-lang-java="`manual`" pulumi-lang-hcl="`manual`">`manual`</span>, <span pulumi-lang-nodejs="`chronological`" pulumi-lang-dotnet="`Chronological`" pulumi-lang-go="`chronological`" pulumi-lang-python="`chronological`" pulumi-lang-yaml="`chronological`" pulumi-lang-java="`chronological`" pulumi-lang-hcl="`chronological`">`chronological`</span>, <span pulumi-lang-nodejs="`activity`" pulumi-lang-dotnet="`Activity`" pulumi-lang-go="`activity`" pulumi-lang-python="`activity`" pulumi-lang-yaml="`activity`" pulumi-lang-java="`activity`" pulumi-lang-hcl="`activity`">`activity`</span>, <span pulumi-lang-nodejs="`votes`" pulumi-lang-dotnet="`Votes`" pulumi-lang-go="`votes`" pulumi-lang-python="`votes`" pulumi-lang-yaml="`votes`" pulumi-lang-java="`votes`" pulumi-lang-hcl="`votes`">`votes`</span> or <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`" pulumi-lang-hcl="`status`">`status`</span>.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter(name="whoCreates")
+    def who_creates(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        <span pulumi-lang-nodejs="`staff`" pulumi-lang-dotnet="`Staff`" pulumi-lang-go="`staff`" pulumi-lang-python="`staff`" pulumi-lang-yaml="`staff`" pulumi-lang-java="`staff`" pulumi-lang-hcl="`staff`">`staff`</span>, <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`" pulumi-lang-hcl="`members`">`members`</span> or <span pulumi-lang-nodejs="`anyone`" pulumi-lang-dotnet="`Anyone`" pulumi-lang-go="`anyone`" pulumi-lang-python="`anyone`" pulumi-lang-yaml="`anyone`" pulumi-lang-java="`anyone`" pulumi-lang-hcl="`anyone`">`anyone`</span>.
+        """
+        return pulumi.get(self, "who_creates")
+
+    @who_creates.setter
+    def who_creates(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "who_creates", value)
+
 
 class StatusGroupsGroupArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
