@@ -1,0 +1,47 @@
+# Builds the provider plugin binaries and publishes them as GitHub release
+# assets, named the way `pulumi plugin install` expects:
+#   pulumi-resource-forumulate-v<version>-<os>-<arch>.tar.gz
+#
+#   pulumi plugin install resource forumulate <version> \
+#     --server github://api.github.com/forumulate
+version: 2
+project_name: pulumi-forumulate
+
+before:
+  hooks:
+    # The plugin embeds the schema; refuse to release a stale one.
+    - test -s schema.json
+    - test -s provider/cmd/pulumi-resource-forumulate/schema-embed.json
+
+builds:
+  - id: pulumi-resource-forumulate
+    binary: pulumi-resource-forumulate
+    dir: provider
+    main: ./cmd/pulumi-resource-forumulate
+    env:
+      - CGO_ENABLED=0
+    goos: [darwin, windows, linux]
+    goarch: [amd64, arm64]
+    ldflags:
+      - -s -w -X github.com/forumulate/pulumi-forumulate/provider/pkg/version.Version={{ .Version }}
+
+archives:
+  - id: plugin
+    # The Pulumi CLI derives the download file name from this.
+    name_template: "pulumi-resource-forumulate-v{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    formats: [tar.gz]
+    files:
+      # Ship the binary only (no README/LICENSE next to it).
+      - none*
+
+checksum:
+  name_template: "pulumi-forumulate_{{ .Version }}_checksums.txt"
+
+changelog:
+  disable: true
+
+release:
+  github:
+    owner: forumulate
+    name: pulumi-forumulate
+  prerelease: auto

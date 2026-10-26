@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  provider:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache-dependency-path: provider/go.sum
+      - run: make test
+
+  # The committed schema and SDKs must be what the Terraform provider produces
+  # today; a stale tree means someone forgot `make tfgen build_sdks`.
+  generated-in-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26"
+          cache-dependency-path: provider/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - uses: pulumi/actions@v6
+      - run: make tfgen build_sdks
+      - run: git diff --exit-code -- schema.json sdk/go provider/cmd
+      # The regenerated tree, so a maintainer can commit it where this repo is mirrored from.
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated
+          path: |
+            schema.json
+            sdk/
+            provider/cmd/

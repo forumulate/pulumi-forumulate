@@ -1,0 +1,13 @@
+{
+    "name": "forumulate-status-example",
+    "private": true,
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@forumulate/pulumi": "^0.1.0",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}

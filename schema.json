@@ -1,0 +1,929 @@
+{
+    "name": "forumulate",
+    "displayName": "Forumulate",
+    "description": "A Pulumi package for managing Forumulate docs, forums, blogs and status pages as code.",
+    "keywords": [
+        "pulumi",
+        "forumulate",
+        "docs",
+        "forum",
+        "blog",
+        "status",
+        "category/cloud"
+    ],
+    "homepage": "https://forumulate.com",
+    "license": "MIT",
+    "attribution": "This Pulumi package is based on the [`forumulate` Terraform Provider](https://github.com/forumulate/terraform-provider-forumulate).",
+    "repository": "https://github.com/forumulate/pulumi-forumulate",
+    "logoUrl": "https://forumulate.com/favicon.svg",
+    "pluginDownloadURL": "github://api.github.com/forumulate",
+    "publisher": "Forumulate",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "compatibility": "tfbridge20",
+            "rootNamespace": "Forumulate"
+        },
+        "go": {
+            "importBasePath": "github.com/forumulate/pulumi-forumulate/sdk/go/forumulate",
+            "generateResourceContainerTypes": true,
+            "generateExtraInputTypes": true
+        },
+        "nodejs": {
+            "packageName": "@forumulate/pulumi",
+            "packageDescription": "A Pulumi package for managing Forumulate docs, forums, blogs and status pages as code.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/forumulate/terraform-provider-forumulate)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-forumulate` repo](https://github.com/forumulate/pulumi-forumulate/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-forumulate` repo](https://github.com/forumulate/terraform-provider-forumulate/issues).",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/node": "^20.0.0"
+            },
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
+        },
+        "python": {
+            "packageName": "pulumi_forumulate",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/forumulate/terraform-provider-forumulate)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-forumulate` repo](https://github.com/forumulate/pulumi-forumulate/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-forumulate` repo](https://github.com/forumulate/terraform-provider-forumulate/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {
+                "enabled": true
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiUrl": {
+                "type": "string",
+                "description": "The API base, `https://forumulate.com/api` by default, or `FORUMULATE_API_URL`.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_API_URL"
+                    ]
+                }
+            },
+            "orgId": {
+                "type": "string",
+                "description": "The organization's id, or `FORUMULATE_ORG_ID`.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_ORG_ID"
+                    ]
+                }
+            },
+            "token": {
+                "type": "string",
+                "description": "A personal access token with access to the organization. Prefer `FORUMULATE_TOKEN` so it never lands in configuration.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_TOKEN"
+                    ]
+                },
+                "secret": true
+            }
+        }
+    },
+    "types": {
+        "forumulate:index/StatusGroupsGroup:StatusGroupsGroup": {
+            "properties": {
+                "collapsed": {
+                    "type": "boolean",
+                    "description": "Starts folded.\n"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hideUptime": {
+                    "type": "boolean",
+                    "description": "Its rows print no uptime figure.\n"
+                },
+                "layout": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`list`\" pulumi-lang-dotnet=\"`List`\" pulumi-lang-go=\"`list`\" pulumi-lang-python=\"`list`\" pulumi-lang-yaml=\"`list`\" pulumi-lang-java=\"`list`\" pulumi-lang-hcl=\"`list`\"\u003e`list`\u003c/span\u003e, `grid-2` or \u003cspan pulumi-lang-nodejs=\"`cards`\" pulumi-lang-dotnet=\"`Cards`\" pulumi-lang-go=\"`cards`\" pulumi-lang-python=\"`cards`\" pulumi-lang-yaml=\"`cards`\" pulumi-lang-java=\"`cards`\" pulumi-lang-hcl=\"`cards`\"\u003e`cards`\u003c/span\u003e; unset follows the page.\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The group it sits inside (one level).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the forumulate package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiUrl": {
+                "type": "string",
+                "description": "The API base, `https://forumulate.com/api` by default, or `FORUMULATE_API_URL`."
+            },
+            "orgId": {
+                "type": "string",
+                "description": "The organization's id, or `FORUMULATE_ORG_ID`."
+            },
+            "token": {
+                "type": "string",
+                "description": "A personal access token with access to the organization. Prefer `FORUMULATE_TOKEN` so it never lands in configuration.",
+                "secret": true
+            }
+        },
+        "inputProperties": {
+            "apiUrl": {
+                "type": "string",
+                "description": "The API base, `https://forumulate.com/api` by default, or `FORUMULATE_API_URL`.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_API_URL"
+                    ]
+                }
+            },
+            "orgId": {
+                "type": "string",
+                "description": "The organization's id, or `FORUMULATE_ORG_ID`.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_ORG_ID"
+                    ]
+                }
+            },
+            "token": {
+                "type": "string",
+                "description": "A personal access token with access to the organization. Prefer `FORUMULATE_TOKEN` so it never lands in configuration.",
+                "defaultInfo": {
+                    "environment": [
+                        "FORUMULATE_TOKEN"
+                    ]
+                },
+                "secret": true
+            }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:forumulate/terraformConfig"
+        }
+    },
+    "resources": {
+        "forumulate:index/statusComponent:StatusComponent": {
+            "properties": {
+                "alertsEnabled": {
+                    "type": "boolean",
+                    "description": "Alerts fire when it goes down. Default true."
+                },
+                "barDays": {
+                    "type": "integer",
+                    "description": "Its own day strip length on the board: 30, 60 or 90. Unset follows the theme."
+                },
+                "certExpiryDays": {
+                    "type": "integer",
+                    "description": "Days a TLS certificate must have left (https)."
+                },
+                "confirmRegions": {
+                    "type": "integer",
+                    "description": "How many regions must see it failing before it reads down."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A sentence shown beside its name."
+                },
+                "display": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`bars`\" pulumi-lang-dotnet=\"`Bars`\" pulumi-lang-go=\"`bars`\" pulumi-lang-python=\"`bars`\" pulumi-lang-yaml=\"`bars`\" pulumi-lang-java=\"`bars`\" pulumi-lang-hcl=\"`bars`\"\u003e`bars`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e or `hidden-unless-degraded`."
+                },
+                "expectStatus": {
+                    "type": "integer",
+                    "description": "The exact HTTP status that means up; unset keeps the under-400 rule."
+                },
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "Failed checks in a row before it reads down (1–10)."
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The group it is listed under."
+                },
+                "intervalSeconds": {
+                    "type": "integer",
+                    "description": "Seconds between checks, or the longest wait for a heartbeat's ping."
+                },
+                "keyword": {
+                    "type": "string",
+                    "description": "A term the body must contain (or must not, with \u003cspan pulumi-lang-nodejs=\"`keywordAbsent`\" pulumi-lang-dotnet=\"`KeywordAbsent`\" pulumi-lang-go=\"`keywordAbsent`\" pulumi-lang-python=\"`keyword_absent`\" pulumi-lang-yaml=\"`keywordAbsent`\" pulumi-lang-java=\"`keywordAbsent`\" pulumi-lang-hcl=\"`keyword_absent`\"\u003e`keywordAbsent`\u003c/span\u003e)."
+                },
+                "keywordAbsent": {
+                    "type": "boolean",
+                    "description": "Fail while \u003cspan pulumi-lang-nodejs=\"`keyword`\" pulumi-lang-dotnet=\"`Keyword`\" pulumi-lang-go=\"`keyword`\" pulumi-lang-python=\"`keyword`\" pulumi-lang-yaml=\"`keyword`\" pulumi-lang-java=\"`keyword`\" pulumi-lang-hcl=\"`keyword`\"\u003e`keyword`\u003c/span\u003e is in the body."
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`heartbeat`\" pulumi-lang-dotnet=\"`Heartbeat`\" pulumi-lang-go=\"`heartbeat`\" pulumi-lang-python=\"`heartbeat`\" pulumi-lang-yaml=\"`heartbeat`\" pulumi-lang-java=\"`heartbeat`\" pulumi-lang-hcl=\"`heartbeat`\"\u003e`heartbeat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`space`\" pulumi-lang-dotnet=\"`Space`\" pulumi-lang-go=\"`space`\" pulumi-lang-python=\"`space`\" pulumi-lang-yaml=\"`space`\" pulumi-lang-java=\"`space`\" pulumi-lang-hcl=\"`space`\"\u003e`space`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\" pulumi-lang-hcl=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dns`\" pulumi-lang-dotnet=\"`Dns`\" pulumi-lang-go=\"`dns`\" pulumi-lang-python=\"`dns`\" pulumi-lang-yaml=\"`dns`\" pulumi-lang-java=\"`dns`\" pulumi-lang-hcl=\"`dns`\"\u003e`dns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\" pulumi-lang-hcl=\"`tls`\"\u003e`tls`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`smtp`\" pulumi-lang-dotnet=\"`Smtp`\" pulumi-lang-go=\"`smtp`\" pulumi-lang-python=\"`smtp`\" pulumi-lang-yaml=\"`smtp`\" pulumi-lang-java=\"`smtp`\" pulumi-lang-hcl=\"`smtp`\"\u003e`smtp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`imap`\" pulumi-lang-dotnet=\"`Imap`\" pulumi-lang-go=\"`imap`\" pulumi-lang-python=\"`imap`\" pulumi-lang-yaml=\"`imap`\" pulumi-lang-java=\"`imap`\" pulumi-lang-hcl=\"`imap`\"\u003e`imap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pop3`\" pulumi-lang-dotnet=\"`Pop3`\" pulumi-lang-go=\"`pop3`\" pulumi-lang-python=\"`pop3`\" pulumi-lang-yaml=\"`pop3`\" pulumi-lang-java=\"`pop3`\" pulumi-lang-hcl=\"`pop3`\"\u003e`pop3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\" pulumi-lang-hcl=\"`domain`\"\u003e`domain`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`browser`\" pulumi-lang-dotnet=\"`Browser`\" pulumi-lang-go=\"`browser`\" pulumi-lang-python=\"`browser`\" pulumi-lang-yaml=\"`browser`\" pulumi-lang-java=\"`browser`\" pulumi-lang-hcl=\"`browser`\"\u003e`browser`\u003c/span\u003e. Fixed at creation."
+                },
+                "linkUrl": {
+                    "type": "string",
+                    "description": "Where its own docs or product live."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "`GET` (default), `HEAD` or `POST`."
+                },
+                "name": {
+                    "type": "string"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Kept on the page with its history, not probed."
+                },
+                "pingUrl": {
+                    "type": "string",
+                    "description": "Heartbeat only: where the job pings."
+                },
+                "probeJson": {
+                    "type": "string",
+                    "description": "A protocol or browser check's probe as JSON (`jsonencode({ host = \"db.example.com\", port = 5432 })`): \u003cspan pulumi-lang-nodejs=\"`host`\" pulumi-lang-dotnet=\"`Host`\" pulumi-lang-go=\"`host`\" pulumi-lang-python=\"`host`\" pulumi-lang-yaml=\"`host`\" pulumi-lang-java=\"`host`\" pulumi-lang-hcl=\"`host`\"\u003e`host`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`port`\" pulumi-lang-dotnet=\"`Port`\" pulumi-lang-go=\"`port`\" pulumi-lang-python=\"`port`\" pulumi-lang-yaml=\"`port`\" pulumi-lang-java=\"`port`\" pulumi-lang-hcl=\"`port`\"\u003e`port`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`record`\" pulumi-lang-dotnet=\"`Record`\" pulumi-lang-go=\"`record`\" pulumi-lang-python=\"`record`\" pulumi-lang-yaml=\"`record`\" pulumi-lang-java=\"`record`\" pulumi-lang-hcl=\"`record`\"\u003e`record`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resolver`\" pulumi-lang-dotnet=\"`Resolver`\" pulumi-lang-go=\"`resolver`\" pulumi-lang-python=\"`resolver`\" pulumi-lang-yaml=\"`resolver`\" pulumi-lang-java=\"`resolver`\" pulumi-lang-hcl=\"`resolver`\"\u003e`resolver`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expect`\" pulumi-lang-dotnet=\"`Expect`\" pulumi-lang-go=\"`expect`\" pulumi-lang-python=\"`expect`\" pulumi-lang-yaml=\"`expect`\" pulumi-lang-java=\"`expect`\" pulumi-lang-hcl=\"`expect`\"\u003e`expect`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`payload`\" pulumi-lang-dotnet=\"`Payload`\" pulumi-lang-go=\"`payload`\" pulumi-lang-python=\"`payload`\" pulumi-lang-yaml=\"`payload`\" pulumi-lang-java=\"`payload`\" pulumi-lang-hcl=\"`payload`\"\u003e`payload`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`days`\" pulumi-lang-dotnet=\"`Days`\" pulumi-lang-go=\"`days`\" pulumi-lang-python=\"`days`\" pulumi-lang-yaml=\"`days`\" pulumi-lang-java=\"`days`\" pulumi-lang-hcl=\"`days`\"\u003e`days`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`url`\" pulumi-lang-dotnet=\"`Url`\" pulumi-lang-go=\"`url`\" pulumi-lang-python=\"`url`\" pulumi-lang-yaml=\"`url`\" pulumi-lang-java=\"`url`\" pulumi-lang-hcl=\"`url`\"\u003e`url`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`selector`\" pulumi-lang-dotnet=\"`Selector`\" pulumi-lang-go=\"`selector`\" pulumi-lang-python=\"`selector`\" pulumi-lang-yaml=\"`selector`\" pulumi-lang-java=\"`selector`\" pulumi-lang-hcl=\"`selector`\"\u003e`selector`\u003c/span\u003e."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Where it runs (\"EU\"), for grouping by region."
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Probe regions it is checked from (see the API's `GET …/status/regions`). Empty: the primary checker."
+                },
+                "showUptime": {
+                    "type": "boolean",
+                    "description": "Print its uptime figure beside the strip. Default true."
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "Its stable address within the page; minted from the name when unset."
+                },
+                "spaceId": {
+                    "type": "string",
+                    "description": "The status page (space) id."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The address to poll (\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e) or the vendor page (\u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e)."
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "Listed on the public page. Default true."
+                }
+            },
+            "required": [
+                "alertsEnabled",
+                "confirmRegions",
+                "display",
+                "failureThreshold",
+                "intervalSeconds",
+                "keywordAbsent",
+                "kind",
+                "method",
+                "name",
+                "paused",
+                "pingUrl",
+                "regions",
+                "showUptime",
+                "slug",
+                "spaceId",
+                "visible"
+            ],
+            "inputProperties": {
+                "alertsEnabled": {
+                    "type": "boolean",
+                    "description": "Alerts fire when it goes down. Default true."
+                },
+                "barDays": {
+                    "type": "integer",
+                    "description": "Its own day strip length on the board: 30, 60 or 90. Unset follows the theme."
+                },
+                "certExpiryDays": {
+                    "type": "integer",
+                    "description": "Days a TLS certificate must have left (https)."
+                },
+                "confirmRegions": {
+                    "type": "integer",
+                    "description": "How many regions must see it failing before it reads down."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A sentence shown beside its name."
+                },
+                "display": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`bars`\" pulumi-lang-dotnet=\"`Bars`\" pulumi-lang-go=\"`bars`\" pulumi-lang-python=\"`bars`\" pulumi-lang-yaml=\"`bars`\" pulumi-lang-java=\"`bars`\" pulumi-lang-hcl=\"`bars`\"\u003e`bars`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e or `hidden-unless-degraded`."
+                },
+                "expectStatus": {
+                    "type": "integer",
+                    "description": "The exact HTTP status that means up; unset keeps the under-400 rule."
+                },
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "Failed checks in a row before it reads down (1–10)."
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The group it is listed under."
+                },
+                "intervalSeconds": {
+                    "type": "integer",
+                    "description": "Seconds between checks, or the longest wait for a heartbeat's ping."
+                },
+                "keyword": {
+                    "type": "string",
+                    "description": "A term the body must contain (or must not, with \u003cspan pulumi-lang-nodejs=\"`keywordAbsent`\" pulumi-lang-dotnet=\"`KeywordAbsent`\" pulumi-lang-go=\"`keywordAbsent`\" pulumi-lang-python=\"`keyword_absent`\" pulumi-lang-yaml=\"`keywordAbsent`\" pulumi-lang-java=\"`keywordAbsent`\" pulumi-lang-hcl=\"`keyword_absent`\"\u003e`keywordAbsent`\u003c/span\u003e)."
+                },
+                "keywordAbsent": {
+                    "type": "boolean",
+                    "description": "Fail while \u003cspan pulumi-lang-nodejs=\"`keyword`\" pulumi-lang-dotnet=\"`Keyword`\" pulumi-lang-go=\"`keyword`\" pulumi-lang-python=\"`keyword`\" pulumi-lang-yaml=\"`keyword`\" pulumi-lang-java=\"`keyword`\" pulumi-lang-hcl=\"`keyword`\"\u003e`keyword`\u003c/span\u003e is in the body."
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`heartbeat`\" pulumi-lang-dotnet=\"`Heartbeat`\" pulumi-lang-go=\"`heartbeat`\" pulumi-lang-python=\"`heartbeat`\" pulumi-lang-yaml=\"`heartbeat`\" pulumi-lang-java=\"`heartbeat`\" pulumi-lang-hcl=\"`heartbeat`\"\u003e`heartbeat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`space`\" pulumi-lang-dotnet=\"`Space`\" pulumi-lang-go=\"`space`\" pulumi-lang-python=\"`space`\" pulumi-lang-yaml=\"`space`\" pulumi-lang-java=\"`space`\" pulumi-lang-hcl=\"`space`\"\u003e`space`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\" pulumi-lang-hcl=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dns`\" pulumi-lang-dotnet=\"`Dns`\" pulumi-lang-go=\"`dns`\" pulumi-lang-python=\"`dns`\" pulumi-lang-yaml=\"`dns`\" pulumi-lang-java=\"`dns`\" pulumi-lang-hcl=\"`dns`\"\u003e`dns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\" pulumi-lang-hcl=\"`tls`\"\u003e`tls`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`smtp`\" pulumi-lang-dotnet=\"`Smtp`\" pulumi-lang-go=\"`smtp`\" pulumi-lang-python=\"`smtp`\" pulumi-lang-yaml=\"`smtp`\" pulumi-lang-java=\"`smtp`\" pulumi-lang-hcl=\"`smtp`\"\u003e`smtp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`imap`\" pulumi-lang-dotnet=\"`Imap`\" pulumi-lang-go=\"`imap`\" pulumi-lang-python=\"`imap`\" pulumi-lang-yaml=\"`imap`\" pulumi-lang-java=\"`imap`\" pulumi-lang-hcl=\"`imap`\"\u003e`imap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pop3`\" pulumi-lang-dotnet=\"`Pop3`\" pulumi-lang-go=\"`pop3`\" pulumi-lang-python=\"`pop3`\" pulumi-lang-yaml=\"`pop3`\" pulumi-lang-java=\"`pop3`\" pulumi-lang-hcl=\"`pop3`\"\u003e`pop3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\" pulumi-lang-hcl=\"`domain`\"\u003e`domain`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`browser`\" pulumi-lang-dotnet=\"`Browser`\" pulumi-lang-go=\"`browser`\" pulumi-lang-python=\"`browser`\" pulumi-lang-yaml=\"`browser`\" pulumi-lang-java=\"`browser`\" pulumi-lang-hcl=\"`browser`\"\u003e`browser`\u003c/span\u003e. Fixed at creation."
+                },
+                "linkUrl": {
+                    "type": "string",
+                    "description": "Where its own docs or product live."
+                },
+                "method": {
+                    "type": "string",
+                    "description": "`GET` (default), `HEAD` or `POST`."
+                },
+                "name": {
+                    "type": "string"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Kept on the page with its history, not probed."
+                },
+                "probeJson": {
+                    "type": "string",
+                    "description": "A protocol or browser check's probe as JSON (`jsonencode({ host = \"db.example.com\", port = 5432 })`): \u003cspan pulumi-lang-nodejs=\"`host`\" pulumi-lang-dotnet=\"`Host`\" pulumi-lang-go=\"`host`\" pulumi-lang-python=\"`host`\" pulumi-lang-yaml=\"`host`\" pulumi-lang-java=\"`host`\" pulumi-lang-hcl=\"`host`\"\u003e`host`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`port`\" pulumi-lang-dotnet=\"`Port`\" pulumi-lang-go=\"`port`\" pulumi-lang-python=\"`port`\" pulumi-lang-yaml=\"`port`\" pulumi-lang-java=\"`port`\" pulumi-lang-hcl=\"`port`\"\u003e`port`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`record`\" pulumi-lang-dotnet=\"`Record`\" pulumi-lang-go=\"`record`\" pulumi-lang-python=\"`record`\" pulumi-lang-yaml=\"`record`\" pulumi-lang-java=\"`record`\" pulumi-lang-hcl=\"`record`\"\u003e`record`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resolver`\" pulumi-lang-dotnet=\"`Resolver`\" pulumi-lang-go=\"`resolver`\" pulumi-lang-python=\"`resolver`\" pulumi-lang-yaml=\"`resolver`\" pulumi-lang-java=\"`resolver`\" pulumi-lang-hcl=\"`resolver`\"\u003e`resolver`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expect`\" pulumi-lang-dotnet=\"`Expect`\" pulumi-lang-go=\"`expect`\" pulumi-lang-python=\"`expect`\" pulumi-lang-yaml=\"`expect`\" pulumi-lang-java=\"`expect`\" pulumi-lang-hcl=\"`expect`\"\u003e`expect`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`payload`\" pulumi-lang-dotnet=\"`Payload`\" pulumi-lang-go=\"`payload`\" pulumi-lang-python=\"`payload`\" pulumi-lang-yaml=\"`payload`\" pulumi-lang-java=\"`payload`\" pulumi-lang-hcl=\"`payload`\"\u003e`payload`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`days`\" pulumi-lang-dotnet=\"`Days`\" pulumi-lang-go=\"`days`\" pulumi-lang-python=\"`days`\" pulumi-lang-yaml=\"`days`\" pulumi-lang-java=\"`days`\" pulumi-lang-hcl=\"`days`\"\u003e`days`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`url`\" pulumi-lang-dotnet=\"`Url`\" pulumi-lang-go=\"`url`\" pulumi-lang-python=\"`url`\" pulumi-lang-yaml=\"`url`\" pulumi-lang-java=\"`url`\" pulumi-lang-hcl=\"`url`\"\u003e`url`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`selector`\" pulumi-lang-dotnet=\"`Selector`\" pulumi-lang-go=\"`selector`\" pulumi-lang-python=\"`selector`\" pulumi-lang-yaml=\"`selector`\" pulumi-lang-java=\"`selector`\" pulumi-lang-hcl=\"`selector`\"\u003e`selector`\u003c/span\u003e."
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Where it runs (\"EU\"), for grouping by region."
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Probe regions it is checked from (see the API's `GET …/status/regions`). Empty: the primary checker."
+                },
+                "showUptime": {
+                    "type": "boolean",
+                    "description": "Print its uptime figure beside the strip. Default true."
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "Its stable address within the page; minted from the name when unset."
+                },
+                "spaceId": {
+                    "type": "string",
+                    "description": "The status page (space) id."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The address to poll (\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e) or the vendor page (\u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e)."
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "Listed on the public page. Default true."
+                }
+            },
+            "requiredInputs": [
+                "spaceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StatusComponent resources.\n",
+                "properties": {
+                    "alertsEnabled": {
+                        "type": "boolean",
+                        "description": "Alerts fire when it goes down. Default true."
+                    },
+                    "barDays": {
+                        "type": "integer",
+                        "description": "Its own day strip length on the board: 30, 60 or 90. Unset follows the theme."
+                    },
+                    "certExpiryDays": {
+                        "type": "integer",
+                        "description": "Days a TLS certificate must have left (https)."
+                    },
+                    "confirmRegions": {
+                        "type": "integer",
+                        "description": "How many regions must see it failing before it reads down."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A sentence shown beside its name."
+                    },
+                    "display": {
+                        "type": "string",
+                        "description": "\u003cspan pulumi-lang-nodejs=\"`bars`\" pulumi-lang-dotnet=\"`Bars`\" pulumi-lang-go=\"`bars`\" pulumi-lang-python=\"`bars`\" pulumi-lang-yaml=\"`bars`\" pulumi-lang-java=\"`bars`\" pulumi-lang-hcl=\"`bars`\"\u003e`bars`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e or `hidden-unless-degraded`."
+                    },
+                    "expectStatus": {
+                        "type": "integer",
+                        "description": "The exact HTTP status that means up; unset keeps the under-400 rule."
+                    },
+                    "failureThreshold": {
+                        "type": "integer",
+                        "description": "Failed checks in a row before it reads down (1–10)."
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The group it is listed under."
+                    },
+                    "intervalSeconds": {
+                        "type": "integer",
+                        "description": "Seconds between checks, or the longest wait for a heartbeat's ping."
+                    },
+                    "keyword": {
+                        "type": "string",
+                        "description": "A term the body must contain (or must not, with \u003cspan pulumi-lang-nodejs=\"`keywordAbsent`\" pulumi-lang-dotnet=\"`KeywordAbsent`\" pulumi-lang-go=\"`keywordAbsent`\" pulumi-lang-python=\"`keyword_absent`\" pulumi-lang-yaml=\"`keywordAbsent`\" pulumi-lang-java=\"`keywordAbsent`\" pulumi-lang-hcl=\"`keyword_absent`\"\u003e`keywordAbsent`\u003c/span\u003e)."
+                    },
+                    "keywordAbsent": {
+                        "type": "boolean",
+                        "description": "Fail while \u003cspan pulumi-lang-nodejs=\"`keyword`\" pulumi-lang-dotnet=\"`Keyword`\" pulumi-lang-go=\"`keyword`\" pulumi-lang-python=\"`keyword`\" pulumi-lang-yaml=\"`keyword`\" pulumi-lang-java=\"`keyword`\" pulumi-lang-hcl=\"`keyword`\"\u003e`keyword`\u003c/span\u003e is in the body."
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`heartbeat`\" pulumi-lang-dotnet=\"`Heartbeat`\" pulumi-lang-go=\"`heartbeat`\" pulumi-lang-python=\"`heartbeat`\" pulumi-lang-yaml=\"`heartbeat`\" pulumi-lang-java=\"`heartbeat`\" pulumi-lang-hcl=\"`heartbeat`\"\u003e`heartbeat`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`space`\" pulumi-lang-dotnet=\"`Space`\" pulumi-lang-go=\"`space`\" pulumi-lang-python=\"`space`\" pulumi-lang-yaml=\"`space`\" pulumi-lang-java=\"`space`\" pulumi-lang-hcl=\"`space`\"\u003e`space`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\" pulumi-lang-hcl=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\" pulumi-lang-hcl=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dns`\" pulumi-lang-dotnet=\"`Dns`\" pulumi-lang-go=\"`dns`\" pulumi-lang-python=\"`dns`\" pulumi-lang-yaml=\"`dns`\" pulumi-lang-java=\"`dns`\" pulumi-lang-hcl=\"`dns`\"\u003e`dns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\" pulumi-lang-hcl=\"`tls`\"\u003e`tls`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`smtp`\" pulumi-lang-dotnet=\"`Smtp`\" pulumi-lang-go=\"`smtp`\" pulumi-lang-python=\"`smtp`\" pulumi-lang-yaml=\"`smtp`\" pulumi-lang-java=\"`smtp`\" pulumi-lang-hcl=\"`smtp`\"\u003e`smtp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`imap`\" pulumi-lang-dotnet=\"`Imap`\" pulumi-lang-go=\"`imap`\" pulumi-lang-python=\"`imap`\" pulumi-lang-yaml=\"`imap`\" pulumi-lang-java=\"`imap`\" pulumi-lang-hcl=\"`imap`\"\u003e`imap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pop3`\" pulumi-lang-dotnet=\"`Pop3`\" pulumi-lang-go=\"`pop3`\" pulumi-lang-python=\"`pop3`\" pulumi-lang-yaml=\"`pop3`\" pulumi-lang-java=\"`pop3`\" pulumi-lang-hcl=\"`pop3`\"\u003e`pop3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\" pulumi-lang-hcl=\"`domain`\"\u003e`domain`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`browser`\" pulumi-lang-dotnet=\"`Browser`\" pulumi-lang-go=\"`browser`\" pulumi-lang-python=\"`browser`\" pulumi-lang-yaml=\"`browser`\" pulumi-lang-java=\"`browser`\" pulumi-lang-hcl=\"`browser`\"\u003e`browser`\u003c/span\u003e. Fixed at creation."
+                    },
+                    "linkUrl": {
+                        "type": "string",
+                        "description": "Where its own docs or product live."
+                    },
+                    "method": {
+                        "type": "string",
+                        "description": "`GET` (default), `HEAD` or `POST`."
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "Kept on the page with its history, not probed."
+                    },
+                    "pingUrl": {
+                        "type": "string",
+                        "description": "Heartbeat only: where the job pings."
+                    },
+                    "probeJson": {
+                        "type": "string",
+                        "description": "A protocol or browser check's probe as JSON (`jsonencode({ host = \"db.example.com\", port = 5432 })`): \u003cspan pulumi-lang-nodejs=\"`host`\" pulumi-lang-dotnet=\"`Host`\" pulumi-lang-go=\"`host`\" pulumi-lang-python=\"`host`\" pulumi-lang-yaml=\"`host`\" pulumi-lang-java=\"`host`\" pulumi-lang-hcl=\"`host`\"\u003e`host`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`port`\" pulumi-lang-dotnet=\"`Port`\" pulumi-lang-go=\"`port`\" pulumi-lang-python=\"`port`\" pulumi-lang-yaml=\"`port`\" pulumi-lang-java=\"`port`\" pulumi-lang-hcl=\"`port`\"\u003e`port`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`record`\" pulumi-lang-dotnet=\"`Record`\" pulumi-lang-go=\"`record`\" pulumi-lang-python=\"`record`\" pulumi-lang-yaml=\"`record`\" pulumi-lang-java=\"`record`\" pulumi-lang-hcl=\"`record`\"\u003e`record`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resolver`\" pulumi-lang-dotnet=\"`Resolver`\" pulumi-lang-go=\"`resolver`\" pulumi-lang-python=\"`resolver`\" pulumi-lang-yaml=\"`resolver`\" pulumi-lang-java=\"`resolver`\" pulumi-lang-hcl=\"`resolver`\"\u003e`resolver`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expect`\" pulumi-lang-dotnet=\"`Expect`\" pulumi-lang-go=\"`expect`\" pulumi-lang-python=\"`expect`\" pulumi-lang-yaml=\"`expect`\" pulumi-lang-java=\"`expect`\" pulumi-lang-hcl=\"`expect`\"\u003e`expect`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`payload`\" pulumi-lang-dotnet=\"`Payload`\" pulumi-lang-go=\"`payload`\" pulumi-lang-python=\"`payload`\" pulumi-lang-yaml=\"`payload`\" pulumi-lang-java=\"`payload`\" pulumi-lang-hcl=\"`payload`\"\u003e`payload`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`days`\" pulumi-lang-dotnet=\"`Days`\" pulumi-lang-go=\"`days`\" pulumi-lang-python=\"`days`\" pulumi-lang-yaml=\"`days`\" pulumi-lang-java=\"`days`\" pulumi-lang-hcl=\"`days`\"\u003e`days`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`url`\" pulumi-lang-dotnet=\"`Url`\" pulumi-lang-go=\"`url`\" pulumi-lang-python=\"`url`\" pulumi-lang-yaml=\"`url`\" pulumi-lang-java=\"`url`\" pulumi-lang-hcl=\"`url`\"\u003e`url`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`selector`\" pulumi-lang-dotnet=\"`Selector`\" pulumi-lang-go=\"`selector`\" pulumi-lang-python=\"`selector`\" pulumi-lang-yaml=\"`selector`\" pulumi-lang-java=\"`selector`\" pulumi-lang-hcl=\"`selector`\"\u003e`selector`\u003c/span\u003e."
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Where it runs (\"EU\"), for grouping by region."
+                    },
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Probe regions it is checked from (see the API's `GET …/status/regions`). Empty: the primary checker."
+                    },
+                    "showUptime": {
+                        "type": "boolean",
+                        "description": "Print its uptime figure beside the strip. Default true."
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "Its stable address within the page; minted from the name when unset."
+                    },
+                    "spaceId": {
+                        "type": "string",
+                        "description": "The status page (space) id."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The address to poll (\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e) or the vendor page (\u003cspan pulumi-lang-nodejs=\"`statuspage`\" pulumi-lang-dotnet=\"`Statuspage`\" pulumi-lang-go=\"`statuspage`\" pulumi-lang-python=\"`statuspage`\" pulumi-lang-yaml=\"`statuspage`\" pulumi-lang-java=\"`statuspage`\" pulumi-lang-hcl=\"`statuspage`\"\u003e`statuspage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`instatus`\" pulumi-lang-dotnet=\"`Instatus`\" pulumi-lang-go=\"`instatus`\" pulumi-lang-python=\"`instatus`\" pulumi-lang-yaml=\"`instatus`\" pulumi-lang-java=\"`instatus`\" pulumi-lang-hcl=\"`instatus`\"\u003e`instatus`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`betterstack`\" pulumi-lang-dotnet=\"`Betterstack`\" pulumi-lang-go=\"`betterstack`\" pulumi-lang-python=\"`betterstack`\" pulumi-lang-yaml=\"`betterstack`\" pulumi-lang-java=\"`betterstack`\" pulumi-lang-hcl=\"`betterstack`\"\u003e`betterstack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`feed`\" pulumi-lang-dotnet=\"`Feed`\" pulumi-lang-go=\"`feed`\" pulumi-lang-python=\"`feed`\" pulumi-lang-yaml=\"`feed`\" pulumi-lang-java=\"`feed`\" pulumi-lang-hcl=\"`feed`\"\u003e`feed`\u003c/span\u003e)."
+                    },
+                    "visible": {
+                        "type": "boolean",
+                        "description": "Listed on the public page. Default true."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "forumulate:index/statusGroups:StatusGroups": {
+            "properties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/forumulate:index/StatusGroupsGroup:StatusGroupsGroup"
+                    }
+                },
+                "spaceId": {
+                    "type": "string",
+                    "description": "The status page (space) id."
+                }
+            },
+            "required": [
+                "spaceId"
+            ],
+            "inputProperties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/forumulate:index/StatusGroupsGroup:StatusGroupsGroup"
+                    }
+                },
+                "spaceId": {
+                    "type": "string",
+                    "description": "The status page (space) id."
+                }
+            },
+            "requiredInputs": [
+                "spaceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StatusGroups resources.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/forumulate:index/StatusGroupsGroup:StatusGroupsGroup"
+                        }
+                    },
+                    "spaceId": {
+                        "type": "string",
+                        "description": "The status page (space) id."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "forumulate:index/statusIncidentTemplate:StatusIncidentTemplate": {
+            "properties": {
+                "identifiedText": {
+                    "type": "string",
+                    "description": "The words offered when an update moves it to identified."
+                },
+                "markdown": {
+                    "type": "string",
+                    "description": "The write-up, in Markdown. Stored as a block document, so it is sent on change and not read back."
+                },
+                "monitoringText": {
+                    "type": "string",
+                    "description": "…to monitoring."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "What it is called in the picker."
+                },
+                "resolvedText": {
+                    "type": "string",
+                    "description": "…to resolved."
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`minor`\" pulumi-lang-dotnet=\"`Minor`\" pulumi-lang-go=\"`minor`\" pulumi-lang-python=\"`minor`\" pulumi-lang-yaml=\"`minor`\" pulumi-lang-java=\"`minor`\" pulumi-lang-hcl=\"`minor`\"\u003e`minor`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`major`\" pulumi-lang-dotnet=\"`Major`\" pulumi-lang-go=\"`major`\" pulumi-lang-python=\"`major`\" pulumi-lang-yaml=\"`major`\" pulumi-lang-java=\"`major`\" pulumi-lang-hcl=\"`major`\"\u003e`major`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`critical`\" pulumi-lang-dotnet=\"`Critical`\" pulumi-lang-go=\"`critical`\" pulumi-lang-python=\"`critical`\" pulumi-lang-yaml=\"`critical`\" pulumi-lang-java=\"`critical`\" pulumi-lang-hcl=\"`critical`\"\u003e`critical`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`maintenance`\" pulumi-lang-dotnet=\"`Maintenance`\" pulumi-lang-go=\"`maintenance`\" pulumi-lang-python=\"`maintenance`\" pulumi-lang-yaml=\"`maintenance`\" pulumi-lang-java=\"`maintenance`\" pulumi-lang-hcl=\"`maintenance`\"\u003e`maintenance`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`notice`\" pulumi-lang-dotnet=\"`Notice`\" pulumi-lang-go=\"`notice`\" pulumi-lang-python=\"`notice`\" pulumi-lang-yaml=\"`notice`\" pulumi-lang-java=\"`notice`\" pulumi-lang-hcl=\"`notice`\"\u003e`notice`\u003c/span\u003e."
+                },
+                "spaceId": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state it opens in. Default \u003cspan pulumi-lang-nodejs=\"`investigating`\" pulumi-lang-dotnet=\"`Investigating`\" pulumi-lang-go=\"`investigating`\" pulumi-lang-python=\"`investigating`\" pulumi-lang-yaml=\"`investigating`\" pulumi-lang-java=\"`investigating`\" pulumi-lang-hcl=\"`investigating`\"\u003e`investigating`\u003c/span\u003e."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the incident it opens."
+                }
+            },
+            "required": [
+                "name",
+                "severity",
+                "spaceId",
+                "state",
+                "title"
+            ],
+            "inputProperties": {
+                "identifiedText": {
+                    "type": "string",
+                    "description": "The words offered when an update moves it to identified."
+                },
+                "markdown": {
+                    "type": "string",
+                    "description": "The write-up, in Markdown. Stored as a block document, so it is sent on change and not read back."
+                },
+                "monitoringText": {
+                    "type": "string",
+                    "description": "…to monitoring."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "What it is called in the picker."
+                },
+                "resolvedText": {
+                    "type": "string",
+                    "description": "…to resolved."
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`minor`\" pulumi-lang-dotnet=\"`Minor`\" pulumi-lang-go=\"`minor`\" pulumi-lang-python=\"`minor`\" pulumi-lang-yaml=\"`minor`\" pulumi-lang-java=\"`minor`\" pulumi-lang-hcl=\"`minor`\"\u003e`minor`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`major`\" pulumi-lang-dotnet=\"`Major`\" pulumi-lang-go=\"`major`\" pulumi-lang-python=\"`major`\" pulumi-lang-yaml=\"`major`\" pulumi-lang-java=\"`major`\" pulumi-lang-hcl=\"`major`\"\u003e`major`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`critical`\" pulumi-lang-dotnet=\"`Critical`\" pulumi-lang-go=\"`critical`\" pulumi-lang-python=\"`critical`\" pulumi-lang-yaml=\"`critical`\" pulumi-lang-java=\"`critical`\" pulumi-lang-hcl=\"`critical`\"\u003e`critical`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`maintenance`\" pulumi-lang-dotnet=\"`Maintenance`\" pulumi-lang-go=\"`maintenance`\" pulumi-lang-python=\"`maintenance`\" pulumi-lang-yaml=\"`maintenance`\" pulumi-lang-java=\"`maintenance`\" pulumi-lang-hcl=\"`maintenance`\"\u003e`maintenance`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`notice`\" pulumi-lang-dotnet=\"`Notice`\" pulumi-lang-go=\"`notice`\" pulumi-lang-python=\"`notice`\" pulumi-lang-yaml=\"`notice`\" pulumi-lang-java=\"`notice`\" pulumi-lang-hcl=\"`notice`\"\u003e`notice`\u003c/span\u003e."
+                },
+                "spaceId": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state it opens in. Default \u003cspan pulumi-lang-nodejs=\"`investigating`\" pulumi-lang-dotnet=\"`Investigating`\" pulumi-lang-go=\"`investigating`\" pulumi-lang-python=\"`investigating`\" pulumi-lang-yaml=\"`investigating`\" pulumi-lang-java=\"`investigating`\" pulumi-lang-hcl=\"`investigating`\"\u003e`investigating`\u003c/span\u003e."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the incident it opens."
+                }
+            },
+            "requiredInputs": [
+                "spaceId",
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StatusIncidentTemplate resources.\n",
+                "properties": {
+                    "identifiedText": {
+                        "type": "string",
+                        "description": "The words offered when an update moves it to identified."
+                    },
+                    "markdown": {
+                        "type": "string",
+                        "description": "The write-up, in Markdown. Stored as a block document, so it is sent on change and not read back."
+                    },
+                    "monitoringText": {
+                        "type": "string",
+                        "description": "…to monitoring."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "What it is called in the picker."
+                    },
+                    "resolvedText": {
+                        "type": "string",
+                        "description": "…to resolved."
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "\u003cspan pulumi-lang-nodejs=\"`minor`\" pulumi-lang-dotnet=\"`Minor`\" pulumi-lang-go=\"`minor`\" pulumi-lang-python=\"`minor`\" pulumi-lang-yaml=\"`minor`\" pulumi-lang-java=\"`minor`\" pulumi-lang-hcl=\"`minor`\"\u003e`minor`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`major`\" pulumi-lang-dotnet=\"`Major`\" pulumi-lang-go=\"`major`\" pulumi-lang-python=\"`major`\" pulumi-lang-yaml=\"`major`\" pulumi-lang-java=\"`major`\" pulumi-lang-hcl=\"`major`\"\u003e`major`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`critical`\" pulumi-lang-dotnet=\"`Critical`\" pulumi-lang-go=\"`critical`\" pulumi-lang-python=\"`critical`\" pulumi-lang-yaml=\"`critical`\" pulumi-lang-java=\"`critical`\" pulumi-lang-hcl=\"`critical`\"\u003e`critical`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`maintenance`\" pulumi-lang-dotnet=\"`Maintenance`\" pulumi-lang-go=\"`maintenance`\" pulumi-lang-python=\"`maintenance`\" pulumi-lang-yaml=\"`maintenance`\" pulumi-lang-java=\"`maintenance`\" pulumi-lang-hcl=\"`maintenance`\"\u003e`maintenance`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`notice`\" pulumi-lang-dotnet=\"`Notice`\" pulumi-lang-go=\"`notice`\" pulumi-lang-python=\"`notice`\" pulumi-lang-yaml=\"`notice`\" pulumi-lang-java=\"`notice`\" pulumi-lang-hcl=\"`notice`\"\u003e`notice`\u003c/span\u003e."
+                    },
+                    "spaceId": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state it opens in. Default \u003cspan pulumi-lang-nodejs=\"`investigating`\" pulumi-lang-dotnet=\"`Investigating`\" pulumi-lang-go=\"`investigating`\" pulumi-lang-python=\"`investigating`\" pulumi-lang-yaml=\"`investigating`\" pulumi-lang-java=\"`investigating`\" pulumi-lang-hcl=\"`investigating`\"\u003e`investigating`\u003c/span\u003e."
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the incident it opens."
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "forumulate:index/statusMetric:StatusMetric": {
+            "properties": {
+                "aggregate": {
+                    "type": "string",
+                    "description": "How a chart bucket folds its points: \u003cspan pulumi-lang-nodejs=\"`avg`\" pulumi-lang-dotnet=\"`Avg`\" pulumi-lang-go=\"`avg`\" pulumi-lang-python=\"`avg`\" pulumi-lang-yaml=\"`avg`\" pulumi-lang-java=\"`avg`\" pulumi-lang-hcl=\"`avg`\"\u003e`avg`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`max`\" pulumi-lang-dotnet=\"`Max`\" pulumi-lang-go=\"`max`\" pulumi-lang-python=\"`max`\" pulumi-lang-yaml=\"`max`\" pulumi-lang-java=\"`max`\" pulumi-lang-hcl=\"`max`\"\u003e`max`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`min`\" pulumi-lang-dotnet=\"`Min`\" pulumi-lang-go=\"`min`\" pulumi-lang-python=\"`min`\" pulumi-lang-yaml=\"`min`\" pulumi-lang-java=\"`min`\" pulumi-lang-hcl=\"`min`\"\u003e`min`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sum`\" pulumi-lang-dotnet=\"`Sum`\" pulumi-lang-go=\"`sum`\" pulumi-lang-python=\"`sum`\" pulumi-lang-yaml=\"`sum`\" pulumi-lang-java=\"`sum`\" pulumi-lang-hcl=\"`sum`\"\u003e`sum`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`last`\" pulumi-lang-dotnet=\"`Last`\" pulumi-lang-go=\"`last`\" pulumi-lang-python=\"`last`\" pulumi-lang-yaml=\"`last`\" pulumi-lang-java=\"`last`\" pulumi-lang-hcl=\"`last`\"\u003e`last`\u003c/span\u003e."
+                },
+                "axisMax": {
+                    "type": "number"
+                },
+                "axisMin": {
+                    "type": "number"
+                },
+                "decimals": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The key points are pushed to."
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sortKey": {
+                    "type": "integer"
+                },
+                "spaceId": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "number",
+                    "description": "A dashed line across the chart at this value."
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Printed after each value: \"ms\", \"%\"."
+                },
+                "visible": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "aggregate",
+                "decimals",
+                "key",
+                "name",
+                "sortKey",
+                "spaceId",
+                "unit",
+                "visible"
+            ],
+            "inputProperties": {
+                "aggregate": {
+                    "type": "string",
+                    "description": "How a chart bucket folds its points: \u003cspan pulumi-lang-nodejs=\"`avg`\" pulumi-lang-dotnet=\"`Avg`\" pulumi-lang-go=\"`avg`\" pulumi-lang-python=\"`avg`\" pulumi-lang-yaml=\"`avg`\" pulumi-lang-java=\"`avg`\" pulumi-lang-hcl=\"`avg`\"\u003e`avg`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`max`\" pulumi-lang-dotnet=\"`Max`\" pulumi-lang-go=\"`max`\" pulumi-lang-python=\"`max`\" pulumi-lang-yaml=\"`max`\" pulumi-lang-java=\"`max`\" pulumi-lang-hcl=\"`max`\"\u003e`max`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`min`\" pulumi-lang-dotnet=\"`Min`\" pulumi-lang-go=\"`min`\" pulumi-lang-python=\"`min`\" pulumi-lang-yaml=\"`min`\" pulumi-lang-java=\"`min`\" pulumi-lang-hcl=\"`min`\"\u003e`min`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sum`\" pulumi-lang-dotnet=\"`Sum`\" pulumi-lang-go=\"`sum`\" pulumi-lang-python=\"`sum`\" pulumi-lang-yaml=\"`sum`\" pulumi-lang-java=\"`sum`\" pulumi-lang-hcl=\"`sum`\"\u003e`sum`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`last`\" pulumi-lang-dotnet=\"`Last`\" pulumi-lang-go=\"`last`\" pulumi-lang-python=\"`last`\" pulumi-lang-yaml=\"`last`\" pulumi-lang-java=\"`last`\" pulumi-lang-hcl=\"`last`\"\u003e`last`\u003c/span\u003e."
+                },
+                "axisMax": {
+                    "type": "number"
+                },
+                "axisMin": {
+                    "type": "number"
+                },
+                "decimals": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The key points are pushed to."
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sortKey": {
+                    "type": "integer"
+                },
+                "spaceId": {
+                    "type": "string"
+                },
+                "threshold": {
+                    "type": "number",
+                    "description": "A dashed line across the chart at this value."
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Printed after each value: \"ms\", \"%\"."
+                },
+                "visible": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "key",
+                "spaceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StatusMetric resources.\n",
+                "properties": {
+                    "aggregate": {
+                        "type": "string",
+                        "description": "How a chart bucket folds its points: \u003cspan pulumi-lang-nodejs=\"`avg`\" pulumi-lang-dotnet=\"`Avg`\" pulumi-lang-go=\"`avg`\" pulumi-lang-python=\"`avg`\" pulumi-lang-yaml=\"`avg`\" pulumi-lang-java=\"`avg`\" pulumi-lang-hcl=\"`avg`\"\u003e`avg`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`max`\" pulumi-lang-dotnet=\"`Max`\" pulumi-lang-go=\"`max`\" pulumi-lang-python=\"`max`\" pulumi-lang-yaml=\"`max`\" pulumi-lang-java=\"`max`\" pulumi-lang-hcl=\"`max`\"\u003e`max`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`min`\" pulumi-lang-dotnet=\"`Min`\" pulumi-lang-go=\"`min`\" pulumi-lang-python=\"`min`\" pulumi-lang-yaml=\"`min`\" pulumi-lang-java=\"`min`\" pulumi-lang-hcl=\"`min`\"\u003e`min`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sum`\" pulumi-lang-dotnet=\"`Sum`\" pulumi-lang-go=\"`sum`\" pulumi-lang-python=\"`sum`\" pulumi-lang-yaml=\"`sum`\" pulumi-lang-java=\"`sum`\" pulumi-lang-hcl=\"`sum`\"\u003e`sum`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`last`\" pulumi-lang-dotnet=\"`Last`\" pulumi-lang-go=\"`last`\" pulumi-lang-python=\"`last`\" pulumi-lang-yaml=\"`last`\" pulumi-lang-java=\"`last`\" pulumi-lang-hcl=\"`last`\"\u003e`last`\u003c/span\u003e."
+                    },
+                    "axisMax": {
+                        "type": "number"
+                    },
+                    "axisMin": {
+                        "type": "number"
+                    },
+                    "decimals": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string",
+                        "description": "The key points are pushed to."
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "sortKey": {
+                        "type": "integer"
+                    },
+                    "spaceId": {
+                        "type": "string"
+                    },
+                    "threshold": {
+                        "type": "number",
+                        "description": "A dashed line across the chart at this value."
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "Printed after each value: \"ms\", \"%\"."
+                    },
+                    "visible": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "forumulate:index/getStatusPage:getStatusPage": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getStatusPage.\n",
+                "properties": {
+                    "spaceId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "spaceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStatusPage.\n",
+                "properties": {
+                    "activeCount": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "indicator": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "overall": {
+                        "type": "string"
+                    },
+                    "spaceId": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "activeCount",
+                    "description",
+                    "indicator",
+                    "name",
+                    "overall",
+                    "spaceId",
+                    "url"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:forumulate/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/provider"
+                    }
+                },
+                "type": "pulumi:providers:forumulate/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        }
+    }
+}

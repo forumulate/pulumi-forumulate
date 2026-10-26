@@ -1,0 +1,22 @@
+[project]
+  name = "pulumi_forumulate"
+  description = "A Pulumi package for managing Forumulate docs, forums, blogs and status pages as code."
+  dependencies = ["packaging>=24.0", "pulumi>=3.0.0,<4.0.0", "semver>=2.8.1", "typing-extensions>=4.11,<5; python_version < \"3.11\""]
+  keywords = ["pulumi", "forumulate", "docs", "forum", "blog", "status", "category/cloud"]
+  readme = "README.md"
+  requires-python = ">=3.9"
+  version = "0.0.1.dev0"
+  [project.license]
+    text = "MIT"
+  [project.urls]
+    Homepage = "https://forumulate.com"
+    Repository = "https://github.com/forumulate/pulumi-forumulate"
+
+[build-system]
+  requires = ["setuptools>=61.0"]
+  build-backend = "setuptools.build_meta"
+
+[tool]
+  [tool.setuptools]
+    [tool.setuptools.package-data]
+      pulumi_forumulate = ["py.typed", "pulumi-plugin.json"]

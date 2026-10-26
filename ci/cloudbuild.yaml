@@ -1,0 +1,79 @@
+# Build + generate on Google Cloud Build, so nothing heavy lands on a laptop:
+# the bridge's Go module tree is 1-2 GB. Submit a directory that holds BOTH
+# pulumi-forumulate/ and terraform-provider-forumulate/ (the provider's replace
+# directive points at the sibling), e.g.
+#
+#   gcloud builds submit --config pulumi-forumulate/ci/cloudbuild.yaml <stage-dir>
+#
+# It regenerates schema.json + sdk/ + go.mod/go.sum and uploads them as a tar.
+# Fetch with: gcloud storage cp gs://${PROJECT_ID}_cloudbuild/pulumi-forumulate/$BUILD_ID/gen.tgz .
+steps:
+  - id: generate
+    name: golang:1.26
+    env: [GOTOOLCHAIN=auto]
+    dir: pulumi-forumulate
+    entrypoint: bash
+    args:
+      - -ec
+      - |
+        apt-get update -qq && apt-get install -y -qq nodejs npm python3 >/dev/null
+        curl -fsSL https://get.pulumi.com | sh
+        export PATH="$$HOME/.pulumi/bin:$$PATH"
+        # tfgen -> schema.json, then every SDK; vet + test the provider module.
+        make tfgen
+        make provider
+        make build_sdks
+        make test
+        (cd sdk/go && go build ./...)
+        # Cross-build the plugin for the common desktops (local pulumi preview).
+        mkdir -p /workspace/out
+        for t in darwin/arm64 linux/amd64; do
+          (cd provider && GOOS=$${t%/*} GOARCH=$${t#*/} CGO_ENABLED=0 go build -ldflags "-X github.com/forumulate/pulumi-forumulate/provider/pkg/version.Version=0.0.1-dev" -o /workspace/out/pulumi-resource-forumulate-$${t%/*}-$${t#*/} ./cmd/pulumi-resource-forumulate)
+        done
+        tar czf /workspace/out/gen.tgz --exclude=node_modules --exclude=sdk/nodejs/bin --exclude='sdk/dotnet/bin' --exclude='sdk/dotnet/obj' \
+          schema.json sdk provider/go.mod provider/go.sum provider/cmd/pulumi-resource-forumulate/*.json
+  # Everything below consumes the generated SDKs the way a customer would.
+  - id: example-typescript
+    name: node:22
+    dir: pulumi-forumulate/examples/typescript
+    entrypoint: bash
+    args:
+      - -ec
+      - |
+        npm install --no-audit --no-fund ../../sdk/nodejs/bin
+        npm install --no-audit --no-fund
+        npx tsc --noEmit
+  - id: example-python
+    name: python:3.12
+    dir: pulumi-forumulate
+    entrypoint: bash
+    args:
+      - -ec
+      - |
+        pip install -q ./sdk/python pulumi
+        python -c "import ast,sys; ast.parse(open('examples/python/__main__.py').read())"
+        python -c "import pulumi_forumulate as f; print(f.StatusComponent, f.get_status_page)"
+  - id: example-go
+    name: golang:1.26
+    env: [GOTOOLCHAIN=auto]
+    dir: pulumi-forumulate/examples/go
+    entrypoint: bash
+    args:
+      - -ec
+      - |
+        go mod edit -replace github.com/forumulate/pulumi-forumulate/sdk=../../sdk
+        go mod tidy
+        go build ./...
+  - id: dotnet-build
+    name: mcr.microsoft.com/dotnet/sdk:8.0
+    dir: pulumi-forumulate/sdk/dotnet
+    entrypoint: bash
+    args: [-ec, "dotnet build -c Release -v q 2>&1 | tail -8"]
+artifacts:
+  objects:
+    location: gs://${PROJECT_ID}_cloudbuild/pulumi-forumulate/$BUILD_ID/
+    paths: [/workspace/out/*]
+options:
+  machineType: E2_HIGHCPU_8
+  logging: CLOUD_LOGGING_ONLY
+timeout: 1800s

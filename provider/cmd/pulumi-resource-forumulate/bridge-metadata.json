@@ -1,0 +1,42 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "forumulate_status_component": {
+                "current": "forumulate:index/statusComponent:StatusComponent",
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_status_groups": {
+                "current": "forumulate:index/statusGroups:StatusGroups",
+                "fields": {
+                    "group": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "forumulate_status_incident_template": {
+                "current": "forumulate:index/statusIncidentTemplate:StatusIncidentTemplate"
+            },
+            "forumulate_status_metric": {
+                "current": "forumulate:index/statusMetric:StatusMetric"
+            }
+        },
+        "datasources": {
+            "forumulate_status_page": {
+                "current": "forumulate:index/getStatusPage:getStatusPage"
+            }
+        }
+    },
+    "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "forumulate_status_component": {},
+            "forumulate_status_groups": {},
+            "forumulate_status_incident_template": {},
+            "forumulate_status_metric": {}
+        }
+    }
+}
