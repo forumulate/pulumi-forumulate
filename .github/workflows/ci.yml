@@ -4,6 +4,13 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Regenerate against a newer Terraform provider: bumps the module, then tfgen
+  # + every SDK, and uploads the tree to commit where this repo is mirrored from.
+  workflow_dispatch:
+    inputs:
+      terraform_version:
+        description: Terraform provider tag to bridge (e.g. v0.2.1)
+        required: true
 
 jobs:
   provider:
@@ -36,10 +43,18 @@ jobs:
         with:
           dotnet-version: "8.0.x"
       - uses: pulumi/actions@v6
+      - if: github.event_name == 'workflow_dispatch'
+        working-directory: provider
+        env:
+          GOFLAGS: -mod=mod
+        run: |
+          go get github.com/forumulate/terraform-provider-forumulate@${{ inputs.terraform_version }}
+          go mod tidy
       - run: make tfgen build_sdks
-      - run: git diff --exit-code -- schema.json sdk/go provider/cmd
+      - if: github.event_name != 'workflow_dispatch'
+        run: git diff --exit-code -- schema.json sdk/go provider/cmd
       # The regenerated tree, so a maintainer can commit it where this repo is mirrored from.
-      - if: failure()
+      - if: failure() || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: generated
@@ -47,3 +62,5 @@ jobs:
             schema.json
             sdk/
             provider/cmd/
+            provider/go.mod
+            provider/go.sum
