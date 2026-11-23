@@ -296,6 +296,20 @@ class SpaceLocale(pulumi.CustomResource):
         __props__.__dict__["space_id"] = space_id
         return SpaceLocale(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["code"] = code
+        __props__["isDefault"] = is_default
+        __props__["label"] = label
+        __props__["spaceId"] = space_id
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/spaceLocale:SpaceLocale', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def code(self) -> pulumi.Output[_builtins.str]:

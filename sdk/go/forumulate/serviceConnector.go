@@ -184,6 +184,12 @@ func (ServiceConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceConnectorState)(nil)).Elem()
 }
 
+// ServiceConnectorExists checks whether an existing ServiceConnector resource with the given ID exists.
+func ServiceConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/serviceConnector:ServiceConnector", id, state, "", opts...)
+}
+
 type serviceConnectorArgs struct {
 	// Whether the connector is on. Defaults to on when first saved.
 	Enabled *bool `pulumi:"enabled"`

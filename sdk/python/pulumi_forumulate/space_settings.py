@@ -611,6 +611,32 @@ class SpaceSettings(pulumi.CustomResource):
         __props__.__dict__["theme_json"] = theme_json
         return SpaceSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            blog_settings_json: pulumi.Input[Optional[_builtins.str]] = None,
+            forum_settings_json: pulumi.Input[Optional[_builtins.str]] = None,
+            front_door_json: pulumi.Input[Optional[_builtins.str]] = None,
+            piece_preset: pulumi.Input[Optional[_builtins.str]] = None,
+            preset: pulumi.Input[Optional[_builtins.str]] = None,
+            redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpaceSettingsRedirectArgs', 'SpaceSettingsRedirectArgsDict', 'outputs.SpaceSettingsRedirect']]]]] = None,
+            seo_json: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status_settings_json: pulumi.Input[Optional[_builtins.str]] = None,
+            theme_json: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["blogSettingsJson"] = blog_settings_json
+        __props__["forumSettingsJson"] = forum_settings_json
+        __props__["frontDoorJson"] = front_door_json
+        __props__["piecePreset"] = piece_preset
+        __props__["preset"] = preset
+        __props__["redirects"] = redirects
+        __props__["seoJson"] = seo_json
+        __props__["spaceId"] = space_id
+        __props__["statusSettingsJson"] = status_settings_json
+        __props__["themeJson"] = theme_json
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/spaceSettings:SpaceSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="blogSettingsJson")
     def blog_settings_json(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -497,6 +497,30 @@ class StatusIncidentTemplate(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return StatusIncidentTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            identified_text: pulumi.Input[Optional[_builtins.str]] = None,
+            markdown: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_text: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resolved_text: pulumi.Input[Optional[_builtins.str]] = None,
+            severity: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["identifiedText"] = identified_text
+        __props__["markdown"] = markdown
+        __props__["monitoringText"] = monitoring_text
+        __props__["name"] = name
+        __props__["resolvedText"] = resolved_text
+        __props__["severity"] = severity
+        __props__["spaceId"] = space_id
+        __props__["state"] = state
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/statusIncidentTemplate:StatusIncidentTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="identifiedText")
     def identified_text(self) -> pulumi.Output[Optional[_builtins.str]]:

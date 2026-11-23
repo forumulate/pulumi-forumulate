@@ -679,6 +679,42 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["verified"] = verified
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            also_redirect_www: pulumi.Input[Optional[_builtins.bool]] = None,
+            base_path: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_target: pulumi.Input[Optional[Union['DomainDnsTargetArgs', 'DomainDnsTargetArgsDict', 'outputs.DomainDnsTarget']]] = None,
+            external_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redirect_to: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_record: pulumi.Input[Optional[Union['DomainVerificationRecordArgs', 'DomainVerificationRecordArgsDict', 'outputs.DomainVerificationRecord']]] = None,
+            verified: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activate"] = activate
+        __props__["active"] = active
+        __props__["alsoRedirectWww"] = also_redirect_www
+        __props__["basePath"] = base_path
+        __props__["createdAt"] = created_at
+        __props__["dnsTarget"] = dns_target
+        __props__["externalRef"] = external_ref
+        __props__["hostname"] = hostname
+        __props__["ipAllowLists"] = ip_allow_lists
+        __props__["metadata"] = metadata
+        __props__["redirectTo"] = redirect_to
+        __props__["siteId"] = site_id
+        __props__["spaceId"] = space_id
+        __props__["verificationRecord"] = verification_record
+        __props__["verified"] = verified
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def activate(self) -> pulumi.Output[Optional[_builtins.bool]]:

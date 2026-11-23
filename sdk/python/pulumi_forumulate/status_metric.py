@@ -542,6 +542,36 @@ class StatusMetric(pulumi.CustomResource):
         __props__.__dict__["visible"] = visible
         return StatusMetric(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aggregate: pulumi.Input[Optional[_builtins.str]] = None,
+            axis_max: pulumi.Input[Optional[_builtins.float]] = None,
+            axis_min: pulumi.Input[Optional[_builtins.float]] = None,
+            decimals: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            sort_key: pulumi.Input[Optional[_builtins.int]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            unit: pulumi.Input[Optional[_builtins.str]] = None,
+            visible: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aggregate"] = aggregate
+        __props__["axisMax"] = axis_max
+        __props__["axisMin"] = axis_min
+        __props__["decimals"] = decimals
+        __props__["description"] = description
+        __props__["key"] = key
+        __props__["name"] = name
+        __props__["sortKey"] = sort_key
+        __props__["spaceId"] = space_id
+        __props__["threshold"] = threshold
+        __props__["unit"] = unit
+        __props__["visible"] = visible
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/statusMetric:StatusMetric', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def aggregate(self) -> pulumi.Output[_builtins.str]:

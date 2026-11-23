@@ -245,6 +245,12 @@ func (WebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookState)(nil)).Elem()
 }
 
+// WebhookExists checks whether an existing Webhook resource with the given ID exists.
+func WebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/webhook:Webhook", id, state, "", opts...)
+}
+
 type webhookArgs struct {
 	// Whether deliveries are sent. Set <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span> to pause an endpoint while keeping its history and secret.
 	Active *bool `pulumi:"active"`

@@ -76,6 +76,17 @@ export class Space extends pulumi.CustomResource {
         return new Space(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Space resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SpaceState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("forumulate:index/space:Space", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'forumulate:index/space:Space';
 
@@ -139,7 +150,7 @@ export class Space extends pulumi.CustomResource {
      */
     declare public readonly translationsJson: pulumi.Output<string | undefined>;
     /**
-     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -255,7 +266,7 @@ export interface SpaceState {
      */
     translationsJson?: pulumi.Input<string | undefined>;
     /**
-     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -313,7 +324,7 @@ export interface SpaceArgs {
      */
     translationsJson?: pulumi.Input<string | undefined>;
     /**
-     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+     * The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
      */
     type: pulumi.Input<string>;
     /**

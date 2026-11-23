@@ -154,6 +154,12 @@ func (StatusIncidentTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusIncidentTemplateState)(nil)).Elem()
 }
 
+// StatusIncidentTemplateExists checks whether an existing StatusIncidentTemplate resource with the given ID exists.
+func StatusIncidentTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusIncidentTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/statusIncidentTemplate:StatusIncidentTemplate", id, state, "", opts...)
+}
+
 type statusIncidentTemplateArgs struct {
 	// The words offered when an update moves it to identified.
 	IdentifiedText *string `pulumi:"identifiedText"`

@@ -235,6 +235,12 @@ func (SiteManifestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteManifestState)(nil)).Elem()
 }
 
+// SiteManifestExists checks whether an existing SiteManifest resource with the given ID exists.
+func SiteManifestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SiteManifestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/siteManifest:SiteManifest", id, state, "", opts...)
+}
+
 type siteManifestArgs struct {
 	// On destroy, apply the manifest with every declared list emptied and `prune: true`, deleting what the manifest created. Off by default: destroying the resource then only stops managing the site.
 	DestroyPrunes *bool `pulumi:"destroyPrunes"`

@@ -901,6 +901,52 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return Webhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            alert_contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            body_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            category_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            content_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            external_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            library_id: pulumi.Input[Optional[_builtins.str]] = None,
+            locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            signature_version: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["alertContacts"] = alert_contacts
+        __props__["bodyEncoding"] = body_encoding
+        __props__["categoryIds"] = category_ids
+        __props__["contentTypes"] = content_types
+        __props__["createdAt"] = created_at
+        __props__["events"] = events
+        __props__["externalRef"] = external_ref
+        __props__["format"] = format
+        __props__["groupIds"] = group_ids
+        __props__["kind"] = kind
+        __props__["libraryId"] = library_id
+        __props__["locales"] = locales
+        __props__["metadata"] = metadata
+        __props__["secret"] = secret
+        __props__["signatureVersion"] = signature_version
+        __props__["spaceId"] = space_id
+        __props__["state"] = state
+        __props__["tagIds"] = tag_ids
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/webhook:Webhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

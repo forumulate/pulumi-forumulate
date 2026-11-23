@@ -2550,7 +2550,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
+                    "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
                 },
                 "visibility": {
                     "type": "string",
@@ -2614,7 +2614,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
+                    "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
                 },
                 "visibility": {
                     "type": "string",
@@ -2681,7 +2681,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
+                        "description": "The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.\n"
                     },
                     "visibility": {
                         "type": "string",

@@ -212,6 +212,12 @@ func (SpaceSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spaceSettingsState)(nil)).Elem()
 }
 
+// SpaceSettingsExists checks whether an existing SpaceSettings resource with the given ID exists.
+func SpaceSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpaceSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/spaceSettings:SpaceSettings", id, state, "", opts...)
+}
+
 type spaceSettingsArgs struct {
 	// A BLOG space's settings: `whoCanPost`, `moderateComments`, `commentOrder`, `defaultByline`, <span pulumi-lang-nodejs="`federation`" pulumi-lang-dotnet="`Federation`" pulumi-lang-go="`federation`" pulumi-lang-python="`federation`" pulumi-lang-yaml="`federation`" pulumi-lang-java="`federation`" pulumi-lang-hcl="`federation`">`federation`</span>, ... A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	BlogSettingsJson *string `pulumi:"blogSettingsJson"`

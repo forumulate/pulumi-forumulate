@@ -735,6 +735,44 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["token_rotation"] = token_rotation
         return Connector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            appearance: pulumi.Input[Optional[Union['ConnectorAppearanceArgs', 'ConnectorAppearanceArgsDict', 'outputs.ConnectorAppearance']]] = None,
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            configured_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            embed_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            knowledge_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mint_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            missing_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            token_rotation: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appearance"] = appearance
+        __props__["config"] = config
+        __props__["configuredFields"] = configured_fields
+        __props__["embedEnabled"] = embed_enabled
+        __props__["externalRef"] = external_ref
+        __props__["knowledgeEnabled"] = knowledge_enabled
+        __props__["knowledgeScopes"] = knowledge_scopes
+        __props__["metadata"] = metadata
+        __props__["mintToken"] = mint_token
+        __props__["missingFields"] = missing_fields
+        __props__["providerId"] = provider_id
+        __props__["providerName"] = provider_name
+        __props__["spaceId"] = space_id
+        __props__["token"] = token
+        __props__["tokenPrefix"] = token_prefix
+        __props__["tokenRotation"] = token_rotation
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/connector:Connector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def appearance(self) -> pulumi.Output[Optional['outputs.ConnectorAppearance']]:

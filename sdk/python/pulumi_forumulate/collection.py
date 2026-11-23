@@ -560,6 +560,32 @@ class Collection(pulumi.CustomResource):
         __props__.__dict__["translations"] = translations
         return Collection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nav: pulumi.Input[Optional[Union['CollectionNavArgs', 'CollectionNavArgsDict', 'outputs.CollectionNav']]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            seo: pulumi.Input[Optional[Union['CollectionSeoArgs', 'CollectionSeoArgsDict', 'outputs.CollectionSeo']]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            translations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['CollectionTranslationsArgs', 'CollectionTranslationsArgsDict', 'outputs.CollectionTranslations']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["coverUrl"] = cover_url
+        __props__["description"] = description
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        __props__["nav"] = nav
+        __props__["parentId"] = parent_id
+        __props__["seo"] = seo
+        __props__["slug"] = slug
+        __props__["spaceId"] = space_id
+        __props__["translations"] = translations
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/collection:Collection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="coverUrl")
     def cover_url(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -535,6 +535,30 @@ class SiteManifest(pulumi.CustomResource):
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         return SiteManifest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destroy_prunes: pulumi.Input[Optional[_builtins.bool]] = None,
+            ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_apply_json: pulumi.Input[Optional[_builtins.str]] = None,
+            manifest_json: pulumi.Input[Optional[_builtins.str]] = None,
+            manual_json: pulumi.Input[Optional[_builtins.str]] = None,
+            pending: pulumi.Input[Optional[_builtins.str]] = None,
+            prune: pulumi.Input[Optional[_builtins.bool]] = None,
+            secrets_json: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destroyPrunes"] = destroy_prunes
+        __props__["ids"] = ids
+        __props__["lastApplyJson"] = last_apply_json
+        __props__["manifestJson"] = manifest_json
+        __props__["manualJson"] = manual_json
+        __props__["pending"] = pending
+        __props__["prune"] = prune
+        __props__["secretsJson"] = secrets_json
+        __props__["timeoutSeconds"] = timeout_seconds
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/siteManifest:SiteManifest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="destroyPrunes")
     def destroy_prunes(self) -> pulumi.Output[Optional[_builtins.bool]]:

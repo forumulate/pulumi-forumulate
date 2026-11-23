@@ -38,7 +38,7 @@ class SpaceArgs:
         The set of arguments for constructing a Space resource.
 
         :param pulumi.Input[_builtins.str] slug: The space's address segment (2 to 48 characters, lowercase letters, digits and hyphens). Cannot change; changing it replaces the space.
-        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         :param pulumi.Input[_builtins.bool] destroy_on_delete: On destroy, permanently delete the space after trashing it (all its content, files and domains), which frees the slug for reuse. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`" pulumi-lang-hcl="`false`">`false`</span>: the space stays in the trash, restorable.
         :param pulumi.Input[_builtins.str] external_ref: Your own reference for this space (printable ASCII, up to 200 characters), fixed at creation: repeating a create with the same reference answers the existing space.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Tags an orchestrator keeps on the space: keys of letters, digits and `_.:-` (up to 64 characters), values up to 500 characters. Replaced whole on change. The API does not return them on a read, so drift is not detected.
@@ -92,7 +92,7 @@ class SpaceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         """
         return pulumi.get(self, "type")
 
@@ -265,7 +265,7 @@ class _SpaceState:
         :param pulumi.Input[_builtins.str] site_id: A site (by id) the new public space joins. Create-time only; membership afterwards is `forumulate_site.space_ids`.
         :param pulumi.Input[_builtins.str] slug: The space's address segment (2 to 48 characters, lowercase letters, digits and hyphens). Cannot change; changing it replaces the space.
         :param pulumi.Input[_builtins.str] translations_json: The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
-        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         :param pulumi.Input[_builtins.str] visibility: `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
         """
         if created_at is not None:
@@ -445,7 +445,7 @@ class _SpaceState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         """
         return pulumi.get(self, "type")
 
@@ -554,7 +554,7 @@ class Space(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: A site (by id) the new public space joins. Create-time only; membership afterwards is `forumulate_site.space_ids`.
         :param pulumi.Input[_builtins.str] slug: The space's address segment (2 to 48 characters, lowercase letters, digits and hyphens). Cannot change; changing it replaces the space.
         :param pulumi.Input[_builtins.str] translations_json: The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
-        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         :param pulumi.Input[_builtins.str] visibility: `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
         """
         ...
@@ -716,7 +716,7 @@ class Space(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: A site (by id) the new public space joins. Create-time only; membership afterwards is `forumulate_site.space_ids`.
         :param pulumi.Input[_builtins.str] slug: The space's address segment (2 to 48 characters, lowercase letters, digits and hyphens). Cannot change; changing it replaces the space.
         :param pulumi.Input[_builtins.str] translations_json: The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
-        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        :param pulumi.Input[_builtins.str] type: The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         :param pulumi.Input[_builtins.str] visibility: `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -738,6 +738,40 @@ class Space(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["visibility"] = visibility
         return Space(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preset: pulumi.Input[Optional[_builtins.str]] = None,
+            seed: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings_json: pulumi.Input[Optional[_builtins.str]] = None,
+            shape: pulumi.Input[Optional[Union['SpaceShapeArgs', 'SpaceShapeArgsDict', 'outputs.SpaceShape']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            translations_json: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["destroyOnDelete"] = destroy_on_delete
+        __props__["externalRef"] = external_ref
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["preset"] = preset
+        __props__["seed"] = seed
+        __props__["settingsJson"] = settings_json
+        __props__["shape"] = shape
+        __props__["siteId"] = site_id
+        __props__["slug"] = slug
+        __props__["translationsJson"] = translations_json
+        __props__["type"] = type
+        __props__["visibility"] = visibility
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/space:Space', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -839,7 +873,7 @@ class Space(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         """
         return pulumi.get(self, "type")
 

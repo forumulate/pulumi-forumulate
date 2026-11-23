@@ -7,7 +7,7 @@ go 1.26.6
 // public mirror drops this line and pins a released version instead.
 
 require (
-	github.com/forumulate/terraform-provider-forumulate v0.2.0
+	github.com/forumulate/terraform-provider-forumulate v0.2.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
 )
 

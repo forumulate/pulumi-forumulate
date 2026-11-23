@@ -136,6 +136,12 @@ func (OrgSettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*orgSettingState)(nil)).Elem()
 }
 
+// OrgSettingExists checks whether an existing OrgSetting resource with the given ID exists.
+func OrgSettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrgSettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/orgSetting:OrgSetting", id, state, "", opts...)
+}
+
 type orgSettingArgs struct {
 	// The setting's key, as listed by `GET /orgs/{orgId}/settings`. An unknown key is a 404. Changing it replaces the resource.
 	Key string `pulumi:"key"`

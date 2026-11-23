@@ -551,6 +551,30 @@ class Site(pulumi.CustomResource):
         __props__.__dict__["translations_json"] = translations_json
         return Site(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            external_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            page_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SitePageMountArgs', 'SitePageMountArgsDict', 'outputs.SitePageMount']]]]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            space_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            translations_json: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configJson"] = config_json
+        __props__["createdAt"] = created_at
+        __props__["externalRef"] = external_ref
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["pageMounts"] = page_mounts
+        __props__["slug"] = slug
+        __props__["spaceIds"] = space_ids
+        __props__["translationsJson"] = translations_json
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/site:Site', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configJson")
     def config_json(self) -> pulumi.Output[Optional[_builtins.str]]:

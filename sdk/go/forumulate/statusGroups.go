@@ -114,6 +114,12 @@ func (StatusGroupsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusGroupsState)(nil)).Elem()
 }
 
+// StatusGroupsExists checks whether an existing StatusGroups resource with the given ID exists.
+func StatusGroupsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusGroupsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/statusGroups:StatusGroups", id, state, "", opts...)
+}
+
 type statusGroupsArgs struct {
 	Groups []StatusGroupsGroup `pulumi:"groups"`
 	// The status page (space) id.

@@ -120,6 +120,12 @@ func (TranslationOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*translationOverrideState)(nil)).Elem()
 }
 
+// TranslationOverrideExists checks whether an existing TranslationOverride resource with the given ID exists.
+func TranslationOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TranslationOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/translationOverride:TranslationOverride", id, state, "", opts...)
+}
+
 type translationOverrideArgs struct {
 	// The interface string's key (1 to 120 characters). Changing it replaces the override.
 	Key string `pulumi:"key"`

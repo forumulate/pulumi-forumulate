@@ -473,6 +473,34 @@ class ServiceConnector(pulumi.CustomResource):
         __props__.__dict__["values"] = values
         return ServiceConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            configured: pulumi.Input[Optional[_builtins.bool]] = None,
+            connected: pulumi.Input[Optional[_builtins.bool]] = None,
+            connected_account: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_error: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_values: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            secrets_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            values: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["callbackUrl"] = callback_url
+        __props__["configured"] = configured
+        __props__["connected"] = connected
+        __props__["connectedAccount"] = connected_account
+        __props__["enabled"] = enabled
+        __props__["lastError"] = last_error
+        __props__["name"] = name
+        __props__["providerName"] = provider_name
+        __props__["secretValues"] = secret_values
+        __props__["secretsSets"] = secrets_sets
+        __props__["values"] = values
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/serviceConnector:ServiceConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="callbackUrl")
     def callback_url(self) -> pulumi.Output[_builtins.str]:

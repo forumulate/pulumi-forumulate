@@ -126,7 +126,7 @@ type Space struct {
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	TranslationsJson pulumi.StringPtrOutput `pulumi:"translationsJson"`
-	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
 	Visibility pulumi.StringOutput `pulumi:"visibility"`
@@ -192,7 +192,7 @@ type spaceState struct {
 	Slug *string `pulumi:"slug"`
 	// The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	TranslationsJson *string `pulumi:"translationsJson"`
-	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 	Type *string `pulumi:"type"`
 	// `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
 	Visibility *string `pulumi:"visibility"`
@@ -223,7 +223,7 @@ type SpaceState struct {
 	Slug pulumi.StringPtrInput
 	// The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	TranslationsJson pulumi.StringPtrInput
-	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 	Type pulumi.StringPtrInput
 	// `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
 	Visibility pulumi.StringPtrInput
@@ -231,6 +231,12 @@ type SpaceState struct {
 
 func (SpaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spaceState)(nil)).Elem()
+}
+
+// SpaceExists checks whether an existing Space resource with the given ID exists.
+func SpaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/space:Space", id, state, "", opts...)
 }
 
 type spaceArgs struct {
@@ -256,7 +262,7 @@ type spaceArgs struct {
 	Slug string `pulumi:"slug"`
 	// The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	TranslationsJson *string `pulumi:"translationsJson"`
-	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 	Type string `pulumi:"type"`
 	// `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
 	Visibility *string `pulumi:"visibility"`
@@ -286,7 +292,7 @@ type SpaceArgs struct {
 	Slug pulumi.StringInput
 	// The space's name and description in other languages: `{ "es": { "name": "Documentación", "seoTitle": "..." } }` per language code. Replaced whole on change. A JSON document: write it with `jsonencode()`. Drift is detected only for the keys you declare, so settings someone else manages are left alone.
 	TranslationsJson pulumi.StringPtrInput
-	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+	// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 	Type pulumi.StringInput
 	// `PUBLIC` or `PRIVATE`. Defaults to `PRIVATE`. Some types are always private (the API says so on apply).
 	Visibility pulumi.StringPtrInput
@@ -439,7 +445,7 @@ func (o SpaceOutput) TranslationsJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Space) pulumi.StringPtrOutput { return v.TranslationsJson }).(pulumi.StringPtrOutput)
 }
 
-// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
 func (o SpaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Space) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

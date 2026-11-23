@@ -180,6 +180,12 @@ func (CollectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*collectionState)(nil)).Elem()
 }
 
+// CollectionExists checks whether an existing Collection resource with the given ID exists.
+func CollectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CollectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/collection:Collection", id, state, "", opts...)
+}
+
 type collectionArgs struct {
 	// A banner above the landing page: an uploaded path or an http(s) URL, up to 2048 characters.
 	CoverUrl *string `pulumi:"coverUrl"`

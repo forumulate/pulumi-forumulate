@@ -220,6 +220,12 @@ func (DomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainState)(nil)).Elem()
 }
 
+// DomainExists checks whether an existing Domain resource with the given ID exists.
+func DomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/domain:Domain", id, state, "", opts...)
+}
+
 type domainArgs struct {
 	// Verify the DNS records and switch traffic to the hostname. If the records are not there yet the apply warns and the next apply tries again.
 	Activate *bool `pulumi:"activate"`

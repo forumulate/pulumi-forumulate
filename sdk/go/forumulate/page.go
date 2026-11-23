@@ -185,6 +185,12 @@ func (PageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageState)(nil)).Elem()
 }
 
+// PageExists checks whether an existing Page resource with the given ID exists.
+func PageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/page:Page", id, state, "", opts...)
+}
+
 type pageArgs struct {
 	// Place the page directly after this sibling (its id). Changing it reorders; the API does not return a page's order, so drift is not detected.
 	AfterId *string `pulumi:"afterId"`

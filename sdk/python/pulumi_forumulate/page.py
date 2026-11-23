@@ -754,6 +754,48 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["version_key"] = version_key
         return Page(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            after_id: pulumi.Input[Optional[_builtins.str]] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            body_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            content_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            locale: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['PageMetadataArgs', 'PageMetadataArgsDict', 'outputs.PageMetadata']]] = None,
+            metadata_json: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preset: pulumi.Input[Optional[_builtins.str]] = None,
+            published: pulumi.Input[Optional[_builtins.bool]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            version_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["afterId"] = after_id
+        __props__["body"] = body
+        __props__["bodyHash"] = body_hash
+        __props__["collectionId"] = collection_id
+        __props__["contentHash"] = content_hash
+        __props__["destroyOnDelete"] = destroy_on_delete
+        __props__["locale"] = locale
+        __props__["metadata"] = metadata
+        __props__["metadataJson"] = metadata_json
+        __props__["parentId"] = parent_id
+        __props__["preset"] = preset
+        __props__["published"] = published
+        __props__["slug"] = slug
+        __props__["spaceId"] = space_id
+        __props__["title"] = title
+        __props__["updatedAt"] = updated_at
+        __props__["url"] = url
+        __props__["versionKey"] = version_key
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/page:Page', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="afterId")
     def after_id(self) -> pulumi.Output[Optional[_builtins.str]]:

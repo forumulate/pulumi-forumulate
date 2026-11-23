@@ -158,7 +158,7 @@ namespace Forumulate.Forumulate
         public Output<string?> TranslationsJson { get; private set; } = null!;
 
         /// <summary>
-        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Forumulate.Forumulate
         public Input<string>? TranslationsJson { get; set; }
 
         /// <summary>
-        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -387,7 +387,7 @@ namespace Forumulate.Forumulate
         public Input<string>? TranslationsJson { get; set; }
 
         /// <summary>
-        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
+        /// The space type. One of `DOCS`, `FORUM`, `BLOG`, `ROADMAP`, `CHANGELOG`, `STATUS`, `LEGAL`, `FAQ`, `CAREERS`, `CONTACT`, `EVENTS`, `COURSES`, `CUSTOM`, `CONTENT`, `ABOUT`, `COMPARE`, `DOWNLOADS`. Cannot change; changing it replaces the space. `GET /space-types` describes each.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

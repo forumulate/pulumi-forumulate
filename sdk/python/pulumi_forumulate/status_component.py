@@ -1182,6 +1182,64 @@ class StatusComponent(pulumi.CustomResource):
         __props__.__dict__["visible"] = visible
         return StatusComponent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alerts_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bar_days: pulumi.Input[Optional[_builtins.int]] = None,
+            cert_expiry_days: pulumi.Input[Optional[_builtins.int]] = None,
+            confirm_regions: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display: pulumi.Input[Optional[_builtins.str]] = None,
+            expect_status: pulumi.Input[Optional[_builtins.int]] = None,
+            failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            keyword: pulumi.Input[Optional[_builtins.str]] = None,
+            keyword_absent: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            link_url: pulumi.Input[Optional[_builtins.str]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            ping_url: pulumi.Input[Optional[_builtins.str]] = None,
+            probe_json: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            show_uptime: pulumi.Input[Optional[_builtins.bool]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            space_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            visible: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertsEnabled"] = alerts_enabled
+        __props__["barDays"] = bar_days
+        __props__["certExpiryDays"] = cert_expiry_days
+        __props__["confirmRegions"] = confirm_regions
+        __props__["description"] = description
+        __props__["display"] = display
+        __props__["expectStatus"] = expect_status
+        __props__["failureThreshold"] = failure_threshold
+        __props__["group"] = group
+        __props__["intervalSeconds"] = interval_seconds
+        __props__["keyword"] = keyword
+        __props__["keywordAbsent"] = keyword_absent
+        __props__["kind"] = kind
+        __props__["linkUrl"] = link_url
+        __props__["method"] = method
+        __props__["name"] = name
+        __props__["paused"] = paused
+        __props__["pingUrl"] = ping_url
+        __props__["probeJson"] = probe_json
+        __props__["region"] = region
+        __props__["regions"] = regions
+        __props__["showUptime"] = show_uptime
+        __props__["slug"] = slug
+        __props__["spaceId"] = space_id
+        __props__["url"] = url
+        __props__["visible"] = visible
+        return pulumi.runtime.exists_resource(None, 'forumulate:index/statusComponent:StatusComponent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertsEnabled")
     def alerts_enabled(self) -> pulumi.Output[_builtins.bool]:

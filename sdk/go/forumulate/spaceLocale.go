@@ -135,6 +135,12 @@ func (SpaceLocaleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spaceLocaleState)(nil)).Elem()
 }
 
+// SpaceLocaleExists checks whether an existing SpaceLocale resource with the given ID exists.
+func SpaceLocaleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpaceLocaleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/spaceLocale:SpaceLocale", id, state, "", opts...)
+}
+
 type spaceLocaleArgs struct {
 	// The language code (2 to 20 characters: lowercase letters, digits and hyphens, like <span pulumi-lang-nodejs="`es`" pulumi-lang-dotnet="`Es`" pulumi-lang-go="`es`" pulumi-lang-python="`es`" pulumi-lang-yaml="`es`" pulumi-lang-java="`es`" pulumi-lang-hcl="`es`">`es`</span> or `pt-br`), or <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`" pulumi-lang-hcl="`default`">`default`</span>. It is the translation's address, so changing it replaces the resource.
 	Code string `pulumi:"code"`

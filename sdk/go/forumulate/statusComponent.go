@@ -288,6 +288,12 @@ func (StatusComponentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusComponentState)(nil)).Elem()
 }
 
+// StatusComponentExists checks whether an existing StatusComponent resource with the given ID exists.
+func StatusComponentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusComponentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/statusComponent:StatusComponent", id, state, "", opts...)
+}
+
 type statusComponentArgs struct {
 	// Alerts fire when it goes down. Default true.
 	AlertsEnabled *bool `pulumi:"alertsEnabled"`

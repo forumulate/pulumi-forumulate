@@ -385,6 +385,12 @@ func (ForumCategoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*forumCategoryState)(nil)).Elem()
 }
 
+// ForumCategoryExists checks whether an existing ForumCategory resource with the given ID exists.
+func ForumCategoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ForumCategoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/forumCategory:ForumCategory", id, state, "", opts...)
+}
+
 type forumCategoryArgs struct {
 	// The topic that describes the category (its id).
 	AboutTopicId *string `pulumi:"aboutTopicId"`

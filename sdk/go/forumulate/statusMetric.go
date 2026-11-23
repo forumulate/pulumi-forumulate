@@ -150,6 +150,12 @@ func (StatusMetricState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusMetricState)(nil)).Elem()
 }
 
+// StatusMetricExists checks whether an existing StatusMetric resource with the given ID exists.
+func StatusMetricExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusMetricState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("forumulate:index/statusMetric:StatusMetric", id, state, "", opts...)
+}
+
 type statusMetricArgs struct {
 	// How a chart bucket folds its points: <span pulumi-lang-nodejs="`avg`" pulumi-lang-dotnet="`Avg`" pulumi-lang-go="`avg`" pulumi-lang-python="`avg`" pulumi-lang-yaml="`avg`" pulumi-lang-java="`avg`" pulumi-lang-hcl="`avg`">`avg`</span>, <span pulumi-lang-nodejs="`max`" pulumi-lang-dotnet="`Max`" pulumi-lang-go="`max`" pulumi-lang-python="`max`" pulumi-lang-yaml="`max`" pulumi-lang-java="`max`" pulumi-lang-hcl="`max`">`max`</span>, <span pulumi-lang-nodejs="`min`" pulumi-lang-dotnet="`Min`" pulumi-lang-go="`min`" pulumi-lang-python="`min`" pulumi-lang-yaml="`min`" pulumi-lang-java="`min`" pulumi-lang-hcl="`min`">`min`</span>, <span pulumi-lang-nodejs="`sum`" pulumi-lang-dotnet="`Sum`" pulumi-lang-go="`sum`" pulumi-lang-python="`sum`" pulumi-lang-yaml="`sum`" pulumi-lang-java="`sum`" pulumi-lang-hcl="`sum`">`sum`</span> or <span pulumi-lang-nodejs="`last`" pulumi-lang-dotnet="`Last`" pulumi-lang-go="`last`" pulumi-lang-python="`last`" pulumi-lang-yaml="`last`" pulumi-lang-java="`last`" pulumi-lang-hcl="`last`">`last`</span>.
 	Aggregate   *string  `pulumi:"aggregate"`
